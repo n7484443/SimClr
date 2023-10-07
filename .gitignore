@@ -16,3 +16,4 @@ data/cifar-10-batches-py/batches.meta
 .idea/inspectionProfiles/Project_Default.xml
 .idea/inspectionProfiles/profiles_settings.xml
 model.pt
+fg_output.pt

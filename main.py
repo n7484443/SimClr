@@ -35,11 +35,15 @@ def distortion(tensor_image: Tensor, strength: int) -> Tensor:
     color_transform = transforms.ColorJitter(brightness=0.8 * strength, contrast=0.8 * strength,
                                              saturation=0.8 * strength, hue=0.2 * strength)
     # 0.1~1 사이의 크기, 0.5~2 사이의 종횡비로 랜덤하게 크롭
-    crop_transform = transforms.RandomResizedCrop((img_size, img_size), scale=(0.75, 1), ratio=(0.5, 2))
+    crop_transform = transforms.RandomResizedCrop((img_size, img_size), scale=(0.6, 1), ratio=(0.5, 2), )
+    flip_horizon = transforms.RandomHorizontalFlip(p=0.5)
+    flip_vertical = transforms.RandomVerticalFlip(p=0.5)
     for index in range(size):
         sample = tensor_image[index]
         sample = color_transform.forward(sample)
         sample = crop_transform.forward(sample)
+        sample = flip_horizon.forward(sample)
+        sample = flip_vertical.forward(sample)
         output[index] = sample
     return output
 

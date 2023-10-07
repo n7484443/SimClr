@@ -1,3 +1,6 @@
+특이사항: Horizontal, Vertical Flip 추가
+
+
 C:\Users\kimJuhwan\anaconda3\envs\pytorch\python.exe E:\github\simclrExe\main.py
 Files already downloaded and verified
 Files already downloaded and verified
@@ -43,39 +46,39 @@ Estimated Total Size (MB): 506.59
 ===============================================================================================
 C:\Users\kimJuhwan\anaconda3\envs\pytorch\lib\site-packages\torchvision\transforms\functional.py:1603: UserWarning: The default value of the antialias parameter of all the resizing transforms (Resize(), RandomResizedCrop(), etc.) will change from None to True in v0.17, in order to be consistent across the PIL and Tensor backends. To suppress this warning, directly pass antialias=True (recommended, future default), antialias=None (current default, which means False for Tensors and True for PIL), or antialias=False (only works on Tensors - PIL will still use antialiasing). This also applies if you are using the inference transforms from the models weights: update the call to weights.transforms(antialias=True).
   warnings.warn(
-Epoch : 0, Avg Loss : 4.3286
-Epoch : 1, Avg Loss : 3.9276
-Epoch : 2, Avg Loss : 3.8531
-Epoch : 3, Avg Loss : 3.7646
-Epoch : 4, Avg Loss : 3.7898
-Epoch : 5, Avg Loss : 3.7391
-Epoch : 6, Avg Loss : 3.7032
-Epoch : 7, Avg Loss : 3.6670
-Epoch : 8, Avg Loss : 3.6464
-Epoch : 9, Avg Loss : 3.6139
+Epoch : 0, Avg Loss : 4.0770
+Epoch : 1, Avg Loss : 3.9213
+Epoch : 2, Avg Loss : 3.8728
+Epoch : 3, Avg Loss : 3.8477
+Epoch : 4, Avg Loss : 3.8263
+Epoch : 5, Avg Loss : 3.8152
+Epoch : 6, Avg Loss : 3.8114
+Epoch : 7, Avg Loss : 3.7999
+Epoch : 8, Avg Loss : 3.7884
+Epoch : 9, Avg Loss : 3.7884
 FG 학습 완료. 이제 FG의 output을 실제 dataset의 label과 연결.
-Epoch : 0, Avg Loss : 2.2366
-Epoch : 1, Avg Loss : 2.1422
-Epoch : 2, Avg Loss : 2.1270
-Epoch : 3, Avg Loss : 2.1230
-Epoch : 4, Avg Loss : 2.1182
-Epoch : 5, Avg Loss : 2.1172
-Epoch : 6, Avg Loss : 2.1160
-Epoch : 7, Avg Loss : 2.1143
-Epoch : 8, Avg Loss : 2.1128
-Epoch : 9, Avg Loss : 2.1127
-Epoch : 10, Avg Loss : 2.1117
-Epoch : 11, Avg Loss : 2.1107
-Epoch : 12, Avg Loss : 2.1116
-Epoch : 13, Avg Loss : 2.1108
-Epoch : 14, Avg Loss : 2.1104
-Epoch : 15, Avg Loss : 2.1101
-Epoch : 16, Avg Loss : 2.1093
-Epoch : 17, Avg Loss : 2.1080
-Epoch : 18, Avg Loss : 2.1090
-Epoch : 19, Avg Loss : 2.1096
+Epoch : 0, Avg Loss : 2.1537
+Epoch : 1, Avg Loss : 2.0117
+Epoch : 2, Avg Loss : 1.9985
+Epoch : 3, Avg Loss : 1.9920
+Epoch : 4, Avg Loss : 1.9881
+Epoch : 5, Avg Loss : 1.9832
+Epoch : 6, Avg Loss : 1.9849
+Epoch : 7, Avg Loss : 1.9819
+Epoch : 8, Avg Loss : 1.9815
+Epoch : 9, Avg Loss : 1.9799
+Epoch : 10, Avg Loss : 1.9811
+Epoch : 11, Avg Loss : 1.9807
+Epoch : 12, Avg Loss : 1.9784
+Epoch : 13, Avg Loss : 1.9773
+Epoch : 14, Avg Loss : 1.9805
+Epoch : 15, Avg Loss : 1.9768
+Epoch : 16, Avg Loss : 1.9773
+Epoch : 17, Avg Loss : 1.9766
+Epoch : 18, Avg Loss : 1.9753
+Epoch : 19, Avg Loss : 1.9760
 실제 test
 총 개수 : 50000
- 맞춘 개수 : 11261
- 정확도: 22 
+ 맞춘 개수 : 13191
+ 정확도: 26
  찍었을 때의 정확도 : 10
