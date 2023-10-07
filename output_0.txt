@@ -1,0 +1,85 @@
+Files already downloaded and verified
+Files already downloaded and verified
+===============================================================================================
+Layer (type:depth-idx)                        Output Shape              Param #
+===============================================================================================
+Sequential                                    [64, 32]                  --
+├─Resnet: 1-1                                 [64, 32]                  --
+│    └─Conv2d: 2-1                            [64, 64, 16, 16]          9,408
+│    └─Sequential: 2-2                        [64, 64, 8, 8]            --
+│    │    └─MaxPool2d: 3-1                    [64, 64, 8, 8]            --
+│    │    └─ResnetBlock: 3-2                  [64, 64, 8, 8]            73,984
+│    │    └─ResnetBlock: 3-3                  [64, 64, 8, 8]            73,984
+│    │    └─ResnetBlock: 3-4                  [64, 64, 8, 8]            73,984
+│    └─Sequential: 2-3                        [64, 128, 8, 8]           --
+│    │    └─ResnetBlock: 3-5                  [64, 128, 8, 8]           230,144
+│    │    └─ResnetBlock: 3-6                  [64, 128, 8, 8]           295,424
+│    │    └─ResnetBlock: 3-7                  [64, 128, 8, 8]           295,424
+│    │    └─ResnetBlock: 3-8                  [64, 128, 8, 8]           295,424
+│    └─Sequential: 2-4                        [64, 256, 8, 8]           --
+│    │    └─ResnetBlock: 3-9                  [64, 256, 8, 8]           919,040
+│    │    └─ResnetBlock: 3-10                 [64, 256, 8, 8]           1,180,672
+│    │    └─ResnetBlock: 3-11                 [64, 256, 8, 8]           1,180,672
+│    │    └─ResnetBlock: 3-12                 [64, 256, 8, 8]           1,180,672
+│    │    └─ResnetBlock: 3-13                 [64, 256, 8, 8]           1,180,672
+│    │    └─ResnetBlock: 3-14                 [64, 256, 8, 8]           1,180,672
+│    └─Sequential: 2-5                        [64, 512, 8, 8]           --
+│    │    └─ResnetBlock: 3-15                 [64, 512, 8, 8]           3,673,088
+│    │    └─ResnetBlock: 3-16                 [64, 512, 8, 8]           4,720,640
+│    │    └─ResnetBlock: 3-17                 [64, 512, 8, 8]           4,720,640
+│    └─AdaptiveAvgPool2d: 2-6                 [64, 512, 1, 1]           --
+│    └─Sequential: 2-7                        [64, 32]                  --
+│    │    └─Flatten: 3-18                     [64, 512]                 --
+│    │    └─Linear: 3-19                      [64, 32]                  16,416
+├─SimpleMLP: 1-2                              [64, 32]                  --
+│    └─Linear: 2-8                            [64, 32]                  1,056
+│    └─ReLU: 2-9                              [64, 32]                  --
+===============================================================================================
+Total params: 21,302,016
+Trainable params: 21,302,016
+Non-trainable params: 0
+Total mult-adds (G): 87.23
+===============================================================================================
+Input size (MB): 0.79
+Forward/backward pass size (MB): 562.07
+Params size (MB): 85.21
+Estimated Total Size (MB): 648.06
+===============================================================================================
+C:\Users\kimJuhwan\anaconda3\envs\pytorch\lib\site-packages\torchvision\transforms\functional.py:1603: UserWarning: The default value of the antialias parameter of all the resizing transforms (Resize(), RandomResizedCrop(), etc.) will change from None to True in v0.17, in order to be consistent across the PIL and Tensor backends. To suppress this warning, directly pass antialias=True (recommended, future default), antialias=None (current default, which means False for Tensors and True for PIL), or antialias=False (only works on Tensors - PIL will still use antialiasing). This also applies if you are using the inference transforms from the models weights: update the call to weights.transforms(antialias=True).
+  warnings.warn(
+Epoch : 0, Avg Loss : 3.6764
+Epoch : 1, Avg Loss : 3.6567
+Epoch : 2, Avg Loss : 3.6441
+Epoch : 3, Avg Loss : 3.6365
+Epoch : 4, Avg Loss : 3.6266
+Epoch : 5, Avg Loss : 3.6155
+Epoch : 6, Avg Loss : 3.6087
+Epoch : 7, Avg Loss : 3.5982
+Epoch : 8, Avg Loss : 3.6072
+Epoch : 9, Avg Loss : 3.5947
+FG 학습 완료. 이제 FG의 output을 실제 dataset의 label과 연결.
+Epoch : 0, Avg Loss : 2.4140
+Epoch : 1, Avg Loss : 2.1276
+Epoch : 2, Avg Loss : 2.1182
+Epoch : 3, Avg Loss : 2.1149
+Epoch : 4, Avg Loss : 2.1131
+Epoch : 5, Avg Loss : 2.1096
+Epoch : 6, Avg Loss : 2.1116
+Epoch : 7, Avg Loss : 2.1083
+Epoch : 8, Avg Loss : 2.1075
+Epoch : 9, Avg Loss : 2.1072
+Epoch : 10, Avg Loss : 2.1062
+Epoch : 11, Avg Loss : 2.1047
+Epoch : 12, Avg Loss : 2.1069
+Epoch : 13, Avg Loss : 2.1053
+Epoch : 14, Avg Loss : 2.1033
+Epoch : 15, Avg Loss : 2.1034
+Epoch : 16, Avg Loss : 2.1045
+Epoch : 17, Avg Loss : 2.1040
+Epoch : 18, Avg Loss : 2.1028
+Epoch : 19, Avg Loss : 2.1002
+실제 test
+총 개수 : 50000 
+ 맞춘 개수 : 11227 
+ 정확도: 22 
+ 찍었을 때의 정확도 : 10
