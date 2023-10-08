@@ -25,27 +25,25 @@ def load_image(batch_size) -> (tu_data.DataLoader, tu_data.DataLoader):
 
     return train_loader, test_loader
 
-
 # 이미지 텐서를 색상 변환, 크롭
 def distortion(tensor_image: Tensor, strength: int) -> Tensor:
     # [batch_size, rgb, width, height]
-    size = tensor_image.shape[0]
     img_size = tensor_image.shape[2]
-    output = torch.zeros_like(tensor_image, device="cuda")
     color_transform = transforms.ColorJitter(brightness=0.8 * strength, contrast=0.8 * strength,
                                              saturation=0.8 * strength, hue=0.2 * strength)
     # 0.1~1 사이의 크기, 0.5~2 사이의 종횡비로 랜덤하게 크롭
-    crop_transform = transforms.RandomResizedCrop((img_size, img_size), scale=(0.6, 1), ratio=(0.5, 2), )
+    crop_transform = transforms.RandomResizedCrop((img_size, img_size), scale=(0.5, 1), ratio=(0.5, 2), )
     flip_horizon = transforms.RandomHorizontalFlip(p=0.5)
     flip_vertical = transforms.RandomVerticalFlip(p=0.5)
-    for index in range(size):
-        sample = tensor_image[index]
-        sample = color_transform.forward(sample)
-        sample = crop_transform.forward(sample)
-        sample = flip_horizon.forward(sample)
-        sample = flip_vertical.forward(sample)
-        output[index] = sample
-    return output
+    transform_several = torch.nn.Sequential(
+        crop_transform,
+        flip_vertical,
+        flip_horizon,
+        color_transform,
+        transforms.Normalize((0.5, 0.5, 0.5), (0.5, 0.5, 0.5))
+    )
+    return transform_several.forward(tensor_image)
+
 
 # identity resnet 구현
 class ResnetBlock(nn.Module):
@@ -73,7 +71,8 @@ class ResnetBlock(nn.Module):
         x = self.relu(x)
         return x
 
-#conv output size = ceil((i + 2p - k) / s) + 1
+
+# conv output size = ceil((i + 2p - k) / s) + 1
 class Resnet(nn.Module):
     def __init__(self, size):
         super().__init__()
@@ -89,18 +88,6 @@ class Resnet(nn.Module):
             ResnetBlock(64, 128),
             *[ResnetBlock(128, 128) for _ in range(2)]
         )
-        # 256 * image width * image height
-        self.conv4 = nn.Sequential(
-            ResnetBlock(128, 256),
-            *[ResnetBlock(256, 256) for _ in range(2)]
-        )
-        # 512 * image width * image height
-        self.conv5 = nn.Sequential(
-            ResnetBlock(256, 512),
-            *[ResnetBlock(512, 512) for _ in range(2)]
-        )
-        # 3, 4, 6, 3이 논문에서 나온 블록 수
-
         # 전체 평균, 즉 512 * 1 * 1
         # AvgPool2d 는 Conv2d와 같이 커널을 이동시키며 평균을 구함
         # AdaptiveAvgPool2d 는 AvgPool2d와 비슷하나 특정 크기로 자동으로 맞춰줌
@@ -108,7 +95,7 @@ class Resnet(nn.Module):
         # fully connected layer로 512 * 1 * 1 을 size 크기로 변환
         self.fc = nn.Sequential(
             nn.Flatten(),
-            nn.Linear(512, size)
+            nn.Linear(128, size)
         )
 
     def forward(self, x):
@@ -118,19 +105,13 @@ class Resnet(nn.Module):
         # -> 2048 * 64 * 16 * 16
         x = self.conv2(x)
 
-        # -> 2048 * 256 * 8 * 8
+        # -> 2048 * 128 * 8 * 8
         x = self.conv3(x)
 
-        # -> 2048 * 256 * 4 * 4
-        x = self.conv4(x)
-
-        # -> 2048 * 512 * 2 * 2
-        x = self.conv5(x)
-
-        # 2048 * 512 * 2 * 2 -> 2048 * 512 * 1 * 1
+        # 2048 * 128 * 2 * 2 -> 2048 * 128 * 1 * 1
         x = self.avg_pool(x)
 
-        # 2048 * 512 * 1 * 1 -> 2048 * 512 -> 2048 * size
+        # 2048 * 128 * 1 * 1 -> 2048 * 128 -> 2048 * size
         x = self.fc(x)
         return x
 
@@ -147,40 +128,56 @@ class SimpleMLP(nn.Module):
         x = self.relu(x)
         return x
 
+
 class SimCLRLoss(nn.Module):
     def __init__(self, temp):
         super().__init__()
         self.temp = temp
         self.cosine = torch.nn.CosineSimilarity(dim=1)
-        self.cross_entropy_loss = nn.CrossEntropyLoss()
 
-    def forward(self, x):
-        sample_size = x.shape[0] # 2N
+    def forward(self, x, sample_size, device):
         x = nn.functional.normalize(x, dim=1)
+        # print(x)
         # similarity 계산
         x = torch.mm(x, torch.transpose(x, 0, 1)) / self.temp
+        # print(x)
         # 대각 부분은 제외되어야 함
         # 즉 대각 부분만 추출 -> 다시 대각 행렬로 변환하여 마스킹 가능
         x = x - torch.diag(torch.diag(x, 0))
+        # print(x)
         # down[0] -> up[0] -> down[2] -> up[2] -> 형식
         # 즉 대각 성분을 2칸씩 건너뛰며 추출
-        mask = torch.tensor([(i+1) % 2 for i in range(sample_size - 1)], dtype=torch.float, device="cuda")
+        mask = torch.tensor([(i + 1) % 2 for i in range(sample_size - 1)], dtype=torch.float, device=device)
         up_mask = torch.diag(mask, 1)
         down_mask = torch.diag(mask, -1)
         mask = up_mask + down_mask
+        # print(mask)
 
-        output = self.cross_entropy_loss.forward(x, mask)
-        return output
+        masked_x = x * mask
+        masked_x = torch.sum(masked_x, dim=1)
+        masked_x = torch.exp(masked_x)
+        # print(masked_x)
+        e_x = torch.exp(x)
+        e_x = e_x - torch.eye(sample_size, device=device)
+        # print(e_x)
+        e_x = torch.sum(e_x, dim=1)
+        # print(e_x)
+        output = torch.div(masked_x, e_x)
+        # print(output)
+        output = -torch.log(output)
+        # print(masked_x, e_x, torch.sum(output) / sample_size)
+        return torch.sum(output) / sample_size
+
 
 # 스크립트를 실행하려면 여백의 녹색 버튼을 누릅니다.
 if __name__ == '__main__':
     want_train = True
     device = torch.device("cuda")
-    hyper_batch_size = 64
+    hyper_batch_size = 512
 
     testLoader: tu_data.DataLoader
     trainLoader: tu_data.DataLoader
-    testLoader, trainLoader = load_image(batch_size=hyper_batch_size)
+    trainLoader, testLoader = load_image(batch_size=hyper_batch_size)
 
     # rgb 3개,
     size = 32
@@ -190,7 +187,6 @@ if __name__ == '__main__':
     fg = nn.Sequential(f_resnet, g_small)
 
     summary(fg, input_size=(hyper_batch_size, 3, 32, 32))
-    criterion = nn.CrossEntropyLoss()
 
     fg.to(device)
     if os.path.exists('./model.pt'):
@@ -198,8 +194,8 @@ if __name__ == '__main__':
     if not os.path.exists('./model.pt') or want_train:
         fg.train()
         optimizer = torch.optim.Adam(fg.parameters(), lr=0.001)
-        #train
-        for epoch in range(10):
+        # train
+        for epoch in range(40):
             first = True
             # batch_size * 2, rgb, x, y 의 데이터 형태
             loss_sum = 0
@@ -220,15 +216,15 @@ if __name__ == '__main__':
                     plt.imshow(pil_img2)
                     plt.show()
                 # [batch_size * 2, rgb, width, height] => [batch_size * 2, h_value_size]
-                loss = loss_function.forward(fg.forward(batch))
+                loss = loss_function.forward(fg.forward(batch), batch_size * 2, device)
                 loss_sum += loss.item()
 
-                optimizer.zero_grad() # gradient 초기화
+                optimizer.zero_grad()  # gradient 초기화
                 loss.backward()
                 optimizer.step()
                 # print(loss)
 
-            print('Epoch : %d, Avg Loss : %.4f'%(epoch, loss_sum / len(trainLoader)))
+            print('Epoch : %d, Avg Loss : %.4f' % (epoch, loss_sum / len(trainLoader)))
         torch.save(fg, './model.pt')
     fg.eval()
     fg.to(device)
@@ -250,7 +246,7 @@ if __name__ == '__main__':
         simple_mlp.to(device)
         simple_mlp.train()
         optimizer = torch.optim.Adam(simple_mlp.parameters(), lr=0.001)
-        for epoch in range(20):
+        for epoch in range(40):
             # batch_size * 2, rgb, x, y 의 데이터 형태
             loss_sum = 0
             for batch_data, batch_label in trainLoader:
@@ -260,12 +256,12 @@ if __name__ == '__main__':
                 loss = simple_loss_function(expect, batch_label.to(device))
                 loss_sum += loss.item()
 
-                optimizer.zero_grad() # gradient 초기화
+                optimizer.zero_grad()  # gradient 초기화
                 loss.backward()
                 optimizer.step()
                 # print(loss)
 
-            print('Epoch : %d, Avg Loss : %.4f'%(epoch, loss_sum / len(trainLoader)))
+            print('Epoch : %d, Avg Loss : %.4f' % (epoch, loss_sum / len(trainLoader)))
         torch.save(fg, './fg_output.pt')
     else:
         simple_mlp = torch.load('./fg_output.pt')

@@ -4,78 +4,102 @@ Files already downloaded and verified
 ===============================================================================================
 Layer (type:depth-idx)                        Output Shape              Param #
 ===============================================================================================
-Sequential                                    [64, 32]                  --
-├─Resnet: 1-1                                 [64, 32]                  --
-│    └─Conv2d: 2-1                            [64, 64, 16, 16]          9,408
-│    └─Sequential: 2-2                        [64, 64, 8, 8]            --
-│    │    └─MaxPool2d: 3-1                    [64, 64, 8, 8]            --
-│    │    └─ResnetBlock: 3-2                  [64, 64, 8, 8]            73,984
-│    │    └─ResnetBlock: 3-3                  [64, 64, 8, 8]            73,984
-│    └─Sequential: 2-3                        [64, 128, 8, 8]           --
-│    │    └─ResnetBlock: 3-4                  [64, 128, 8, 8]           230,144
-│    │    └─ResnetBlock: 3-5                  [64, 128, 8, 8]           295,424
-│    │    └─ResnetBlock: 3-6                  [64, 128, 8, 8]           295,424
-│    └─Sequential: 2-4                        [64, 256, 8, 8]           --
-│    │    └─ResnetBlock: 3-7                  [64, 256, 8, 8]           919,040
-│    │    └─ResnetBlock: 3-8                  [64, 256, 8, 8]           1,180,672
-│    │    └─ResnetBlock: 3-9                  [64, 256, 8, 8]           1,180,672
-│    └─Sequential: 2-5                        [64, 512, 8, 8]           --
-│    │    └─ResnetBlock: 3-10                 [64, 512, 8, 8]           3,673,088
-│    │    └─ResnetBlock: 3-11                 [64, 512, 8, 8]           4,720,640
-│    │    └─ResnetBlock: 3-12                 [64, 512, 8, 8]           4,720,640
-│    └─AdaptiveAvgPool2d: 2-6                 [64, 512, 1, 1]           --
-│    └─Sequential: 2-7                        [64, 32]                  --
-│    │    └─Flatten: 3-13                     [64, 512]                 --
-│    │    └─Linear: 3-14                      [64, 32]                  16,416
-├─SimpleMLP: 1-2                              [64, 32]                  --
-│    └─Linear: 2-8                            [64, 32]                  1,056
-│    └─ReLU: 2-9                              [64, 32]                  --
+Sequential                                    [400, 32]                 --
+├─Resnet: 1-1                                 [400, 32]                 --
+│    └─Conv2d: 2-1                            [400, 64, 16, 16]         9,408
+│    └─Sequential: 2-2                        [400, 64, 8, 8]           --
+│    │    └─MaxPool2d: 3-1                    [400, 64, 8, 8]           --
+│    │    └─ResnetBlock: 3-2                  [400, 64, 8, 8]           73,984
+│    │    └─ResnetBlock: 3-3                  [400, 64, 8, 8]           73,984
+│    └─Sequential: 2-3                        [400, 128, 8, 8]          --
+│    │    └─ResnetBlock: 3-4                  [400, 128, 8, 8]          230,144
+│    │    └─ResnetBlock: 3-5                  [400, 128, 8, 8]          295,424
+│    │    └─ResnetBlock: 3-6                  [400, 128, 8, 8]          295,424
+│    └─AdaptiveAvgPool2d: 2-4                 [400, 128, 1, 1]          --
+│    └─Sequential: 2-5                        [400, 32]                 --
+│    │    └─Flatten: 3-7                      [400, 128]                --
+│    │    └─Linear: 3-8                       [400, 32]                 4,128
+├─SimpleMLP: 1-2                              [400, 32]                 --
+│    └─Linear: 2-6                            [400, 32]                 1,056
+│    └─ReLU: 2-7                              [400, 32]                 --
 ===============================================================================================
-Total params: 17,390,592
-Trainable params: 17,390,592
+Total params: 983,552
+Trainable params: 983,552
 Non-trainable params: 0
-Total mult-adds (G): 71.22
+Total mult-adds (G): 25.71
 ===============================================================================================
-Input size (MB): 0.79
-Forward/backward pass size (MB): 436.24
-Params size (MB): 69.56
-Estimated Total Size (MB): 506.59
+Input size (MB): 4.92
+Forward/backward pass size (MB): 524.49
+Params size (MB): 3.93
+Estimated Total Size (MB): 533.34
 ===============================================================================================
 C:\Users\kimJuhwan\anaconda3\envs\pytorch\lib\site-packages\torchvision\transforms\functional.py:1603: UserWarning: The default value of the antialias parameter of all the resizing transforms (Resize(), RandomResizedCrop(), etc.) will change from None to True in v0.17, in order to be consistent across the PIL and Tensor backends. To suppress this warning, directly pass antialias=True (recommended, future default), antialias=None (current default, which means False for Tensors and True for PIL), or antialias=False (only works on Tensors - PIL will still use antialiasing). This also applies if you are using the inference transforms from the models weights: update the call to weights.transforms(antialias=True).
   warnings.warn(
-Epoch : 0, Avg Loss : 3.8089
-Epoch : 1, Avg Loss : 3.7774
-Epoch : 2, Avg Loss : 3.7670
-Epoch : 3, Avg Loss : 3.7549
-Epoch : 4, Avg Loss : 3.7427
-Epoch : 5, Avg Loss : 3.7286
-Epoch : 6, Avg Loss : 3.7241
-Epoch : 7, Avg Loss : 3.7229
-Epoch : 8, Avg Loss : 3.7045
-Epoch : 9, Avg Loss : 3.7071
+Epoch : 0, Avg Loss : 5.3705
+Epoch : 1, Avg Loss : 5.3529
+Epoch : 2, Avg Loss : 5.3491
+Epoch : 3, Avg Loss : 5.3434
+Epoch : 4, Avg Loss : 5.3366
+Epoch : 5, Avg Loss : 5.3372
+Epoch : 6, Avg Loss : 5.3306
+Epoch : 7, Avg Loss : 5.3267
+Epoch : 8, Avg Loss : 5.3256
+Epoch : 9, Avg Loss : 5.3251
+Epoch : 10, Avg Loss : 5.3176
+Epoch : 11, Avg Loss : 5.3145
+Epoch : 12, Avg Loss : 5.3123
+Epoch : 13, Avg Loss : 5.3049
+Epoch : 14, Avg Loss : 5.3067
+Epoch : 15, Avg Loss : 5.2999
+Epoch : 16, Avg Loss : 5.3016
+Epoch : 17, Avg Loss : 5.3007
+Epoch : 18, Avg Loss : 5.2953
+Epoch : 19, Avg Loss : 5.2937
+Epoch : 20, Avg Loss : 5.2878
+Epoch : 21, Avg Loss : 5.2859
+Epoch : 22, Avg Loss : 5.2891
+Epoch : 23, Avg Loss : 5.2850
+Epoch : 24, Avg Loss : 5.2832
+Epoch : 25, Avg Loss : 5.2771
+Epoch : 26, Avg Loss : 5.2773
+Epoch : 27, Avg Loss : 5.2794
+Epoch : 28, Avg Loss : 5.2714
+Epoch : 29, Avg Loss : 5.2700
 FG 학습 완료. 이제 FG의 output을 실제 dataset의 label과 연결.
-Epoch : 0, Avg Loss : 2.1641
-Epoch : 1, Avg Loss : 2.0804
-Epoch : 2, Avg Loss : 2.0701
-Epoch : 3, Avg Loss : 2.0666
-Epoch : 4, Avg Loss : 2.0635
-Epoch : 5, Avg Loss : 2.0617
-Epoch : 6, Avg Loss : 2.0612
-Epoch : 7, Avg Loss : 2.0581
-Epoch : 8, Avg Loss : 2.0590
-Epoch : 9, Avg Loss : 2.0575
-Epoch : 10, Avg Loss : 2.0581
-Epoch : 11, Avg Loss : 2.0554
-Epoch : 12, Avg Loss : 2.0569
-Epoch : 13, Avg Loss : 2.0551
-Epoch : 14, Avg Loss : 2.0554
-Epoch : 15, Avg Loss : 2.0543
-Epoch : 16, Avg Loss : 2.0540
-Epoch : 17, Avg Loss : 2.0551
-Epoch : 18, Avg Loss : 2.0548
-Epoch : 19, Avg Loss : 2.0541
+Epoch : 0, Avg Loss : 2.0385
+Epoch : 1, Avg Loss : 1.6549
+Epoch : 2, Avg Loss : 1.6103
+Epoch : 3, Avg Loss : 1.5999
+Epoch : 4, Avg Loss : 1.5949
+Epoch : 5, Avg Loss : 1.5920
+Epoch : 6, Avg Loss : 1.5904
+Epoch : 7, Avg Loss : 1.5889
+Epoch : 8, Avg Loss : 1.5877
+Epoch : 9, Avg Loss : 1.5871
+Epoch : 10, Avg Loss : 1.5861
+Epoch : 11, Avg Loss : 1.5857
+Epoch : 12, Avg Loss : 1.5850
+Epoch : 13, Avg Loss : 1.5845
+Epoch : 14, Avg Loss : 1.5838
+Epoch : 15, Avg Loss : 1.5834
+Epoch : 16, Avg Loss : 1.5835
+Epoch : 17, Avg Loss : 1.5828
+Epoch : 18, Avg Loss : 1.5827
+Epoch : 19, Avg Loss : 1.5823
+Epoch : 20, Avg Loss : 1.5820
+Epoch : 21, Avg Loss : 1.5818
+Epoch : 22, Avg Loss : 1.5819
+Epoch : 23, Avg Loss : 1.5814
+Epoch : 24, Avg Loss : 1.5813
+Epoch : 25, Avg Loss : 1.5808
+Epoch : 26, Avg Loss : 1.5807
+Epoch : 27, Avg Loss : 1.5805
+Epoch : 28, Avg Loss : 1.5806
+Epoch : 29, Avg Loss : 1.5805
 실제 test
-총 개수 : 50000
- 맞춘 개수 : 12319
- 정확도: 24
+총 개수 : 10000
+ 맞춘 개수 : 4122
+ 정확도: 41
  찍었을 때의 정확도 : 10
+
+종료 코드 0(으)로 완료된 프로세스
