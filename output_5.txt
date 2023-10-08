@@ -1,0 +1,138 @@
+C:\Users\kimJuhwan\anaconda3\envs\pytorch\python.exe E:\github\simclrExe\main.py
+Files already downloaded and verified
+Files already downloaded and verified
+===============================================================================================
+Layer (type:depth-idx)                        Output Shape              Param #
+===============================================================================================
+Sequential                                    [512, 32]                 --
+├─Resnet: 1-1                                 [512, 32]                 --
+│    └─Sequential: 2-1                        [512, 16, 32, 32]         --
+│    │    └─Conv2d: 3-1                       [512, 16, 32, 32]         432
+│    │    └─BatchNorm2d: 3-2                  [512, 16, 32, 32]         32
+│    │    └─ReLU: 3-3                         [512, 16, 32, 32]         --
+│    └─Sequential: 2-2                        [512, 32, 16, 16]         --
+│    │    └─ResnetBlock: 3-4                  [512, 32, 16, 16]         14,528
+│    │    └─ResnetBlock: 3-5                  [512, 32, 16, 16]         18,560
+│    │    └─ResnetBlock: 3-6                  [512, 32, 16, 16]         18,560
+│    │    └─ResnetBlock: 3-7                  [512, 32, 16, 16]         18,560
+│    │    └─ResnetBlock: 3-8                  [512, 32, 16, 16]         18,560
+│    └─Sequential: 2-3                        [512, 64, 8, 8]           --
+│    │    └─ResnetBlock: 3-9                  [512, 64, 8, 8]           57,728
+│    │    └─ResnetBlock: 3-10                 [512, 64, 8, 8]           73,984
+│    │    └─ResnetBlock: 3-11                 [512, 64, 8, 8]           73,984
+│    │    └─ResnetBlock: 3-12                 [512, 64, 8, 8]           73,984
+│    │    └─ResnetBlock: 3-13                 [512, 64, 8, 8]           73,984
+│    └─Sequential: 2-4                        [512, 128, 4, 4]          --
+│    │    └─ResnetBlock: 3-14                 [512, 128, 4, 4]          230,144
+│    │    └─ResnetBlock: 3-15                 [512, 128, 4, 4]          295,424
+│    │    └─ResnetBlock: 3-16                 [512, 128, 4, 4]          295,424
+│    │    └─ResnetBlock: 3-17                 [512, 128, 4, 4]          295,424
+│    │    └─ResnetBlock: 3-18                 [512, 128, 4, 4]          295,424
+│    └─AdaptiveAvgPool2d: 2-5                 [512, 128, 1, 1]          --
+│    └─Sequential: 2-6                        [512, 32]                 --
+│    │    └─Flatten: 3-19                     [512, 128]                --
+│    │    └─Linear: 3-20                      [512, 32]                 4,128
+├─SimpleMLP: 1-2                              [512, 32]                 --
+│    └─Linear: 2-7                            [512, 32]                 1,056
+│    └─ReLU: 2-8                              [512, 32]                 --
+===============================================================================================
+Total params: 1,859,920
+Trainable params: 1,859,920
+Non-trainable params: 0
+Total mult-adds (G): 34.86
+===============================================================================================
+Input size (MB): 6.29
+Forward/backward pass size (MB): 1426.33
+Params size (MB): 7.44
+Estimated Total Size (MB): 1440.06
+===============================================================================================
+C:\Users\kimJuhwan\anaconda3\envs\pytorch\lib\site-packages\torchvision\transforms\functional.py:1603: UserWarning: The default value of the antialias parameter of all the resizing transforms (Resize(), RandomResizedCrop(), etc.) will change from None to True in v0.17, in order to be consistent across the PIL and Tensor backends. To suppress this warning, directly pass antialias=True (recommended, future default), antialias=None (current default, which means False for Tensors and True for PIL), or antialias=False (only works on Tensors - PIL will still use antialiasing). This also applies if you are using the inference transforms from the models weights: update the call to weights.transforms(antialias=True).
+  warnings.warn(
+Epoch : 0, Avg Loss : 5.4839
+Epoch : 1, Avg Loss : 5.4724
+Epoch : 2, Avg Loss : 5.4621
+Epoch : 3, Avg Loss : 5.4694
+Epoch : 4, Avg Loss : 5.4684
+Epoch : 5, Avg Loss : 5.4616
+Epoch : 6, Avg Loss : 5.4546
+Epoch : 7, Avg Loss : 5.4618
+Epoch : 8, Avg Loss : 5.4457
+Epoch : 9, Avg Loss : 5.4408
+Epoch : 10, Avg Loss : 5.5050
+Epoch : 11, Avg Loss : 5.4645
+Epoch : 12, Avg Loss : 5.5164
+Epoch : 13, Avg Loss : 5.4484
+Epoch : 14, Avg Loss : 5.4498
+Epoch : 15, Avg Loss : 5.4521
+Epoch : 16, Avg Loss : 5.4749
+Epoch : 17, Avg Loss : 5.4577
+Epoch : 18, Avg Loss : 5.4299
+Epoch : 19, Avg Loss : 5.4310
+Epoch : 20, Avg Loss : 5.4231
+Epoch : 21, Avg Loss : 5.4178
+Epoch : 22, Avg Loss : 5.4548
+Epoch : 23, Avg Loss : 5.5138
+Epoch : 24, Avg Loss : 5.4207
+Epoch : 25, Avg Loss : 5.4386
+Epoch : 26, Avg Loss : 5.4218
+Epoch : 27, Avg Loss : 5.4323
+Epoch : 28, Avg Loss : 5.4675
+Epoch : 29, Avg Loss : 5.4084
+Epoch : 30, Avg Loss : 5.4119
+Epoch : 31, Avg Loss : 5.4746
+Epoch : 32, Avg Loss : 5.4215
+Epoch : 33, Avg Loss : 5.4169
+Epoch : 34, Avg Loss : 5.3919
+Epoch : 35, Avg Loss : 5.4286
+Epoch : 36, Avg Loss : 5.4211
+Epoch : 37, Avg Loss : 5.3791
+Epoch : 38, Avg Loss : 5.4056
+Epoch : 39, Avg Loss : 5.4171
+FG 학습 완료. 이제 FG의 output을 실제 dataset의 label과 연결.
+Epoch : 0, Avg Loss : 2.1452
+Epoch : 1, Avg Loss : 1.9337
+Epoch : 2, Avg Loss : 1.9081
+Epoch : 3, Avg Loss : 1.9014
+Epoch : 4, Avg Loss : 1.8979
+Epoch : 5, Avg Loss : 1.8960
+Epoch : 6, Avg Loss : 1.8948
+Epoch : 7, Avg Loss : 1.8940
+Epoch : 8, Avg Loss : 1.8936
+Epoch : 9, Avg Loss : 1.8928
+Epoch : 10, Avg Loss : 1.8922
+Epoch : 11, Avg Loss : 1.8922
+Epoch : 12, Avg Loss : 1.8920
+Epoch : 13, Avg Loss : 1.8913
+Epoch : 14, Avg Loss : 1.8909
+Epoch : 15, Avg Loss : 1.8910
+Epoch : 16, Avg Loss : 1.8902
+Epoch : 17, Avg Loss : 1.8900
+Epoch : 18, Avg Loss : 1.8900
+Epoch : 19, Avg Loss : 1.8900
+Epoch : 20, Avg Loss : 1.8897
+Epoch : 21, Avg Loss : 1.8893
+Epoch : 22, Avg Loss : 1.8894
+Epoch : 23, Avg Loss : 1.8893
+Epoch : 24, Avg Loss : 1.8888
+Epoch : 25, Avg Loss : 1.8890
+Epoch : 26, Avg Loss : 1.8891
+Epoch : 27, Avg Loss : 1.8887
+Epoch : 28, Avg Loss : 1.8884
+Epoch : 29, Avg Loss : 1.8880
+Epoch : 30, Avg Loss : 1.8879
+Epoch : 31, Avg Loss : 1.8882
+Epoch : 32, Avg Loss : 1.8881
+Epoch : 33, Avg Loss : 1.8882
+Epoch : 34, Avg Loss : 1.8878
+Epoch : 35, Avg Loss : 1.8875
+Epoch : 36, Avg Loss : 1.8878
+Epoch : 37, Avg Loss : 1.8874
+Epoch : 38, Avg Loss : 1.8876
+Epoch : 39, Avg Loss : 1.8874
+실제 test
+총 개수 : 10000
+ 맞춘 개수 : 3000
+ 정확도: 30
+ 찍었을 때의 정확도 : 10
+
+종료 코드 0(으)로 완료된 프로세스

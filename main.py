@@ -31,12 +31,14 @@ def distortion(tensor_image: Tensor, strength: int) -> Tensor:
     img_size = tensor_image.shape[2]
     color_transform = transforms.ColorJitter(brightness=0.8 * strength, contrast=0.8 * strength,
                                              saturation=0.8 * strength, hue=0.2 * strength)
+    rotation_transform = transforms.RandomRotation(45, expand=False)
     # 0.1~1 사이의 크기, 0.5~2 사이의 종횡비로 랜덤하게 크롭
     crop_transform = transforms.RandomResizedCrop((img_size, img_size), scale=(0.5, 1), ratio=(0.5, 2), )
     flip_horizon = transforms.RandomHorizontalFlip(p=0.5)
     flip_vertical = transforms.RandomVerticalFlip(p=0.5)
     transform_several = torch.nn.Sequential(
         crop_transform,
+        rotation_transform,
         flip_vertical,
         flip_horizon,
         color_transform,
@@ -49,20 +51,27 @@ def distortion(tensor_image: Tensor, strength: int) -> Tensor:
 class ResnetBlock(nn.Module):
     def __init__(self, in_channel, out_channel):
         super().__init__()
-        self.sequentialLayer = nn.Sequential(
-            nn.Conv2d(in_channel, out_channel, kernel_size=3, stride=1, bias=False, padding='same'),
-            nn.BatchNorm2d(out_channel),
-            nn.ReLU(),
-            nn.Conv2d(out_channel, out_channel, kernel_size=3, stride=1, bias=False, padding='same'),
-            nn.BatchNorm2d(out_channel)
-        )
         if in_channel != out_channel:
-            # 1x1 conv, 크기 조절을 위한 projection mapping
+            self.sequentialLayer = nn.Sequential(
+                nn.Conv2d(in_channel, out_channel, kernel_size=3, stride=2, bias=False, padding=1),
+                nn.BatchNorm2d(out_channel),
+                nn.ReLU(),
+                nn.Conv2d(out_channel, out_channel, kernel_size=3, stride=1, bias=False, padding=1),
+                nn.BatchNorm2d(out_channel)
+            )
+            # 1x1 conv, stride = 2(pooling을 안 쓰는 건 일종의 철학), 크기 조절을 위한 projection mapping
             self.shortcut = nn.Sequential(
-                nn.Conv2d(in_channel, out_channel, kernel_size=1, stride=1, bias=False),
+                nn.Conv2d(in_channel, out_channel, kernel_size=1, stride=2, bias=False),
                 nn.BatchNorm2d(out_channel)
             )
         else:
+            self.sequentialLayer = nn.Sequential(
+                nn.Conv2d(in_channel, out_channel, kernel_size=3, stride=1, bias=False, padding='same'),
+                nn.BatchNorm2d(out_channel),
+                nn.ReLU(),
+                nn.Conv2d(out_channel, out_channel, kernel_size=3, stride=1, bias=False, padding='same'),
+                nn.BatchNorm2d(out_channel)
+            )
             self.shortcut = nn.Sequential()
         self.relu = nn.ReLU()
 
@@ -76,42 +85,44 @@ class ResnetBlock(nn.Module):
 class Resnet(nn.Module):
     def __init__(self, size):
         super().__init__()
-        # rgb 3개로 64개의 채널 만듬
-        self.conv1 = nn.Conv2d(3, 64, kernel_size=7, stride=2, bias=False, padding=3)
-        # 64 * image width * image height
+        # rgb 3개로 16개의 채널 만듬
+        # 16 * image width(32) * image height(32)
+        self.conv1 = nn.Sequential(
+            nn.Conv2d(3, 16, kernel_size=3, stride=1, bias=False, padding=1),
+            nn.BatchNorm2d(16),
+            nn.ReLU(),
+        )
+        # 16 * 32 * 32 -> 32 * 16 * 16
         self.conv2 = nn.Sequential(
-            nn.MaxPool2d(kernel_size=2, stride=2),
-            *[ResnetBlock(64, 64) for _ in range(2)],
+            ResnetBlock(16, 32),
+            *[ResnetBlock(32, 32) for _ in range(4)]
         )
-        # 128 * image width * image height
+        # 32 * 16 * 16 -> 64 * 8 * 8
         self.conv3 = nn.Sequential(
-            ResnetBlock(64, 128),
-            *[ResnetBlock(128, 128) for _ in range(2)]
+            ResnetBlock(32, 64),
+            *[ResnetBlock(64, 64) for _ in range(4)]
         )
-        # 전체 평균, 즉 512 * 1 * 1
+        # 64 * 8 * 8 -> 128 * 4 * 4
+        self.conv4 = nn.Sequential(
+            ResnetBlock(64, 128),
+            *[ResnetBlock(128, 128) for _ in range(4)]
+        )
+        # 전체 평균, 즉 128 * 1 * 1
         # AvgPool2d 는 Conv2d와 같이 커널을 이동시키며 평균을 구함
         # AdaptiveAvgPool2d 는 AvgPool2d와 비슷하나 특정 크기로 자동으로 맞춰줌
         self.avg_pool = nn.AdaptiveAvgPool2d((1, 1))
-        # fully connected layer로 512 * 1 * 1 을 size 크기로 변환
+        # Flatten으로 128 * 1 * 1을 128 벡터로 바꾼 후 fully connected layer로 128을 size 크기로 변환
         self.fc = nn.Sequential(
             nn.Flatten(),
             nn.Linear(128, size)
         )
 
     def forward(self, x):
-        # 2048 * 3 * 32 * 32 -> 2048 * 64 * 16 * 16
         x = self.conv1(x)
-
-        # -> 2048 * 64 * 16 * 16
         x = self.conv2(x)
-
-        # -> 2048 * 128 * 8 * 8
         x = self.conv3(x)
-
-        # 2048 * 128 * 2 * 2 -> 2048 * 128 * 1 * 1
+        x = self.conv4(x)
         x = self.avg_pool(x)
-
-        # 2048 * 128 * 1 * 1 -> 2048 * 128 -> 2048 * size
         x = self.fc(x)
         return x
 
@@ -195,8 +206,8 @@ if __name__ == '__main__':
         fg.train()
         optimizer = torch.optim.Adam(fg.parameters(), lr=0.001)
         # train
-        for epoch in range(40):
-            first = True
+        for epoch in range(100):
+            first = False
             # batch_size * 2, rgb, x, y 의 데이터 형태
             loss_sum = 0
             for batch_data, batch_label in trainLoader:
@@ -231,19 +242,19 @@ if __name__ == '__main__':
 
     print("FG 학습 완료. 이제 FG의 output을 실제 dataset의 label과 연결.")
 
+    simple_mlp = nn.Sequential(
+        nn.Linear(size, 16),
+        nn.Linear(16, 16),
+        nn.Linear(16, 10)
+        # class는 10개
+    )
     if os.path.exists('./fg_output.pt'):
         simple_mlp = torch.load('./fg_output.pt')
+    simple_mlp.to(device)
     if not os.path.exists('./fg_output.pt') or want_train:
         # fg output 과 실제 dataset label의 연결
-        simple_mlp = nn.Sequential(
-            nn.Linear(size, 16),
-            nn.Linear(16, 16),
-            nn.Linear(16, 10)
-            # class는 10개
-        )
         simple_loss_function = nn.CrossEntropyLoss()
         simple_loss_function.to(device)
-        simple_mlp.to(device)
         simple_mlp.train()
         optimizer = torch.optim.Adam(simple_mlp.parameters(), lr=0.001)
         for epoch in range(40):
@@ -262,11 +273,8 @@ if __name__ == '__main__':
                 # print(loss)
 
             print('Epoch : %d, Avg Loss : %.4f' % (epoch, loss_sum / len(trainLoader)))
-        torch.save(fg, './fg_output.pt')
-    else:
-        simple_mlp = torch.load('./fg_output.pt')
+        torch.save(simple_mlp, './fg_output.pt')
     simple_mlp.eval()
-    simple_mlp.to(device)
 
     print("실제 test")
     correct = 0
