@@ -1,0 +1,95 @@
+C:\Users\kimJuhwan\anaconda3\envs\pytorch\python.exe E:\github\simclrExe\main_with_originalres.py
+Files already downloaded and verified
+Files already downloaded and verified
+C:\Users\kimJuhwan\anaconda3\envs\pytorch\lib\site-packages\torchvision\models\_utils.py:208: UserWarning: The parameter 'pretrained' is deprecated since 0.13 and may be removed in the future, please use 'weights' instead.
+  warnings.warn(
+C:\Users\kimJuhwan\anaconda3\envs\pytorch\lib\site-packages\torchvision\models\_utils.py:223: UserWarning: Arguments other than a weight enum or `None` for 'weights' are deprecated since 0.13 and may be removed in the future. The current behavior is equivalent to passing `weights=ResNet18_Weights.IMAGENET1K_V1`. You can also use `weights=ResNet18_Weights.DEFAULT` to get the most up-to-date weights.
+  warnings.warn(msg)
+===============================================================================================
+Layer (type:depth-idx)                        Output Shape              Param #
+===============================================================================================
+Sequential                                    [512, 10]                 --
+├─ResNet: 1-1                                 [512, 32]                 --
+│    └─Conv2d: 2-1                            [512, 64, 16, 16]         9,408
+│    └─BatchNorm2d: 2-2                       [512, 64, 16, 16]         128
+│    └─ReLU: 2-3                              [512, 64, 16, 16]         --
+│    └─MaxPool2d: 2-4                         [512, 64, 8, 8]           --
+│    └─Sequential: 2-5                        [512, 64, 8, 8]           --
+│    │    └─BasicBlock: 3-1                   [512, 64, 8, 8]           73,984
+│    │    └─BasicBlock: 3-2                   [512, 64, 8, 8]           73,984
+│    └─Sequential: 2-6                        [512, 128, 4, 4]          --
+│    │    └─BasicBlock: 3-3                   [512, 128, 4, 4]          230,144
+│    │    └─BasicBlock: 3-4                   [512, 128, 4, 4]          295,424
+│    └─Sequential: 2-7                        [512, 256, 2, 2]          --
+│    │    └─BasicBlock: 3-5                   [512, 256, 2, 2]          919,040
+│    │    └─BasicBlock: 3-6                   [512, 256, 2, 2]          1,180,672
+│    └─Sequential: 2-8                        [512, 512, 1, 1]          --
+│    │    └─BasicBlock: 3-7                   [512, 512, 1, 1]          3,673,088
+│    │    └─BasicBlock: 3-8                   [512, 512, 1, 1]          4,720,640
+│    └─AdaptiveAvgPool2d: 2-9                 [512, 512, 1, 1]          --
+│    └─Linear: 2-10                           [512, 32]                 16,416
+├─SimpleMLP: 1-2                              [512, 10]                 --
+│    └─Linear: 2-11                           [512, 10]                 330
+│    └─ReLU: 2-12                             [512, 10]                 --
+│    └─Linear: 2-13                           [512, 10]                 110
+===============================================================================================
+Total params: 11,193,368
+Trainable params: 11,193,368
+Non-trainable params: 0
+Total mult-adds (G): 18.96
+===============================================================================================
+Input size (MB): 6.29
+Forward/backward pass size (MB): 415.45
+Params size (MB): 44.77
+Estimated Total Size (MB): 466.51
+===============================================================================================
+C:\Users\kimJuhwan\anaconda3\envs\pytorch\lib\site-packages\torchvision\transforms\functional.py:1603: UserWarning: The default value of the antialias parameter of all the resizing transforms (Resize(), RandomResizedCrop(), etc.) will change from None to True in v0.17, in order to be consistent across the PIL and Tensor backends. To suppress this warning, directly pass antialias=True (recommended, future default), antialias=None (current default, which means False for Tensors and True for PIL), or antialias=False (only works on Tensors - PIL will still use antialiasing). This also applies if you are using the inference transforms from the models weights: update the call to weights.transforms(antialias=True).
+  warnings.warn(
+Epoch : 0, Avg Loss : 4.8957 lr: 0.00030000
+Epoch : 1, Avg Loss : 3.0443 lr: 0.00028500
+Epoch : 2, Avg Loss : 2.1848 lr: 0.00027075
+Epoch : 3, Avg Loss : 1.9143 lr: 0.00025721
+Epoch : 4, Avg Loss : 1.7504 lr: 0.00024435
+Epoch : 5, Avg Loss : 1.5994 lr: 0.00023213
+Epoch : 6, Avg Loss : 1.5003 lr: 0.00022053
+Epoch : 7, Avg Loss : 1.3985 lr: 0.00020950
+Epoch : 8, Avg Loss : 1.3481 lr: 0.00019903
+Epoch : 9, Avg Loss : 1.2538 lr: 0.00018907
+Epoch : 10, Avg Loss : 1.2148 lr: 0.00017962
+Epoch : 11, Avg Loss : 1.1640 lr: 0.00017064
+Epoch : 12, Avg Loss : 1.0844 lr: 0.00016211
+Epoch : 13, Avg Loss : 1.1429 lr: 0.00015400
+Epoch : 14, Avg Loss : 1.0359 lr: 0.00014630
+Epoch : 15, Avg Loss : 1.0222 lr: 0.00013899
+Epoch : 16, Avg Loss : 1.0059 lr: 0.00013204
+Epoch : 17, Avg Loss : 0.9351 lr: 0.00012544
+Epoch : 18, Avg Loss : 0.9653 lr: 0.00011916
+Epoch : 19, Avg Loss : 0.9474 lr: 0.00011321
+FG 학습 완료. 이제 F의 output을 실제 dataset의 label과 연결.
+Epoch : 0, Avg Loss : 2.3131 lr: 0.00030000
+Epoch : 1, Avg Loss : 2.1713 lr: 0.00028500
+Epoch : 2, Avg Loss : 2.0808 lr: 0.00027075
+Epoch : 3, Avg Loss : 2.0104 lr: 0.00025721
+Epoch : 4, Avg Loss : 1.9443 lr: 0.00024435
+Epoch : 5, Avg Loss : 1.8869 lr: 0.00023213
+Epoch : 6, Avg Loss : 1.8439 lr: 0.00022053
+Epoch : 7, Avg Loss : 1.8096 lr: 0.00020950
+Epoch : 8, Avg Loss : 1.7834 lr: 0.00019903
+Epoch : 9, Avg Loss : 1.7610 lr: 0.00018907
+Epoch : 10, Avg Loss : 1.7424 lr: 0.00017962
+Epoch : 11, Avg Loss : 1.7239 lr: 0.00017064
+Epoch : 12, Avg Loss : 1.7093 lr: 0.00016211
+Epoch : 13, Avg Loss : 1.6958 lr: 0.00015400
+Epoch : 14, Avg Loss : 1.6821 lr: 0.00014630
+Epoch : 15, Avg Loss : 1.6692 lr: 0.00013899
+Epoch : 16, Avg Loss : 1.6609 lr: 0.00013204
+Epoch : 17, Avg Loss : 1.6498 lr: 0.00012544
+Epoch : 18, Avg Loss : 1.6421 lr: 0.00011916
+Epoch : 19, Avg Loss : 1.6333 lr: 0.00011321
+실제 test
+총 개수 : 10000
+ 맞춘 개수 : 4373
+ 정확도: 43
+ 찍었을 때의 정확도 : 10
+
+종료 코드 0(으)로 완료된 프로세스
