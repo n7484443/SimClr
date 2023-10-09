@@ -1,127 +1,199 @@
-왜곡 이미지에도 이미지 정규화 적용
-
 C:\Users\kimJuhwan\anaconda3\envs\pytorch\python.exe E:\github\simclrExe\main.py
 Files already downloaded and verified
 Files already downloaded and verified
-===============================================================================================
-Layer (type:depth-idx)                        Output Shape              Param #
-===============================================================================================
-Sequential                                    [512, 32]                 --
-├─Resnet: 1-1                                 [512, 32]                 --
-│    └─Conv2d: 2-1                            [512, 64, 16, 16]         9,408
-│    └─Sequential: 2-2                        [512, 64, 8, 8]           --
-│    │    └─MaxPool2d: 3-1                    [512, 64, 8, 8]           --
-│    │    └─ResnetBlock: 3-2                  [512, 64, 8, 8]           73,984
-│    │    └─ResnetBlock: 3-3                  [512, 64, 8, 8]           73,984
-│    └─Sequential: 2-3                        [512, 128, 8, 8]          --
-│    │    └─ResnetBlock: 3-4                  [512, 128, 8, 8]          230,144
-│    │    └─ResnetBlock: 3-5                  [512, 128, 8, 8]          295,424
-│    │    └─ResnetBlock: 3-6                  [512, 128, 8, 8]          295,424
-│    └─AdaptiveAvgPool2d: 2-4                 [512, 128, 1, 1]          --
-│    └─Sequential: 2-5                        [512, 32]                 --
-│    │    └─Flatten: 3-7                      [512, 128]                --
-│    │    └─Linear: 3-8                       [512, 32]                 4,128
-├─SimpleMLP: 1-2                              [512, 32]                 --
-│    └─Linear: 2-6                            [512, 32]                 1,056
-│    └─ReLU: 2-7                              [512, 32]                 --
-===============================================================================================
-Total params: 983,552
-Trainable params: 983,552
+==========================================================================================
+Layer (type:depth-idx)                   Output Shape              Param #
+==========================================================================================
+Resnet                                   [500, 32]                 --
+├─Sequential: 1-1                        [500, 16, 32, 32]         --
+│    └─Conv2d: 2-1                       [500, 16, 32, 32]         432
+│    └─BatchNorm2d: 2-2                  [500, 16, 32, 32]         32
+│    └─ReLU: 2-3                         [500, 16, 32, 32]         --
+├─Sequential: 1-2                        [500, 32, 16, 16]         --
+│    └─ResnetBlock: 2-4                  [500, 32, 16, 16]         --
+│    │    └─Sequential: 3-1              [500, 32, 16, 16]         13,952
+│    │    └─Sequential: 3-2              [500, 32, 16, 16]         576
+│    │    └─ReLU: 3-3                    [500, 32, 16, 16]         --
+│    └─ResnetBlock: 2-5                  [500, 32, 16, 16]         --
+│    │    └─Sequential: 3-4              [500, 32, 16, 16]         18,560
+│    │    └─Sequential: 3-5              [500, 32, 16, 16]         --
+│    │    └─ReLU: 3-6                    [500, 32, 16, 16]         --
+│    └─ResnetBlock: 2-6                  [500, 32, 16, 16]         --
+│    │    └─Sequential: 3-7              [500, 32, 16, 16]         18,560
+│    │    └─Sequential: 3-8              [500, 32, 16, 16]         --
+│    │    └─ReLU: 3-9                    [500, 32, 16, 16]         --
+│    └─ResnetBlock: 2-7                  [500, 32, 16, 16]         --
+│    │    └─Sequential: 3-10             [500, 32, 16, 16]         18,560
+│    │    └─Sequential: 3-11             [500, 32, 16, 16]         --
+│    │    └─ReLU: 3-12                   [500, 32, 16, 16]         --
+│    └─ResnetBlock: 2-8                  [500, 32, 16, 16]         --
+│    │    └─Sequential: 3-13             [500, 32, 16, 16]         18,560
+│    │    └─Sequential: 3-14             [500, 32, 16, 16]         --
+│    │    └─ReLU: 3-15                   [500, 32, 16, 16]         --
+├─Sequential: 1-3                        [500, 64, 8, 8]           --
+│    └─ResnetBlock: 2-9                  [500, 64, 8, 8]           --
+│    │    └─Sequential: 3-16             [500, 64, 8, 8]           55,552
+│    │    └─Sequential: 3-17             [500, 64, 8, 8]           2,176
+│    │    └─ReLU: 3-18                   [500, 64, 8, 8]           --
+│    └─ResnetBlock: 2-10                 [500, 64, 8, 8]           --
+│    │    └─Sequential: 3-19             [500, 64, 8, 8]           73,984
+│    │    └─Sequential: 3-20             [500, 64, 8, 8]           --
+│    │    └─ReLU: 3-21                   [500, 64, 8, 8]           --
+│    └─ResnetBlock: 2-11                 [500, 64, 8, 8]           --
+│    │    └─Sequential: 3-22             [500, 64, 8, 8]           73,984
+│    │    └─Sequential: 3-23             [500, 64, 8, 8]           --
+│    │    └─ReLU: 3-24                   [500, 64, 8, 8]           --
+│    └─ResnetBlock: 2-12                 [500, 64, 8, 8]           --
+│    │    └─Sequential: 3-25             [500, 64, 8, 8]           73,984
+│    │    └─Sequential: 3-26             [500, 64, 8, 8]           --
+│    │    └─ReLU: 3-27                   [500, 64, 8, 8]           --
+│    └─ResnetBlock: 2-13                 [500, 64, 8, 8]           --
+│    │    └─Sequential: 3-28             [500, 64, 8, 8]           73,984
+│    │    └─Sequential: 3-29             [500, 64, 8, 8]           --
+│    │    └─ReLU: 3-30                   [500, 64, 8, 8]           --
+├─Sequential: 1-4                        [500, 128, 4, 4]          --
+│    └─ResnetBlock: 2-14                 [500, 128, 4, 4]          --
+│    │    └─Sequential: 3-31             [500, 128, 4, 4]          221,696
+│    │    └─Sequential: 3-32             [500, 128, 4, 4]          8,448
+│    │    └─ReLU: 3-33                   [500, 128, 4, 4]          --
+│    └─ResnetBlock: 2-15                 [500, 128, 4, 4]          --
+│    │    └─Sequential: 3-34             [500, 128, 4, 4]          295,424
+│    │    └─Sequential: 3-35             [500, 128, 4, 4]          --
+│    │    └─ReLU: 3-36                   [500, 128, 4, 4]          --
+│    └─ResnetBlock: 2-16                 [500, 128, 4, 4]          --
+│    │    └─Sequential: 3-37             [500, 128, 4, 4]          295,424
+│    │    └─Sequential: 3-38             [500, 128, 4, 4]          --
+│    │    └─ReLU: 3-39                   [500, 128, 4, 4]          --
+│    └─ResnetBlock: 2-17                 [500, 128, 4, 4]          --
+│    │    └─Sequential: 3-40             [500, 128, 4, 4]          295,424
+│    │    └─Sequential: 3-41             [500, 128, 4, 4]          --
+│    │    └─ReLU: 3-42                   [500, 128, 4, 4]          --
+│    └─ResnetBlock: 2-18                 [500, 128, 4, 4]          --
+│    │    └─Sequential: 3-43             [500, 128, 4, 4]          295,424
+│    │    └─Sequential: 3-44             [500, 128, 4, 4]          --
+│    │    └─ReLU: 3-45                   [500, 128, 4, 4]          --
+├─AdaptiveAvgPool2d: 1-5                 [500, 128, 1, 1]          --
+├─Sequential: 1-6                        [500, 32]                 --
+│    └─Flatten: 2-19                     [500, 128]                --
+│    └─Linear: 2-20                      [500, 32]                 4,128
+==========================================================================================
+Total params: 1,858,864
+Trainable params: 1,858,864
 Non-trainable params: 0
-Total mult-adds (G): 32.91
-===============================================================================================
-Input size (MB): 6.29
-Forward/backward pass size (MB): 671.35
-Params size (MB): 3.93
-Estimated Total Size (MB): 681.58
-===============================================================================================
+Total mult-adds (G): 34.04
+==========================================================================================
+Input size (MB): 6.14
+Forward/backward pass size (MB): 1392.77
+Params size (MB): 7.44
+Estimated Total Size (MB): 1406.35
+==========================================================================================
 C:\Users\kimJuhwan\anaconda3\envs\pytorch\lib\site-packages\torchvision\transforms\functional.py:1603: UserWarning: The default value of the antialias parameter of all the resizing transforms (Resize(), RandomResizedCrop(), etc.) will change from None to True in v0.17, in order to be consistent across the PIL and Tensor backends. To suppress this warning, directly pass antialias=True (recommended, future default), antialias=None (current default, which means False for Tensors and True for PIL), or antialias=False (only works on Tensors - PIL will still use antialiasing). This also applies if you are using the inference transforms from the models weights: update the call to weights.transforms(antialias=True).
   warnings.warn(
-Epoch : 0, Avg Loss : 5.5334
-Epoch : 1, Avg Loss : 5.4896
-Epoch : 2, Avg Loss : 5.4696
-Epoch : 3, Avg Loss : 5.4546
-Epoch : 4, Avg Loss : 5.4309
-Epoch : 5, Avg Loss : 5.4926
-Epoch : 6, Avg Loss : 5.4870
-Epoch : 7, Avg Loss : 5.4683
-Epoch : 8, Avg Loss : 5.4819
-Epoch : 9, Avg Loss : 5.4792
-Epoch : 10, Avg Loss : 5.4892
-Epoch : 11, Avg Loss : 5.4474
-Epoch : 12, Avg Loss : 5.4737
-Epoch : 13, Avg Loss : 5.4340
-Epoch : 14, Avg Loss : 5.4743
-Epoch : 15, Avg Loss : 5.4233
-Epoch : 16, Avg Loss : 5.4552
-Epoch : 17, Avg Loss : 5.4353
-Epoch : 18, Avg Loss : 5.4325
-Epoch : 19, Avg Loss : 5.4734
-Epoch : 20, Avg Loss : 5.4792
-Epoch : 21, Avg Loss : 5.4631
-Epoch : 22, Avg Loss : 5.4570
-Epoch : 23, Avg Loss : 5.4276
-Epoch : 24, Avg Loss : 5.4517
-Epoch : 25, Avg Loss : 5.4200
-Epoch : 26, Avg Loss : 5.4093
-Epoch : 27, Avg Loss : 5.4528
-Epoch : 28, Avg Loss : 5.4511
-Epoch : 29, Avg Loss : 5.4342
-Epoch : 30, Avg Loss : 5.4071
-Epoch : 31, Avg Loss : 5.4271
-Epoch : 32, Avg Loss : 5.4335
-Epoch : 33, Avg Loss : 5.3977
-Epoch : 34, Avg Loss : 5.4423
-Epoch : 35, Avg Loss : 5.4157
-Epoch : 36, Avg Loss : 5.4075
-Epoch : 37, Avg Loss : 5.4270
-Epoch : 38, Avg Loss : 5.4019
-Epoch : 39, Avg Loss : 5.4041
-FG 학습 완료. 이제 FG의 output을 실제 dataset의 label과 연결.
-Epoch : 0, Avg Loss : 1.9301
-Epoch : 1, Avg Loss : 1.4978
-Epoch : 2, Avg Loss : 1.4549
-Epoch : 3, Avg Loss : 1.4436
-Epoch : 4, Avg Loss : 1.4372
-Epoch : 5, Avg Loss : 1.4335
-Epoch : 6, Avg Loss : 1.4313
-Epoch : 7, Avg Loss : 1.4291
-Epoch : 8, Avg Loss : 1.4284
-Epoch : 9, Avg Loss : 1.4276
-Epoch : 10, Avg Loss : 1.4270
-Epoch : 11, Avg Loss : 1.4259
-Epoch : 12, Avg Loss : 1.4254
-Epoch : 13, Avg Loss : 1.4249
-Epoch : 14, Avg Loss : 1.4244
-Epoch : 15, Avg Loss : 1.4239
-Epoch : 16, Avg Loss : 1.4236
-Epoch : 17, Avg Loss : 1.4223
-Epoch : 18, Avg Loss : 1.4221
-Epoch : 19, Avg Loss : 1.4212
-Epoch : 20, Avg Loss : 1.4216
-Epoch : 21, Avg Loss : 1.4210
-Epoch : 22, Avg Loss : 1.4209
-Epoch : 23, Avg Loss : 1.4207
-Epoch : 24, Avg Loss : 1.4204
-Epoch : 25, Avg Loss : 1.4204
-Epoch : 26, Avg Loss : 1.4200
-Epoch : 27, Avg Loss : 1.4193
-Epoch : 28, Avg Loss : 1.4193
-Epoch : 29, Avg Loss : 1.4187
-Epoch : 30, Avg Loss : 1.4195
-Epoch : 31, Avg Loss : 1.4190
-Epoch : 32, Avg Loss : 1.4188
-Epoch : 33, Avg Loss : 1.4184
-Epoch : 34, Avg Loss : 1.4180
-Epoch : 35, Avg Loss : 1.4184
-Epoch : 36, Avg Loss : 1.4185
-Epoch : 37, Avg Loss : 1.4181
-Epoch : 38, Avg Loss : 1.4181
-Epoch : 39, Avg Loss : 1.4175
+Epoch : 0, Avg Loss : 5.7912 lr: 0.00100000
+Epoch : 1, Avg Loss : 5.0226 lr: 0.00095000
+Epoch : 2, Avg Loss : 4.8171 lr: 0.00090250
+Epoch : 3, Avg Loss : 4.3508 lr: 0.00085737
+Epoch : 4, Avg Loss : 4.1334 lr: 0.00081451
+Epoch : 5, Avg Loss : 4.0598 lr: 0.00077378
+Epoch : 6, Avg Loss : 3.8939 lr: 0.00073509
+Epoch : 7, Avg Loss : 3.7689 lr: 0.00069834
+Epoch : 8, Avg Loss : 3.7376 lr: 0.00066342
+Epoch : 9, Avg Loss : 3.6563 lr: 0.00063025
+Epoch : 10, Avg Loss : 3.6929 lr: 0.00059874
+Epoch : 11, Avg Loss : 3.6237 lr: 0.00056880
+Epoch : 12, Avg Loss : 3.6593 lr: 0.00054036
+Epoch : 13, Avg Loss : 3.5728 lr: 0.00051334
+Epoch : 14, Avg Loss : 3.5526 lr: 0.00048767
+Epoch : 15, Avg Loss : 3.5666 lr: 0.00046329
+Epoch : 16, Avg Loss : 3.5284 lr: 0.00044013
+Epoch : 17, Avg Loss : 3.5093 lr: 0.00041812
+Epoch : 18, Avg Loss : 3.5418 lr: 0.00039721
+Epoch : 19, Avg Loss : 3.4910 lr: 0.00037735
+Epoch : 20, Avg Loss : 3.5337 lr: 0.00035849
+Epoch : 21, Avg Loss : 3.4561 lr: 0.00034056
+Epoch : 22, Avg Loss : 3.5053 lr: 0.00032353
+Epoch : 23, Avg Loss : 3.4942 lr: 0.00030736
+Epoch : 24, Avg Loss : 3.4683 lr: 0.00029199
+Epoch : 25, Avg Loss : 3.4314 lr: 0.00027739
+Epoch : 26, Avg Loss : 3.4510 lr: 0.00026352
+Epoch : 27, Avg Loss : 3.4566 lr: 0.00025034
+Epoch : 28, Avg Loss : 3.4916 lr: 0.00023783
+Epoch : 29, Avg Loss : 3.4807 lr: 0.00022594
+Epoch : 30, Avg Loss : 3.4186 lr: 0.00021464
+Epoch : 31, Avg Loss : 3.4091 lr: 0.00020391
+Epoch : 32, Avg Loss : 3.4262 lr: 0.00019371
+Epoch : 33, Avg Loss : 3.4247 lr: 0.00018403
+Epoch : 34, Avg Loss : 3.3749 lr: 0.00017482
+Epoch : 35, Avg Loss : 3.4002 lr: 0.00016608
+Epoch : 36, Avg Loss : 3.3860 lr: 0.00015778
+Epoch : 37, Avg Loss : 3.3748 lr: 0.00014989
+Epoch : 38, Avg Loss : 3.3646 lr: 0.00014240
+Epoch : 39, Avg Loss : 3.3890 lr: 0.00013528
+Epoch : 40, Avg Loss : 3.3924 lr: 0.00012851
+Epoch : 41, Avg Loss : 3.3857 lr: 0.00012209
+Epoch : 42, Avg Loss : 3.3939 lr: 0.00011598
+Epoch : 43, Avg Loss : 3.3317 lr: 0.00011018
+Epoch : 44, Avg Loss : 3.3890 lr: 0.00010467
+Epoch : 45, Avg Loss : 3.3769 lr: 0.00009944
+Epoch : 46, Avg Loss : 3.3349 lr: 0.00009447
+Epoch : 47, Avg Loss : 3.3870 lr: 0.00008974
+Epoch : 48, Avg Loss : 3.3716 lr: 0.00008526
+Epoch : 49, Avg Loss : 3.3442 lr: 0.00008099
+FG 학습 완료. 이제 F의 output을 실제 dataset의 label과 연결.
+Epoch : 0, Avg Loss : 2.4722 lr: 0.00010000
+Epoch : 1, Avg Loss : 2.3908 lr: 0.00009500
+Epoch : 2, Avg Loss : 2.3119 lr: 0.00009025
+Epoch : 3, Avg Loss : 2.2563 lr: 0.00008574
+Epoch : 4, Avg Loss : 2.2196 lr: 0.00008145
+Epoch : 5, Avg Loss : 2.1916 lr: 0.00007738
+Epoch : 6, Avg Loss : 2.1645 lr: 0.00007351
+Epoch : 7, Avg Loss : 2.1404 lr: 0.00006983
+Epoch : 8, Avg Loss : 2.1199 lr: 0.00006634
+Epoch : 9, Avg Loss : 2.1012 lr: 0.00006302
+Epoch : 10, Avg Loss : 2.0854 lr: 0.00005987
+Epoch : 11, Avg Loss : 2.0727 lr: 0.00005688
+Epoch : 12, Avg Loss : 2.0612 lr: 0.00005404
+Epoch : 13, Avg Loss : 2.0524 lr: 0.00005133
+Epoch : 14, Avg Loss : 2.0441 lr: 0.00004877
+Epoch : 15, Avg Loss : 2.0373 lr: 0.00004633
+Epoch : 16, Avg Loss : 2.0310 lr: 0.00004401
+Epoch : 17, Avg Loss : 2.0254 lr: 0.00004181
+Epoch : 18, Avg Loss : 2.0202 lr: 0.00003972
+Epoch : 19, Avg Loss : 2.0157 lr: 0.00003774
+Epoch : 20, Avg Loss : 2.0116 lr: 0.00003585
+Epoch : 21, Avg Loss : 2.0083 lr: 0.00003406
+Epoch : 22, Avg Loss : 2.0038 lr: 0.00003235
+Epoch : 23, Avg Loss : 2.0006 lr: 0.00003074
+Epoch : 24, Avg Loss : 1.9975 lr: 0.00002920
+Epoch : 25, Avg Loss : 1.9944 lr: 0.00002774
+Epoch : 26, Avg Loss : 1.9918 lr: 0.00002635
+Epoch : 27, Avg Loss : 1.9893 lr: 0.00002503
+Epoch : 28, Avg Loss : 1.9865 lr: 0.00002378
+Epoch : 29, Avg Loss : 1.9850 lr: 0.00002259
+Epoch : 30, Avg Loss : 1.9830 lr: 0.00002146
+Epoch : 31, Avg Loss : 1.9816 lr: 0.00002039
+Epoch : 32, Avg Loss : 1.9782 lr: 0.00001937
+Epoch : 33, Avg Loss : 1.9771 lr: 0.00001840
+Epoch : 34, Avg Loss : 1.9757 lr: 0.00001748
+Epoch : 35, Avg Loss : 1.9737 lr: 0.00001661
+Epoch : 36, Avg Loss : 1.9730 lr: 0.00001578
+Epoch : 37, Avg Loss : 1.9717 lr: 0.00001499
+Epoch : 38, Avg Loss : 1.9702 lr: 0.00001424
+Epoch : 39, Avg Loss : 1.9695 lr: 0.00001353
+Epoch : 40, Avg Loss : 1.9680 lr: 0.00001285
+Epoch : 41, Avg Loss : 1.9674 lr: 0.00001221
+Epoch : 42, Avg Loss : 1.9664 lr: 0.00001160
+Epoch : 43, Avg Loss : 1.9656 lr: 0.00001102
+Epoch : 44, Avg Loss : 1.9648 lr: 0.00001047
+Epoch : 45, Avg Loss : 1.9633 lr: 0.00000994
+Epoch : 46, Avg Loss : 1.9626 lr: 0.00000945
+Epoch : 47, Avg Loss : 1.9626 lr: 0.00000897
+Epoch : 48, Avg Loss : 1.9613 lr: 0.00000853
+Epoch : 49, Avg Loss : 1.9606 lr: 0.00000810
 실제 test
 총 개수 : 10000
- 맞춘 개수 : 4731
- 정확도: 47
+ 맞춘 개수 : 3133
+ 정확도: 31
  찍었을 때의 정확도 : 10
 
 종료 코드 0(으)로 완료된 프로세스

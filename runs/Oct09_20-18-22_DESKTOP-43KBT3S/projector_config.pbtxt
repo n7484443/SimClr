@@ -1,0 +1,104 @@
+embeddings {
+  tensor_name: "original:00000"
+  tensor_path: "00000/original\\tensors.tsv"
+}
+embeddings {
+  tensor_name: "distorted:00000"
+  tensor_path: "00000/distorted\\tensors.tsv"
+}
+embeddings {
+  tensor_name: "original:00000"
+  tensor_path: "00000/original\\tensors.tsv"
+}
+embeddings {
+  tensor_name: "distorted:00000"
+  tensor_path: "00000/distorted\\tensors.tsv"
+}
+embeddings {
+  tensor_name: "original:00000"
+  tensor_path: "00000/original\\tensors.tsv"
+}
+embeddings {
+  tensor_name: "distorted:00000"
+  tensor_path: "00000/distorted\\tensors.tsv"
+}
+embeddings {
+  tensor_name: "original:00000"
+  tensor_path: "00000/original\\tensors.tsv"
+}
+embeddings {
+  tensor_name: "distorted:00000"
+  tensor_path: "00000/distorted\\tensors.tsv"
+}
+embeddings {
+  tensor_name: "original:00000"
+  tensor_path: "00000/original\\tensors.tsv"
+}
+embeddings {
+  tensor_name: "distorted:00000"
+  tensor_path: "00000/distorted\\tensors.tsv"
+}
+embeddings {
+  tensor_name: "original:00000"
+  tensor_path: "00000/original\\tensors.tsv"
+}
+embeddings {
+  tensor_name: "distorted:00000"
+  tensor_path: "00000/distorted\\tensors.tsv"
+}
+embeddings {
+  tensor_name: "original:00000"
+  tensor_path: "00000/original\\tensors.tsv"
+}
+embeddings {
+  tensor_name: "distorted:00000"
+  tensor_path: "00000/distorted\\tensors.tsv"
+}
+embeddings {
+  tensor_name: "original:00000"
+  tensor_path: "00000/original\\tensors.tsv"
+}
+embeddings {
+  tensor_name: "distorted:00000"
+  tensor_path: "00000/distorted\\tensors.tsv"
+}
+embeddings {
+  tensor_name: "original:00000"
+  tensor_path: "00000/original\\tensors.tsv"
+}
+embeddings {
+  tensor_name: "distorted:00000"
+  tensor_path: "00000/distorted\\tensors.tsv"
+}
+embeddings {
+  tensor_name: "original:00000"
+  tensor_path: "00000/original\\tensors.tsv"
+}
+embeddings {
+  tensor_name: "distorted:00000"
+  tensor_path: "00000/distorted\\tensors.tsv"
+}
+embeddings {
+  tensor_name: "original:00000"
+  tensor_path: "00000/original\\tensors.tsv"
+}
+embeddings {
+  tensor_name: "distorted:00000"
+  tensor_path: "00000/distorted\\tensors.tsv"
+}
+embeddings {
+  tensor_name: "original:00000"
+  tensor_path: "00000/original\\tensors.tsv"
+}
+embeddings {
+  tensor_name: "distorted:00000"
+  tensor_path: "00000/distorted\\tensors.tsv"
+}
+embeddings {
+  tensor_name: "original:00000"
+  tensor_path: "00000/original\\tensors.tsv"
+}
+embeddings {
+  tensor_name: "distorted:00000"
+  tensor_path: "00000/distorted\\tensors.tsv"
+}
