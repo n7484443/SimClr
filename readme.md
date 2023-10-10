@@ -206,6 +206,7 @@ class SimCLRLoss(nn.Module):
 |---|---|---|---|---|
 | 1 | a | c | d | f |
 | 2 | b | d | e | g |
+
 의 normalized 된 feature 텐서가 있으면 이의 Cosine 유사도 행렬은
 
 |   | 1       | 2       | 3       | 4       |
@@ -214,6 +215,7 @@ class SimCLRLoss(nn.Module):
 | 2 | ac + bd | 1       | cd + de | cf + dg |
 | 3 | ad + be | cd + de | 1       | df + eg |
 | 4 | af + bg | cf + dg | df + eg | 1       |
+
 의 행렬이 된다.
 여기서 대각 성분을 torch.eye 의 Idenetity 행렬을 만들어서 빼 주면
 
@@ -223,6 +225,7 @@ class SimCLRLoss(nn.Module):
 | 2 | ac + bd | 0       | cd + de | cf + dg |
 | 3 | ad + be | cd + de | 0       | df + eg |
 | 4 | af + bg | cf + dg | df + eg | 0       |
+
 가 나온다.
 이를 torch.exp로 지수화하면
 
