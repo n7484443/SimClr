@@ -451,7 +451,7 @@ finetuning은 f->g, 라벨링 예측은 f -> g -> predictor의 구조를 사용�
 predictor는 fg를 freeze 한 상태에서 학습시켰다.
 
 결과는 originalres_batch{batch size}_{epoch}_{temperature}.txt에 기록하였다.
-가장 좋은 결과를 나타낸 파라미터는 batch size 256, epoch 30, temperature 0.07로 44.9%의 정확도를 보였다.
-
+가장 좋은 결과를 나타낸 파라미터는 batch size 256, epoch 30, temperature 0.1로 46.36%의 정확도를 보였다.
+그 다음으로는 batch size 256, epoch 30, temperature 0.07로 44.99%의 정확도를 보였다.
 
 scratch 부터 학습한 부분의 정확도가 떨어지는 이유는 너무나도 큰 resnet의 파라미터 개수에 비해 epoch 50회 정도로 작아서 학습이 덜 되었기 떄문으로 추측된다.
