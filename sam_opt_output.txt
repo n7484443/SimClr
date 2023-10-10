@@ -1,0 +1,40 @@
+C:\Users\kimJuhwan\anaconda3\envs\pytorch\python.exe E:\github\simclrExe\sam_opt.py
+Files already downloaded and verified
+Files already downloaded and verified
+C:\Users\kimJuhwan\anaconda3\envs\pytorch\lib\site-packages\torchvision\models\_utils.py:208: UserWarning: The parameter 'pretrained' is deprecated since 0.13 and may be removed in the future, please use 'weights' instead.
+  warnings.warn(
+C:\Users\kimJuhwan\anaconda3\envs\pytorch\lib\site-packages\torchvision\models\_utils.py:223: UserWarning: Arguments other than a weight enum or `None` for 'weights' are deprecated since 0.13 and may be removed in the future. The current behavior is equivalent to passing `weights=ResNet18_Weights.IMAGENET1K_V1`. You can also use `weights=ResNet18_Weights.DEFAULT` to get the most up-to-date weights.
+  warnings.warn(msg)
+epoch : 0
+epoch : 1
+epoch : 2
+epoch : 3
+epoch : 4
+epoch : 5
+epoch : 6
+epoch : 7
+epoch : 8
+epoch : 9
+epoch : 10
+epoch : 11
+epoch : 12
+epoch : 13
+epoch : 14
+epoch : 15
+epoch : 16
+epoch : 17
+epoch : 18
+epoch : 19
+epoch : 20
+epoch : 21
+epoch : 22
+epoch : 23
+epoch : 24
+epoch : 25
+epoch : 26
+epoch : 27
+epoch : 28
+epoch : 29
+sam: 84.22 sgd: 80.03
+
+종료 코드 0(으)로 완료된 프로세스

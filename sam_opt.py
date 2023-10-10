@@ -21,33 +21,43 @@ class SAM(torch.optim.Optimizer):
 
     def _grad_norm(self):
         device_ = self.param_groups[0]["params"][
-            0].device  # put everything on the same device, in case of model parallelism
+            0].device
         norm = torch.norm(
             torch.stack([
                 p.grad.norm(p=2).to(device_)
                 for group in self.param_groups for p in group["params"]
+                if p.grad is not None
             ]),
             p=2
         )
         return norm
 
+    # loss 의 최적화
+    # epsilon hat 의 근사 계산, w + epsilon hat 으로 포인트 이동
     @torch.no_grad()
     def first_step(self, zero_grad=False):
         grad_norm = self._grad_norm()
         for group in self.param_groups:
             scale = group["rho"] / (grad_norm + 1e-12)
             for p in group["params"]:
+                if p.grad is None:
+                    continue
+                # p 텐서 꼴로 변환 후 gradient 곱하기
                 e_w = p.grad * scale.to(p)
-                p.add_(e_w)  # climb to the local maximum "w + e(w)"
+                p.add_(e_w)  # local maximum "w + e_hat"
                 self.state[p]["e_w"] = e_w
 
         if zero_grad:
             self.zero_grad()
 
+    # loss sharpness 의 최적화
+    # epsilon hat 을 빼서 기존 지점으로 원복후 파라미터 업데이트
     @torch.no_grad()
     def second_step(self, zero_grad=False):
         for group in self.param_groups:
             for p in group["params"]:
+                if p.grad is None:
+                    continue
                 p.sub_(self.state[p]["e_w"])  # get back to "w" from "w + e(w)"
 
         self.base_optimizer.step()  # do the actual "sharpness-aware" update
@@ -90,34 +100,33 @@ if __name__ == '__main__':
     trainLoader: tu_data.DataLoader
     trainLoader, testLoader = load_image(batch_size=hyper_batch_size)
 
-    resnet_0 = torchvision.models.resnet18(pretrained=True)
-    resnet_1 = torchvision.models.resnet18(pretrained=True)
-    simple_loss = nn.CrossEntropyLoss()
+    resnet_0 = torchvision.models.resnet18(pretrained=True).to(device)
+    resnet_1 = torchvision.models.resnet18(pretrained=True).to(device)
+    simple_loss = nn.CrossEntropyLoss().to(device)
 
     sam_opt = SAM(base_optimizer=torch.optim.SGD, params=resnet_0.parameters(), lr=0.1)
     sgd_opt = torch.optim.SGD(params=resnet_1.parameters(), lr=0.1)
 
     for epoch in range(hyper_epoch):
-        loss_sum_0 = 0
-        loss_sum_1 = 0
         for batch_data, batch_label in trainLoader:
-            sam_output = resnet_0.forward(batch_data)
-            sgd_output = resnet_1.forward(batch_data)
-            loss_sam_output = simple_loss(sam_output, batch_label)
-            loss_sgd_output = simple_loss(sgd_output, batch_label)
-
-            loss_sum_0 += loss_sam_output.item()
-            loss_sum_1 += loss_sgd_output.item()
+            batch_data_cuda = batch_data.to(device)
+            batch_label_cuda = batch_label.to(device)
+            sam_output = resnet_0.forward(batch_data_cuda)
+            sgd_output = resnet_1.forward(batch_data_cuda)
+            loss_sam_output = simple_loss(sam_output, batch_label_cuda)
+            loss_sgd_output = simple_loss(sgd_output, batch_label_cuda)
 
             sam_opt.zero_grad()  # gradient 초기화
             sgd_opt.zero_grad()  # gradient 초기화
             loss_sam_output.backward()
             loss_sgd_output.backward()
-            sam_opt.step()
+
+            sam_opt.first_step(zero_grad=True)
+            sam_output = resnet_0.forward(batch_data_cuda)
+            simple_loss(sam_output, batch_label_cuda).backward()
+            sam_opt.second_step(zero_grad=True)
             sgd_opt.step()
-        loss_sum_0 /= len(trainLoader)
-        loss_sum_1 /= len(trainLoader)
-        print(f"epoch : {epoch}, sam_loss : {loss_sum_0}, sgd_loss : {loss_sum_1}")
+        print(f"epoch : {epoch}")
 
     correct_0 = 0
     correct_1 = 0
