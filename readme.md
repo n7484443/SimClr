@@ -235,6 +235,7 @@ class SimCLRLoss(nn.Module):
 | 2 | <span style="background-color:red">e^(ac + bd) | 1                                              | e^(cd + de)                                    | e^(cf + dg)                                    |
 | 3 | e^(ad + be)                                    | e^(cd + de)                                    | 1                                              | <span style="background-color:red">e^(df + eg) |
 | 4 | e^(af + bg)                                    | e^(cf + dg)                                    | <span style="background-color:red">e^(df + eg) | 1                                              |
+
 이며, 이 때 l 벡터는 색칠된 부분을 각 column 의 합 - 1로 나눠주는 것과 같다.
 여기서 분자는 1 0 1 0 1 0 ... 의 벡터를 torch.diag로 한칸 위, 한칸 아래로 대각화 하여 만든 mask 행렬과의 곱으로 구할 수 있다.
 분모는 Idenetity 행렬을 뺀 후 각 column의 합을 구하면 된다.
