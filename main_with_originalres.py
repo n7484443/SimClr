@@ -107,7 +107,7 @@ class SimCLR_Loss(nn.Module):
 
 
 #
-# class SimCLRLoss(nn.Module):
+# class SimCLR_Loss(nn.Module):
 #     def __init__(self, temp):
 #         super().__init__()
 #         self.temp = temp
@@ -151,31 +151,31 @@ if __name__ == '__main__':
     writer = SummaryWriter()
     want_train = True
     device = torch.device("cuda")
-    hyper_batch_size = 256
-    hyper_epoch = 30
+    hyper_batch_size = 512
+    hyper_epoch = 100
 
     testLoader: tu_data.DataLoader
     trainLoader: tu_data.DataLoader
     trainLoader, testLoader = load_image(batch_size=hyper_batch_size)
 
     # rgb 3개,
-    size = 32
+    size = 64
     output_size = 10
-    f_resnet = torchvision.models.resnet18(pretrained=True)
+    f_resnet = torchvision.models.resnet18(weights=None)#torchvision.models.ResNet18_Weights
     num_input = f_resnet.fc.in_features
     f_resnet.fc = nn.Linear(num_input, size)
 
-    g_small = SimpleMLP(input_size=size, output_size=output_size)
+    g_small = SimpleMLP(input_size=size, output_size=size)
 
     fg = nn.Sequential(f_resnet, g_small)
     fg.to(device)
     fg.train()
 
-    loss_function = SimCLR_Loss(temperature=0.1)
+    loss_function = SimCLR_Loss(temperature=0.25)
 
     summary(fg, input_size=(hyper_batch_size, 3, 32, 32))
 
-    optimizer = torch.optim.Adam(fg.parameters(), lr=0.0003)
+    optimizer = torch.optim.Adam(fg.parameters(), lr=0.001)
     scheduler = torch.optim.lr_scheduler.LambdaLR(optimizer=optimizer, lr_lambda=lambda epoch: 0.95 ** epoch)
     # train
     for epoch in range(hyper_epoch):
@@ -215,19 +215,13 @@ if __name__ == '__main__':
     print("FG 학습 완료. 이제 F의 output을 실제 dataset의 label과 연결.")
 
     # predictor
-    predictor = nn.Sequential(
-        nn.Linear(output_size, output_size), nn.BatchNorm1d(output_size), nn.ReLU(),
-        nn.Linear(output_size, output_size), nn.BatchNorm1d(output_size), nn.ReLU(),
-        nn.Linear(output_size, output_size), nn.BatchNorm1d(output_size), nn.ReLU(),
-        nn.Linear(output_size, output_size), nn.BatchNorm1d(output_size), nn.ReLU(),
-        # class는 10개
-    )
+    predictor = nn.Linear(size, output_size)
     predictor.to(device)
     # fg output 과 실제 dataset label의 연결
     simple_loss_function = nn.CrossEntropyLoss()
     simple_loss_function.to(device)
     predictor.train()
-    optimizer = torch.optim.Adam(predictor.parameters(), lr=0.0003)
+    optimizer = torch.optim.Adam(predictor.parameters(), lr=0.001)
     scheduler = torch.optim.lr_scheduler.LambdaLR(optimizer=optimizer, lr_lambda=lambda epoch: 0.95 ** epoch)
     for epoch in range(hyper_epoch):
         # batch_size * 2, rgb, x, y 의 데이터 형태
