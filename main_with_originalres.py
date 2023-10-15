@@ -1,22 +1,16 @@
-import os
-
 import torch.utils.data as tu_data
 import torch
 import torch.nn as nn
 import torchvision
 import torchvision.transforms as transforms
 import matplotlib.pyplot as plt
+import torch_optimizer as optim
 from torch import Tensor
 from torchinfo import summary
-from torch.utils.tensorboard import SummaryWriter
 import numpy as np
 
 
 def load_image(batch_size) -> (tu_data.DataLoader, tu_data.DataLoader):
-    # X => (X - mean)/standard_deviations (정규분포의 Normalization)
-    # 이미지는 일반적으로 0~255 혹은 0~1, 여기선 0~1 의 값
-    transform = transforms.Compose([transforms.ToTensor(), transforms.Normalize((0.5, 0.5, 0.5), (0.5, 0.5, 0.5))])
-
     # test data와 train data는 분리되어야 함. 미 분리시 test data가 train data에 영향을 줄 수 있음
     train_set = torchvision.datasets.CIFAR10(root='./data', train=True, download=True, transform=transforms.ToTensor())
     test_set = torchvision.datasets.CIFAR10(root='./data', train=False, download=True, transform=transforms.ToTensor())
@@ -29,13 +23,13 @@ def load_image(batch_size) -> (tu_data.DataLoader, tu_data.DataLoader):
 
 
 # 이미지 텐서를 색상 변환, 크롭
-def distortion(tensor_image: Tensor, strength: int) -> Tensor:
+def distortion(tensor_image: Tensor, strength: float) -> Tensor:
     # [batch_size, rgb, width, height]
     img_size = tensor_image.shape[2]
     color_transform = transforms.ColorJitter(brightness=0.8 * strength, contrast=0.8 * strength,
                                              saturation=0.8 * strength, hue=0.2 * strength)
     # 0.5~1 사이의 크기, 0.5~2 사이의 종횡비로 랜덤하게 크롭
-    crop_transform = transforms.RandomResizedCrop((img_size, img_size), scale=(0.5, 1), ratio=(0.5, 2), )
+    crop_transform = transforms.RandomResizedCrop((img_size, img_size), scale=(0.6, 1), ratio=(0.5, 2.0), )
     flip_horizon = transforms.RandomHorizontalFlip(p=0.5)
     flip_vertical = transforms.RandomVerticalFlip(p=0.5)
     transform_several = torch.nn.Sequential(
@@ -43,7 +37,6 @@ def distortion(tensor_image: Tensor, strength: int) -> Tensor:
         flip_vertical,
         flip_horizon,
         color_transform,
-        transforms.Normalize((0.5, 0.5, 0.5), (0.5, 0.5, 0.5))
     )
     return transform_several.forward(tensor_image)
 
@@ -106,62 +99,27 @@ class SimCLR_Loss(nn.Module):
         return loss
 
 
-#
-# class SimCLR_Loss(nn.Module):
-#     def __init__(self, temp):
-#         super().__init__()
-#         self.temp = temp
-#         self.cosine = torch.nn.CosineSimilarity(dim=1)
-#
-#     def forward(self, x, sample_size, device):
-#         x = nn.functional.normalize(x, dim=1)
-#         # print(x)
-#         # similarity 계산
-#         x = torch.mm(x, torch.transpose(x, 0, 1)) / self.temp
-#         # print(x)
-#         # 대각 부분은 제외되어야 함
-#         # 즉 대각 부분만 추출 -> 다시 대각 행렬로 변환하여 마스킹 가능
-#         x = x - torch.diag(torch.diag(x, 0))
-#         # print(x)
-#         # down[0] -> up[0] -> down[2] -> up[2] -> 형식
-#         # 즉 대각 성분을 2칸씩 건너뛰며 추출
-#         mask = torch.tensor([(i + 1) % 2 for i in range(sample_size - 1)], dtype=torch.float, device=device)
-#         up_mask = torch.diag(mask, 1)
-#         down_mask = torch.diag(mask, -1)
-#         mask = up_mask + down_mask
-#         # print(mask)
-#
-#         masked_x = x * mask
-#         masked_x = torch.sum(masked_x, dim=1)
-#         masked_x = torch.exp(masked_x)
-#         # print(masked_x)
-#         e_x = torch.exp(x)
-#         e_x = e_x - torch.eye(sample_size, device=device)
-#         # print(e_x)
-#         e_x = torch.sum(e_x, dim=1)
-#         # print(e_x)
-#         output = torch.div(masked_x, e_x)
-#         # print(output)
-#         output = -torch.log(output)
-#         # print(masked_x, e_x, torch.sum(output) / sample_size)
-#         return torch.sum(output) / sample_size
-
-
 if __name__ == '__main__':
-    writer = SummaryWriter()
     want_train = True
     device = torch.device("cuda")
-    hyper_batch_size = 512
-    hyper_epoch = 100
+    hyper_batch_size = 1024
+    hyper_batch_size_predictor = 32
+    hyper_epoch = 60
+    hyper_epoch_predictor = 60
+    lr = 0.001
+    momentum = 0.9
+    lr_predictor = 0.0003
+    temperature = 0.05
+    strength = 0.8
 
     testLoader: tu_data.DataLoader
     trainLoader: tu_data.DataLoader
     trainLoader, testLoader = load_image(batch_size=hyper_batch_size)
 
     # rgb 3개,
-    size = 64
+    size = 32
     output_size = 10
-    f_resnet = torchvision.models.resnet18(weights=None)#torchvision.models.ResNet18_Weights
+    f_resnet = torchvision.models.resnet18(weights=None)  # torchvision.models.ResNet18_Weights
     num_input = f_resnet.fc.in_features
     f_resnet.fc = nn.Linear(num_input, size)
 
@@ -171,21 +129,21 @@ if __name__ == '__main__':
     fg.to(device)
     fg.train()
 
-    loss_function = SimCLR_Loss(temperature=0.25)
+    loss_function = SimCLR_Loss(temperature=temperature)
 
     summary(fg, input_size=(hyper_batch_size, 3, 32, 32))
 
-    optimizer = torch.optim.Adam(fg.parameters(), lr=0.001)
-    scheduler = torch.optim.lr_scheduler.LambdaLR(optimizer=optimizer, lr_lambda=lambda epoch: 0.95 ** epoch)
+    optimizer = optim.LARS(fg.parameters(), lr=lr, momentum=momentum)
     # train
+    data_output = []
     for epoch in range(hyper_epoch):
         first = False
         # batch_size * 2, rgb, x, y 의 데이터 형태
-        loss_sum = 0
+        loss_sum_train = 0
         for batch_data, batch_label in trainLoader:
             batch_size = batch_data.shape[0]
             batch_data_cuda = batch_data.to(device)
-            batch_data_distorted = distortion(tensor_image=batch_data_cuda, strength=1)
+            batch_data_distorted = distortion(tensor_image=batch_data_cuda, strength=strength)
             if first:
                 first = False
                 pil_img = transforms.ToPILImage()(batch_data_cuda[0])
@@ -200,49 +158,91 @@ if __name__ == '__main__':
             batch_distorted_after = fg.forward(batch_data_distorted)
 
             loss = loss_function.forward(batch_data_after, batch_distorted_after, batch_size)
-            loss_sum += loss.item()
+            loss_sum_train += loss.item()
 
             optimizer.zero_grad()  # gradient 초기화
             loss.backward()
             optimizer.step()
 
-        print('Epoch : %d, Avg Loss : %.4f lr: %.8f' % (
-        epoch, loss_sum / len(trainLoader), optimizer.param_groups[0]['lr']))
-        scheduler.step()
-    writer.flush()
-    writer.close()
+        loss_sum_test = 0
+        with torch.no_grad():
+            for batch_data, batch_label in testLoader:
+                batch_size = batch_data.shape[0]
+                batch_data_cuda = batch_data.to(device)
+                batch_data_distorted = distortion(tensor_image=batch_data_cuda, strength=strength)
+                batch_data_after = fg.forward(batch_data_cuda)
+                batch_distorted_after = fg.forward(batch_data_distorted)
+                loss = loss_function.forward(batch_data_after, batch_distorted_after, batch_size)
+                loss_sum_test += loss.item()
+
+        loss_sum_train /= len(trainLoader)
+        loss_sum_test /= len(testLoader)
+        print('Epoch : %d, Avg Loss : %.4f, Validation Loss : %.4f' % (
+            epoch, loss_sum_train, loss_sum_test))
+        data_output.append((loss_sum_train, loss_sum_test))
+
+    plt.subplot(2, 1, 1)
+    range_x = np.arange(0, hyper_epoch, 1)
+    plt.plot(range_x, [x[0] for x in data_output], label='Training loss', color='red')
+    plt.plot(range_x, [x[1] for x in data_output], label='Validation loss', color='blue')
+    plt.legend()
+    plt.title(f'lr: {lr_predictor} batch:{hyper_batch_size} epoch: {hyper_epoch} temp:{temperature}')
 
     print("FG 학습 완료. 이제 F의 output을 실제 dataset의 label과 연결.")
 
+    trainLoader, testLoader = load_image(batch_size=hyper_batch_size_predictor)
     # predictor
     predictor = nn.Linear(size, output_size)
     predictor.to(device)
     # fg output 과 실제 dataset label의 연결
     simple_loss_function = nn.CrossEntropyLoss()
     simple_loss_function.to(device)
+
+    f_resnet.eval()
     predictor.train()
-    optimizer = torch.optim.Adam(predictor.parameters(), lr=0.001)
-    scheduler = torch.optim.lr_scheduler.LambdaLR(optimizer=optimizer, lr_lambda=lambda epoch: 0.95 ** epoch)
-    for epoch in range(hyper_epoch):
+    optimizer = torch.optim.Adam(predictor.parameters(), lr=lr_predictor)
+    data_output = []
+    for epoch in range(hyper_epoch_predictor):
         # batch_size * 2, rgb, x, y 의 데이터 형태
-        loss_sum = 0
+        loss_sum_test = 0
+        loss_sum_train = 0
         for batch_data, batch_label in trainLoader:
             batch_size = batch_data.shape[0]
 
             with torch.no_grad():
-                output = fg.forward(batch_data.to(device))
+                output = f_resnet.forward(batch_data.to(device))
             expect = predictor.forward(output)
             loss = simple_loss_function(expect, batch_label.to(device))
-            loss_sum += loss.item()
+            loss_sum_train += loss.item()
 
             optimizer.zero_grad()  # gradient 초기화
             loss.backward()
             optimizer.step()
             # print(loss)
+        with torch.no_grad():
+            for batch_data, batch_label in testLoader:
+                batch_size = batch_data.shape[0]
+                batch_data_cuda = batch_data.to(device)
+                batch_data_after = fg.forward(batch_data_cuda)
+                expect = predictor.forward(batch_data_after)
+                loss = simple_loss_function(expect, batch_label.to(device))
+                loss_sum_test += loss.item()
 
-        print('Epoch : %d, Avg Loss : %.4f lr: %.8f' % (
-        epoch, loss_sum / len(trainLoader), optimizer.param_groups[0]['lr']))
-        scheduler.step()
+        loss_sum_train /= len(trainLoader)
+        loss_sum_test /= len(testLoader)
+        print('Epoch : %d, Avg Loss : %.4f Validation Loss : %.4f' % (
+            epoch, loss_sum_train, loss_sum_test))
+        data_output.append((loss_sum_train, loss_sum_test))
+
+    plt.subplot(2, 1, 2)
+    range_x = np.arange(0, hyper_epoch_predictor, 1)
+    plt.plot(range_x, [x[0] for x in data_output], label='Training loss', color='red')
+    plt.plot(range_x, [x[1] for x in data_output], label='Validation loss', color='blue')
+    plt.legend()
+    plt.title(f'predictor \nlr: {lr} batch:{hyper_batch_size_predictor} epoch: {hyper_epoch_predictor}')
+
+    plt.tight_layout()
+    plt.show()
 
     predictor.eval()
 
