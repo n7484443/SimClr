@@ -351,6 +351,6 @@ if __name__ == '__main__':
             output = predictor.forward(output)
             # argmax = 가장 큰 값의 index를 가져옴
             predicted = torch.argmax(output, 1)
-            total += batch_label.size(0)
+            total += batch_label.feature_dim(0)
             correct += (predicted == batch_label.to(device)).sum().item()
     print('총 개수 : %i \n 맞춘 개수 : %i \n 정확도: %d \n 찍었을 때의 정확도 : %d' % (total, correct, 100.0 * correct / total, 10))

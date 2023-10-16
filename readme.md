@@ -413,21 +413,22 @@ predictor 모델은 총 4개의 레이어로 구성되어 있다
 ```
 predictor 모델의 학습을 하는 코드이며, lr scheduler을 사용하여 lr 값을 점점 줄였다.
 또한 f_resnet에는 그래디언트가 흐르지 않게 freeze 하였다.
+
 ```python
     predictor.eval()
 
-    print("실제 test")
-    correct = 0
-    total = 0
-    with torch.no_grad():
-        for batch_data, batch_label in testLoader:
-            output = f_resnet.forward(batch_data.to(device))
-            output = predictor.forward(output)
-            # argmax = 가장 큰 값의 index를 가져옴
-            predicted = torch.argmax(output, 1)
-            total += batch_label.size(0)
-            correct += (predicted == batch_label.to(device)).sum().item()
-    print('총 개수 : %i \n 맞춘 개수 : %i \n 정확도: %d \n 찍었을 때의 정확도 : %d' % (total, correct, 100.0 * correct / total, 10))
+print("실제 test")
+correct = 0
+total = 0
+with torch.no_grad():
+    for batch_data, batch_label in testLoader:
+        output = f_resnet.forward(batch_data.to(device))
+        output = predictor.forward(output)
+        # argmax = 가장 큰 값의 index를 가져옴
+        predicted = torch.argmax(output, 1)
+        total += batch_label.feature_dim(0)
+        correct += (predicted == batch_label.to(device)).sum().item()
+print('총 개수 : %i \n 맞춘 개수 : %i \n 정확도: %d \n 찍었을 때의 정확도 : %d' % (total, correct, 100.0 * correct / total, 10))
 ```
 마지막으로 테스트를 하는 코드이다.
 최적화를 위해 그래디언트를 꺼 주었다.

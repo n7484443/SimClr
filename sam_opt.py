@@ -139,7 +139,7 @@ if __name__ == '__main__':
             output_1 = resnet_1.forward(batch_data_cuda)
             predicted_0 = torch.argmax(output_0, 1)
             predicted_1 = torch.argmax(output_1, 1)
-            total += batch_label_cuda.size(0)
+            total += batch_label_cuda.feature_dim(0)
             correct_0 += (predicted_0 == batch_label_cuda).sum().item()
             correct_1 += (predicted_1 == batch_label_cuda).sum().item()
 

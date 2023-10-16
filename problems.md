@@ -8,12 +8,16 @@ torch.Normalize 를 Standardzation(일명 z-score Normalization)으로 알고 �
 즉 평균과 표준편차를 알아서 계산해주거나 하는게 아니다.
 
 굳이 Standardzation으로 사용하려면 각 각의 색상마다 평균과 표준편차를 구해서 넣어줘야 한다.
+
+30%라도 정확도가 나왔던게 이상한 것이었다.
 # 2. predictor 의 layer 가 너무 깊었음
 # 3. g(f(x)) 뒤에 predictor를 붙이는 것이 아니라, f(x) 뒤에 붙여야 함
 위 두 문제는 feature을 상당부분 잃어버릴 수 있었음
 이는 논문에도 나와 있었음
 # 4. Optimizer의 잘못된 적용
 Adam optimizer는 batch size가 클 때 수렴하지 못한다고 논문에 적혀 있었음.
+물론 지금까지 잘 안되던 이유는 1번 문제가 가장 큰것으로 보이기는 함.
+하지만, batch size가 클 때 수렴하지 못한다는 것은 알아두어야 할 것 같다.
 따라서 LARS Optimizer를 사용
 # 5. predictor는 레이어가 작고 일반적인 학습
 따라서 batch size를 32 혹은 64로 적용

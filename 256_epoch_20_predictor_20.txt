@@ -1,0 +1,94 @@
+C:\Users\kimJuhwan\anaconda3\envs\pytorch\python.exe E:\github\simclrExe\main_with_originalres.py
+Files already downloaded and verified
+Files already downloaded and verified
+===============================================================================================
+Layer (type:depth-idx)                        Output Shape              Param #
+===============================================================================================
+SimCLR                                        [256, 512]                --
+├─ResNet: 1-1                                 [256, 512]                --
+│    └─Conv2d: 2-1                            [256, 64, 32, 32]         1,728
+│    └─BatchNorm2d: 2-2                       [256, 64, 32, 32]         128
+│    └─ReLU: 2-3                              [256, 64, 32, 32]         --
+│    └─Identity: 2-4                          [256, 64, 32, 32]         --
+│    └─Sequential: 2-5                        [256, 64, 32, 32]         --
+│    │    └─BasicBlock: 3-1                   [256, 64, 32, 32]         73,984
+│    │    └─BasicBlock: 3-2                   [256, 64, 32, 32]         73,984
+│    └─Sequential: 2-6                        [256, 128, 16, 16]        --
+│    │    └─BasicBlock: 3-3                   [256, 128, 16, 16]        230,144
+│    │    └─BasicBlock: 3-4                   [256, 128, 16, 16]        295,424
+│    └─Sequential: 2-7                        [256, 256, 8, 8]          --
+│    │    └─BasicBlock: 3-5                   [256, 256, 8, 8]          919,040
+│    │    └─BasicBlock: 3-6                   [256, 256, 8, 8]          1,180,672
+│    └─Sequential: 2-8                        [256, 512, 4, 4]          --
+│    │    └─BasicBlock: 3-7                   [256, 512, 4, 4]          3,673,088
+│    │    └─BasicBlock: 3-8                   [256, 512, 4, 4]          4,720,640
+│    └─AdaptiveAvgPool2d: 2-9                 [256, 512, 1, 1]          --
+│    └─Identity: 2-10                         [256, 512]                --
+├─Sequential: 1-2                             [256, 128]                --
+│    └─Linear: 2-11                           [256, 2048]               1,048,576
+│    └─ReLU: 2-12                             [256, 2048]               --
+│    └─Linear: 2-13                           [256, 128]                262,144
+===============================================================================================
+Total params: 12,479,552
+Trainable params: 12,479,552
+Non-trainable params: 0
+Total mult-adds (Units.GIGABYTES): 142.52
+===============================================================================================
+Input size (MB): 3.15
+Forward/backward pass size (MB): 2521.04
+Params size (MB): 49.92
+Estimated Total Size (MB): 2574.10
+===============================================================================================
+C:\Users\kimJuhwan\anaconda3\envs\pytorch\Lib\site-packages\torchvision\transforms\functional.py:1603: UserWarning: The default value of the antialias parameter of all the resizing transforms (Resize(), RandomResizedCrop(), etc.) will change from None to True in v0.17, in order to be consistent across the PIL and Tensor backends. To suppress this warning, directly pass antialias=True (recommended, future default), antialias=None (current default, which means False for Tensors and True for PIL), or antialias=False (only works on Tensors - PIL will still use antialiasing). This also applies if you are using the inference transforms from the models weights: update the call to weights.transforms(antialias=True).
+  warnings.warn(
+Epoch : 0, Avg Loss : 4.9758, Validation Loss : 4.7432 Leraning Late: 0.1000
+Epoch : 1, Avg Loss : 4.6828, Validation Loss : 4.5566 Leraning Late: 0.1000
+Epoch : 2, Avg Loss : 4.5643, Validation Loss : 4.5018 Leraning Late: 0.1000
+Epoch : 3, Avg Loss : 4.5398, Validation Loss : 4.4525 Leraning Late: 0.1000
+Epoch : 4, Avg Loss : 4.4957, Validation Loss : 4.4098 Leraning Late: 0.1000
+Epoch : 5, Avg Loss : 4.4698, Validation Loss : 4.3939 Leraning Late: 0.1000
+Epoch : 6, Avg Loss : 4.4549, Validation Loss : 4.4004 Leraning Late: 0.1000
+Epoch : 7, Avg Loss : 4.4526, Validation Loss : 4.3818 Leraning Late: 0.1000
+Epoch : 8, Avg Loss : 4.4413, Validation Loss : 4.3771 Leraning Late: 0.1000
+Epoch : 9, Avg Loss : 4.4187, Validation Loss : 4.3463 Leraning Late: 0.1000
+Epoch : 10, Avg Loss : 4.4201, Validation Loss : 4.3563 Leraning Late: 0.1000
+Epoch : 11, Avg Loss : 4.4086, Validation Loss : 4.3347 Leraning Late: 0.1000
+Epoch : 12, Avg Loss : 4.4064, Validation Loss : 4.3412 Leraning Late: 0.1000
+Epoch : 13, Avg Loss : 4.3889, Validation Loss : 4.3278 Leraning Late: 0.0999
+Epoch : 14, Avg Loss : 4.3889, Validation Loss : 4.3259 Leraning Late: 0.0999
+Epoch : 15, Avg Loss : 4.3839, Validation Loss : 4.3429 Leraning Late: 0.0998
+Epoch : 16, Avg Loss : 4.3843, Validation Loss : 4.3150 Leraning Late: 0.0998
+Epoch : 17, Avg Loss : 4.3799, Validation Loss : 4.3139 Leraning Late: 0.0997
+Epoch : 18, Avg Loss : 4.3780, Validation Loss : 4.3090 Leraning Late: 0.0996
+Epoch : 19, Avg Loss : 4.3664, Validation Loss : 4.2946 Leraning Late: 0.0995
+FG 학습 완료. 이제 F의 output을 실제 dataset의 label과 연결.
+Files already downloaded and verified
+Files already downloaded and verified
+Epoch : 0, Avg Loss : 1.6502 Validation Loss : 1.5656
+Epoch : 1, Avg Loss : 1.5569 Validation Loss : 1.5432
+Epoch : 2, Avg Loss : 1.5475 Validation Loss : 1.5330
+Epoch : 3, Avg Loss : 1.5425 Validation Loss : 1.5283
+Epoch : 4, Avg Loss : 1.5396 Validation Loss : 1.5315
+Epoch : 5, Avg Loss : 1.5373 Validation Loss : 1.5266
+Epoch : 6, Avg Loss : 1.5353 Validation Loss : 1.5242
+Epoch : 7, Avg Loss : 1.5335 Validation Loss : 1.5182
+Epoch : 8, Avg Loss : 1.5324 Validation Loss : 1.5213
+Epoch : 9, Avg Loss : 1.5315 Validation Loss : 1.5285
+Epoch : 10, Avg Loss : 1.5299 Validation Loss : 1.5287
+Epoch : 11, Avg Loss : 1.5288 Validation Loss : 1.5162
+Epoch : 12, Avg Loss : 1.5286 Validation Loss : 1.5294
+Epoch : 13, Avg Loss : 1.5274 Validation Loss : 1.5181
+Epoch : 14, Avg Loss : 1.5262 Validation Loss : 1.5275
+Epoch : 15, Avg Loss : 1.5261 Validation Loss : 1.5184
+Epoch : 16, Avg Loss : 1.5260 Validation Loss : 1.5128
+Epoch : 17, Avg Loss : 1.5259 Validation Loss : 1.5215
+Epoch : 18, Avg Loss : 1.5249 Validation Loss : 1.5198
+Epoch : 19, Avg Loss : 1.5233 Validation Loss : 1.5112
+실제 test
+총 개수 : 40
+top-1 맞춘 개수 : 4394
+ 정확도: 43.94
+top-5 맞춘 개수 : 9144
+ 정확도: 91.44
+
+종료 코드 0(으)로 완료된 프로세스
