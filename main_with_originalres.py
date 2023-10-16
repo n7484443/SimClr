@@ -10,7 +10,9 @@ import torch_optimizer as optim
 from torchinfo import summary
 import numpy as np
 
-#참조 : https://github.com/p3i0t/SimCLR-CIFAR10/tree/master
+
+# 참조 : https://github.com/p3i0t/SimCLR-CIFAR10/tree/master
+# 참조 : https://medium.com/the-owl/simclr-in-pytorch-5f290cb11dd7
 
 def load_image(batch_size) -> (tu_data.DataLoader, tu_data.DataLoader):
     # test data와 train data는 분리되어야 함. 미 분리시 test data가 train data에 영향을 줄 수 있음
@@ -44,7 +46,7 @@ class Distortion(nn.Module):
     def forward(self, x):
         return self.transform_several(x)
 
-# 출처 : https://medium.com/the-owl/simclr-in-pytorch-5f290cb11dd7
+
 class SimclrLoss(nn.Module):
     def __init__(self, temperature):
         super().__init__()
@@ -115,9 +117,9 @@ if __name__ == '__main__':
     device = torch.device("cuda")
     hyper_batch_size = 512
     hyper_batch_size_predictor = 512
-    hyper_epoch = 50
-    hyper_epoch_predictor = 50
-    lr = 0.075*math.sqrt(hyper_batch_size)
+    hyper_epoch = 100
+    hyper_epoch_predictor = 40
+    lr = 0.075 * math.sqrt(hyper_batch_size)
     lr_predictor = 0.2 * (0.1 * hyper_batch_size_predictor / 256)
     momentum = 0.9
     temperature = 0.5
