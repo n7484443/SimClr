@@ -14,15 +14,18 @@ torch.Normalize 를 Standardzation(일명 z-score Normalization)으로 알고 �
 # 3. g(f(x)) 뒤에 predictor를 붙이는 것이 아니라, f(x) 뒤에 붙여야 함
 위 두 문제는 feature을 상당부분 잃어버릴 수 있었음
 이는 논문에도 나와 있었음
-# 4. Optimizer의 잘못된 적용
+# 4. projection head의 input size가 너무 작았음
+일반적으로 사용하는 크기는 2048. 나는 64정도로 사용하고 있었음.
+# 5. encoder의 초기 conv1과 maxpool을 수정하지 않았음
+논문에서는 그 둘을 각각 3x3 stride=1, padding=1 conv, Identity로 수정하였음.
+# 6. Optimizer의 잘못된 적용
 Adam optimizer는 batch size가 클 때 수렴하지 못한다고 논문에 적혀 있었음.
-물론 지금까지 잘 안되던 이유는 1번 문제가 가장 큰것으로 보이기는 함.
+물론 지금까지 잘 안되던 이유는 다른 문제가 가장 큰것으로 보이기는 함.
 하지만, batch size가 클 때 수렴하지 못한다는 것은 알아두어야 할 것 같다.
 따라서 LARS Optimizer를 사용
-# 5. predictor는 레이어가 작고 일반적인 학습
-따라서 batch size를 32 혹은 64로 적용
 
 
 # 결론
+논문을 좀 더 꼼꼼히 읽고 적용해야겠다. 
 
-논문을 좀 더 꼼꼼히 읽고 적용해야겠다.
+위 방법을 사용한 후 정확도가 50회에 51.15%로 논문과 비슷하게 나왔다.
