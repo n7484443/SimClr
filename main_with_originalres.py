@@ -120,7 +120,7 @@ if __name__ == '__main__':
     hyper_epoch = 100
     hyper_epoch_predictor = 40
     lr = 0.075 * math.sqrt(hyper_batch_size)
-    lr_predictor = 0.2 * (0.1 * hyper_batch_size_predictor / 256)
+    lr_predictor = 0.1 * (0.1 * hyper_batch_size_predictor / 256)
     momentum = 0.9
     temperature = 0.5
     strength = 0.9
