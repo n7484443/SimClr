@@ -1,0 +1,262 @@
+Files already downloaded and verified
+Files already downloaded and verified
+Epoch : 1, Avg Loss : 6.4300, Validation Loss : 6.2396 Leraning Late: 1.6971
+Epoch : 2, Avg Loss : 6.2840, Validation Loss : 6.2703 Leraning Late: 1.6971
+Epoch : 3, Avg Loss : 6.2145, Validation Loss : 6.2282 Leraning Late: 1.6971
+Epoch : 4, Avg Loss : 6.1824, Validation Loss : 6.0610 Leraning Late: 1.6971
+Epoch : 5, Avg Loss : 6.1969, Validation Loss : 6.1668 Leraning Late: 1.6971
+Epoch : 6, Avg Loss : 6.0837, Validation Loss : 5.9861 Leraning Late: 1.6971
+Epoch : 7, Avg Loss : 5.7559, Validation Loss : 5.6564 Leraning Late: 1.6971
+Epoch : 8, Avg Loss : 5.5783, Validation Loss : 5.4350 Leraning Late: 1.6971
+Epoch : 9, Avg Loss : 5.4931, Validation Loss : 5.5751 Leraning Late: 1.6971
+Epoch : 10, Avg Loss : 5.3995, Validation Loss : 5.1936 Leraning Late: 1.6971
+Epoch : 11, Avg Loss : 5.5176, Validation Loss : 5.3856 Leraning Late: 1.6965
+Epoch : 12, Avg Loss : 5.3128, Validation Loss : 5.1706 Leraning Late: 1.6949
+Epoch : 13, Avg Loss : 5.0121, Validation Loss : 5.1328 Leraning Late: 1.6922
+Epoch : 14, Avg Loss : 4.7696, Validation Loss : 4.5826 Leraning Late: 1.6884
+Epoch : 15, Avg Loss : 4.5525, Validation Loss : 4.4112 Leraning Late: 1.6836
+Epoch : 16, Avg Loss : 4.4533, Validation Loss : 4.4878 Leraning Late: 1.6777
+Epoch : 17, Avg Loss : 4.2818, Validation Loss : 4.2599 Leraning Late: 1.6707
+Epoch : 18, Avg Loss : 4.5047, Validation Loss : 4.3976 Leraning Late: 1.6627
+Epoch : 19, Avg Loss : 4.2229, Validation Loss : 4.1549 Leraning Late: 1.6536
+Epoch : 20, Avg Loss : 4.4053, Validation Loss : 4.3206 Leraning Late: 1.6436
+Epoch : 21, Avg Loss : 4.2298, Validation Loss : 4.3088 Leraning Late: 1.6325
+Epoch : 22, Avg Loss : 4.2138, Validation Loss : 4.0573 Leraning Late: 1.6204
+Epoch : 23, Avg Loss : 4.3096, Validation Loss : 4.2757 Leraning Late: 1.6073
+Epoch : 24, Avg Loss : 4.1308, Validation Loss : 4.0351 Leraning Late: 1.5933
+Epoch : 25, Avg Loss : 4.1452, Validation Loss : 3.9077 Leraning Late: 1.5783
+Epoch : 26, Avg Loss : 4.0068, Validation Loss : 3.9720 Leraning Late: 1.5624
+Epoch : 27, Avg Loss : 3.9372, Validation Loss : 3.9593 Leraning Late: 1.5455
+Epoch : 28, Avg Loss : 3.9810, Validation Loss : 3.9789 Leraning Late: 1.5278
+Epoch : 29, Avg Loss : 3.9249, Validation Loss : 4.0571 Leraning Late: 1.5092
+Epoch : 30, Avg Loss : 3.9614, Validation Loss : 4.0373 Leraning Late: 1.4898
+Epoch : 31, Avg Loss : 3.9086, Validation Loss : 3.6906 Leraning Late: 1.4696
+Epoch : 32, Avg Loss : 3.7874, Validation Loss : 3.6519 Leraning Late: 1.4485
+Epoch : 33, Avg Loss : 3.8499, Validation Loss : 3.6983 Leraning Late: 1.4267
+Epoch : 34, Avg Loss : 3.7772, Validation Loss : 3.8653 Leraning Late: 1.4042
+Epoch : 35, Avg Loss : 3.8246, Validation Loss : 3.7178 Leraning Late: 1.3810
+Epoch : 36, Avg Loss : 3.7731, Validation Loss : 3.6761 Leraning Late: 1.3570
+Epoch : 37, Avg Loss : 3.7839, Validation Loss : 3.8470 Leraning Late: 1.3325
+Epoch : 38, Avg Loss : 3.7982, Validation Loss : 3.9770 Leraning Late: 1.3073
+Epoch : 39, Avg Loss : 3.6036, Validation Loss : 3.3894 Leraning Late: 1.2815
+Epoch : 40, Avg Loss : 3.2832, Validation Loss : 3.2499 Leraning Late: 1.2552
+Epoch : 41, Avg Loss : 3.2700, Validation Loss : 3.1279 Leraning Late: 1.2283
+Epoch : 42, Avg Loss : 3.2197, Validation Loss : 3.1975 Leraning Late: 1.2010
+Epoch : 43, Avg Loss : 3.1751, Validation Loss : 2.9755 Leraning Late: 1.1732
+Epoch : 44, Avg Loss : 3.0619, Validation Loss : 3.0117 Leraning Late: 1.1451
+Epoch : 45, Avg Loss : 3.2641, Validation Loss : 3.0659 Leraning Late: 1.1165
+Epoch : 46, Avg Loss : 2.9244, Validation Loss : 2.9776 Leraning Late: 1.0876
+Epoch : 47, Avg Loss : 2.8763, Validation Loss : 2.9235 Leraning Late: 1.0584
+Epoch : 48, Avg Loss : 2.7980, Validation Loss : 2.7548 Leraning Late: 1.0289
+Epoch : 49, Avg Loss : 2.7126, Validation Loss : 2.8055 Leraning Late: 0.9992
+Epoch : 50, Avg Loss : 2.5996, Validation Loss : 2.4471 Leraning Late: 0.9693
+Epoch : 51, Avg Loss : 2.7298, Validation Loss : 3.2205 Leraning Late: 0.9392
+Epoch : 52, Avg Loss : 2.7576, Validation Loss : 2.6228 Leraning Late: 0.9091
+Epoch : 53, Avg Loss : 2.3673, Validation Loss : 2.3504 Leraning Late: 0.8788
+Epoch : 54, Avg Loss : 2.2621, Validation Loss : 2.2668 Leraning Late: 0.8485
+Epoch : 55, Avg Loss : 2.1251, Validation Loss : 2.1101 Leraning Late: 0.8182
+Epoch : 56, Avg Loss : 2.1628, Validation Loss : 2.1150 Leraning Late: 0.7880
+Epoch : 57, Avg Loss : 2.0042, Validation Loss : 2.1035 Leraning Late: 0.7578
+Epoch : 58, Avg Loss : 1.8733, Validation Loss : 1.8702 Leraning Late: 0.7278
+Epoch : 59, Avg Loss : 1.8784, Validation Loss : 1.7921 Leraning Late: 0.6979
+Epoch : 60, Avg Loss : 1.8322, Validation Loss : 1.6260 Leraning Late: 0.6682
+Epoch : 61, Avg Loss : 1.7188, Validation Loss : 1.6725 Leraning Late: 0.6387
+Epoch : 62, Avg Loss : 1.7676, Validation Loss : 1.6674 Leraning Late: 0.6095
+Epoch : 63, Avg Loss : 1.6764, Validation Loss : 1.8516 Leraning Late: 0.5806
+Epoch : 64, Avg Loss : 1.6326, Validation Loss : 1.5165 Leraning Late: 0.5520
+Epoch : 65, Avg Loss : 1.6232, Validation Loss : 1.5931 Leraning Late: 0.5238
+Epoch : 66, Avg Loss : 1.5439, Validation Loss : 1.5631 Leraning Late: 0.4960
+Epoch : 67, Avg Loss : 1.5341, Validation Loss : 1.4613 Leraning Late: 0.4687
+Epoch : 68, Avg Loss : 1.5108, Validation Loss : 1.3294 Leraning Late: 0.4419
+Epoch : 69, Avg Loss : 1.4492, Validation Loss : 1.3970 Leraning Late: 0.4155
+Epoch : 70, Avg Loss : 1.4132, Validation Loss : 1.4383 Leraning Late: 0.3898
+Epoch : 71, Avg Loss : 1.3654, Validation Loss : 1.4900 Leraning Late: 0.3646
+Epoch : 72, Avg Loss : 1.3922, Validation Loss : 1.2259 Leraning Late: 0.3400
+Epoch : 73, Avg Loss : 1.3616, Validation Loss : 1.4800 Leraning Late: 0.3161
+Epoch : 74, Avg Loss : 1.2647, Validation Loss : 1.3774 Leraning Late: 0.2929
+Epoch : 75, Avg Loss : 1.3374, Validation Loss : 1.3256 Leraning Late: 0.2703
+Epoch : 76, Avg Loss : 1.2545, Validation Loss : 1.2270 Leraning Late: 0.2485
+Epoch : 77, Avg Loss : 1.2420, Validation Loss : 1.2979 Leraning Late: 0.2275
+Epoch : 78, Avg Loss : 1.3290, Validation Loss : 1.1311 Leraning Late: 0.2073
+Epoch : 79, Avg Loss : 1.2233, Validation Loss : 1.2201 Leraning Late: 0.1878
+Epoch : 80, Avg Loss : 1.2740, Validation Loss : 1.2565 Leraning Late: 0.1692
+Epoch : 81, Avg Loss : 1.2174, Validation Loss : 1.1766 Leraning Late: 0.1515
+Epoch : 82, Avg Loss : 1.1726, Validation Loss : 1.2848 Leraning Late: 0.1347
+Epoch : 83, Avg Loss : 1.1808, Validation Loss : 1.1615 Leraning Late: 0.1188
+Epoch : 84, Avg Loss : 1.1369, Validation Loss : 1.0362 Leraning Late: 0.1038
+Epoch : 85, Avg Loss : 1.1349, Validation Loss : 1.2513 Leraning Late: 0.0898
+Epoch : 86, Avg Loss : 1.1842, Validation Loss : 1.2484 Leraning Late: 0.0767
+Epoch : 87, Avg Loss : 1.1429, Validation Loss : 1.0683 Leraning Late: 0.0646
+Epoch : 88, Avg Loss : 1.1876, Validation Loss : 1.0859 Leraning Late: 0.0535
+Epoch : 89, Avg Loss : 1.1263, Validation Loss : 1.0889 Leraning Late: 0.0434
+Epoch : 90, Avg Loss : 1.1069, Validation Loss : 1.1333 Leraning Late: 0.0344
+Epoch : 91, Avg Loss : 1.1783, Validation Loss : 1.0278 Leraning Late: 0.0264
+Epoch : 92, Avg Loss : 1.0615, Validation Loss : 1.1373 Leraning Late: 0.0194
+Epoch : 93, Avg Loss : 1.1058, Validation Loss : 1.2358 Leraning Late: 0.0135
+Epoch : 94, Avg Loss : 1.1597, Validation Loss : 1.2222 Leraning Late: 0.0086
+Epoch : 95, Avg Loss : 1.1360, Validation Loss : 1.1409 Leraning Late: 0.0049
+Epoch : 96, Avg Loss : 1.1279, Validation Loss : 1.1920 Leraning Late: 0.0022
+Epoch : 97, Avg Loss : 1.1867, Validation Loss : 1.1144 Leraning Late: 0.0005
+Epoch : 98, Avg Loss : 1.1235, Validation Loss : 1.3103 Leraning Late: 0.0000
+Epoch : 99, Avg Loss : 1.1479, Validation Loss : 1.1062 Leraning Late: 0.0005
+Epoch : 100, Avg Loss : 1.1346, Validation Loss : 1.1011 Leraning Late: 0.0022
+FG 학습 완료. 이제 F의 output을 실제 dataset의 label과 연결.
+Files already downloaded and verified
+Files already downloaded and verified
+Epoch : 1, Avg Loss : 1.5783 Validation Loss : 1.4619
+Epoch : 2, Avg Loss : 1.4342 Validation Loss : 1.4126
+Epoch : 3, Avg Loss : 1.3946 Validation Loss : 1.3857
+Epoch : 4, Avg Loss : 1.3673 Validation Loss : 1.3661
+Epoch : 5, Avg Loss : 1.3481 Validation Loss : 1.3499
+Epoch : 6, Avg Loss : 1.3319 Validation Loss : 1.3383
+Epoch : 7, Avg Loss : 1.3194 Validation Loss : 1.3258
+Epoch : 8, Avg Loss : 1.3101 Validation Loss : 1.3168
+Epoch : 9, Avg Loss : 1.2980 Validation Loss : 1.3005
+Epoch : 10, Avg Loss : 1.2915 Validation Loss : 1.3013
+Epoch : 11, Avg Loss : 1.2852 Validation Loss : 1.2916
+Epoch : 12, Avg Loss : 1.2758 Validation Loss : 1.2870
+Epoch : 13, Avg Loss : 1.2716 Validation Loss : 1.2870
+Epoch : 14, Avg Loss : 1.2639 Validation Loss : 1.2821
+Epoch : 15, Avg Loss : 1.2603 Validation Loss : 1.2847
+Epoch : 16, Avg Loss : 1.2556 Validation Loss : 1.2680
+Epoch : 17, Avg Loss : 1.2524 Validation Loss : 1.2754
+Epoch : 18, Avg Loss : 1.2490 Validation Loss : 1.2668
+Epoch : 19, Avg Loss : 1.2469 Validation Loss : 1.2607
+Epoch : 20, Avg Loss : 1.2426 Validation Loss : 1.2596
+Epoch : 21, Avg Loss : 1.2386 Validation Loss : 1.2581
+Epoch : 22, Avg Loss : 1.2341 Validation Loss : 1.2579
+Epoch : 23, Avg Loss : 1.2349 Validation Loss : 1.2498
+Epoch : 24, Avg Loss : 1.2290 Validation Loss : 1.2533
+Epoch : 25, Avg Loss : 1.2265 Validation Loss : 1.2580
+Epoch : 26, Avg Loss : 1.2256 Validation Loss : 1.2416
+Epoch : 27, Avg Loss : 1.2229 Validation Loss : 1.2480
+Epoch : 28, Avg Loss : 1.2218 Validation Loss : 1.2503
+Epoch : 29, Avg Loss : 1.2197 Validation Loss : 1.2571
+Epoch : 30, Avg Loss : 1.2168 Validation Loss : 1.2359
+Epoch : 31, Avg Loss : 1.2171 Validation Loss : 1.2527
+Epoch : 32, Avg Loss : 1.2121 Validation Loss : 1.2325
+Epoch : 33, Avg Loss : 1.2121 Validation Loss : 1.2283
+Epoch : 34, Avg Loss : 1.2100 Validation Loss : 1.2341
+Epoch : 35, Avg Loss : 1.2081 Validation Loss : 1.2396
+Epoch : 36, Avg Loss : 1.2078 Validation Loss : 1.2477
+Epoch : 37, Avg Loss : 1.2037 Validation Loss : 1.2344
+Epoch : 38, Avg Loss : 1.2017 Validation Loss : 1.2302
+Epoch : 39, Avg Loss : 1.2032 Validation Loss : 1.2360
+Epoch : 40, Avg Loss : 1.2019 Validation Loss : 1.2278
+Epoch : 41, Avg Loss : 1.1977 Validation Loss : 1.2343
+Epoch : 42, Avg Loss : 1.1995 Validation Loss : 1.2379
+Epoch : 43, Avg Loss : 1.1986 Validation Loss : 1.2424
+Epoch : 44, Avg Loss : 1.1964 Validation Loss : 1.2448
+Epoch : 45, Avg Loss : 1.1940 Validation Loss : 1.2210
+Epoch : 46, Avg Loss : 1.1932 Validation Loss : 1.2496
+Epoch : 47, Avg Loss : 1.1916 Validation Loss : 1.2293
+Epoch : 48, Avg Loss : 1.1922 Validation Loss : 1.2204
+Epoch : 49, Avg Loss : 1.1914 Validation Loss : 1.2192
+Epoch : 50, Avg Loss : 1.1888 Validation Loss : 1.2237
+Epoch : 51, Avg Loss : 1.1873 Validation Loss : 1.2243
+Epoch : 52, Avg Loss : 1.1863 Validation Loss : 1.2369
+Epoch : 53, Avg Loss : 1.1876 Validation Loss : 1.2274
+Epoch : 54, Avg Loss : 1.1865 Validation Loss : 1.2275
+Epoch : 55, Avg Loss : 1.1834 Validation Loss : 1.2260
+Epoch : 56, Avg Loss : 1.1843 Validation Loss : 1.2242
+Epoch : 57, Avg Loss : 1.1829 Validation Loss : 1.2252
+Epoch : 58, Avg Loss : 1.1793 Validation Loss : 1.2276
+Epoch : 59, Avg Loss : 1.1812 Validation Loss : 1.2187
+Epoch : 60, Avg Loss : 1.1807 Validation Loss : 1.2250
+Epoch : 61, Avg Loss : 1.1790 Validation Loss : 1.2106
+Epoch : 62, Avg Loss : 1.1772 Validation Loss : 1.2091
+Epoch : 63, Avg Loss : 1.1765 Validation Loss : 1.2243
+Epoch : 64, Avg Loss : 1.1781 Validation Loss : 1.2245
+Epoch : 65, Avg Loss : 1.1767 Validation Loss : 1.2201
+Epoch : 66, Avg Loss : 1.1778 Validation Loss : 1.2229
+Epoch : 67, Avg Loss : 1.1745 Validation Loss : 1.2182
+Epoch : 68, Avg Loss : 1.1732 Validation Loss : 1.2131
+Epoch : 69, Avg Loss : 1.1720 Validation Loss : 1.2298
+Epoch : 70, Avg Loss : 1.1727 Validation Loss : 1.2055
+Epoch : 71, Avg Loss : 1.1727 Validation Loss : 1.2061
+Epoch : 72, Avg Loss : 1.1701 Validation Loss : 1.2099
+Epoch : 73, Avg Loss : 1.1709 Validation Loss : 1.2074
+Epoch : 74, Avg Loss : 1.1701 Validation Loss : 1.2053
+Epoch : 75, Avg Loss : 1.1685 Validation Loss : 1.2294
+Epoch : 76, Avg Loss : 1.1692 Validation Loss : 1.2229
+Epoch : 77, Avg Loss : 1.1678 Validation Loss : 1.2087
+Epoch : 78, Avg Loss : 1.1690 Validation Loss : 1.2060
+Epoch : 79, Avg Loss : 1.1667 Validation Loss : 1.2257
+Epoch : 80, Avg Loss : 1.1673 Validation Loss : 1.2048
+Epoch : 81, Avg Loss : 1.1648 Validation Loss : 1.2214
+Epoch : 82, Avg Loss : 1.1675 Validation Loss : 1.2093
+Epoch : 83, Avg Loss : 1.1638 Validation Loss : 1.2305
+Epoch : 84, Avg Loss : 1.1647 Validation Loss : 1.2048
+Epoch : 85, Avg Loss : 1.1679 Validation Loss : 1.1999
+Epoch : 86, Avg Loss : 1.1634 Validation Loss : 1.2106
+Epoch : 87, Avg Loss : 1.1646 Validation Loss : 1.2240
+Epoch : 88, Avg Loss : 1.1625 Validation Loss : 1.2177
+Epoch : 89, Avg Loss : 1.1607 Validation Loss : 1.2007
+Epoch : 90, Avg Loss : 1.1623 Validation Loss : 1.2134
+Epoch : 91, Avg Loss : 1.1619 Validation Loss : 1.2034
+Epoch : 92, Avg Loss : 1.1625 Validation Loss : 1.1994
+Epoch : 93, Avg Loss : 1.1595 Validation Loss : 1.2085
+Epoch : 94, Avg Loss : 1.1600 Validation Loss : 1.2035
+Epoch : 95, Avg Loss : 1.1600 Validation Loss : 1.2055
+Epoch : 96, Avg Loss : 1.1593 Validation Loss : 1.2171
+Epoch : 97, Avg Loss : 1.1586 Validation Loss : 1.1904
+Epoch : 98, Avg Loss : 1.1605 Validation Loss : 1.2149
+Epoch : 99, Avg Loss : 1.1587 Validation Loss : 1.2086
+Epoch : 100, Avg Loss : 1.1585 Validation Loss : 1.2133
+Epoch : 101, Avg Loss : 1.1603 Validation Loss : 1.2124
+Epoch : 102, Avg Loss : 1.1558 Validation Loss : 1.2086
+Epoch : 103, Avg Loss : 1.1551 Validation Loss : 1.2021
+Epoch : 104, Avg Loss : 1.1557 Validation Loss : 1.1980
+Epoch : 105, Avg Loss : 1.1542 Validation Loss : 1.2086
+Epoch : 106, Avg Loss : 1.1546 Validation Loss : 1.2018
+Epoch : 107, Avg Loss : 1.1580 Validation Loss : 1.2014
+Epoch : 108, Avg Loss : 1.1552 Validation Loss : 1.2188
+Epoch : 109, Avg Loss : 1.1523 Validation Loss : 1.2188
+Epoch : 110, Avg Loss : 1.1550 Validation Loss : 1.2045
+Epoch : 111, Avg Loss : 1.1534 Validation Loss : 1.2120
+Epoch : 112, Avg Loss : 1.1542 Validation Loss : 1.2039
+Epoch : 113, Avg Loss : 1.1535 Validation Loss : 1.1933
+Epoch : 114, Avg Loss : 1.1547 Validation Loss : 1.2098
+Epoch : 115, Avg Loss : 1.1517 Validation Loss : 1.1978
+Epoch : 116, Avg Loss : 1.1528 Validation Loss : 1.2092
+Epoch : 117, Avg Loss : 1.1517 Validation Loss : 1.2021
+Epoch : 118, Avg Loss : 1.1507 Validation Loss : 1.1994
+Epoch : 119, Avg Loss : 1.1482 Validation Loss : 1.2198
+Epoch : 120, Avg Loss : 1.1503 Validation Loss : 1.1942
+Epoch : 121, Avg Loss : 1.1495 Validation Loss : 1.1947
+Epoch : 122, Avg Loss : 1.1476 Validation Loss : 1.1880
+Epoch : 123, Avg Loss : 1.1498 Validation Loss : 1.1891
+Epoch : 124, Avg Loss : 1.1501 Validation Loss : 1.2075
+Epoch : 125, Avg Loss : 1.1486 Validation Loss : 1.2112
+Epoch : 126, Avg Loss : 1.1486 Validation Loss : 1.1998
+Epoch : 127, Avg Loss : 1.1497 Validation Loss : 1.2019
+Epoch : 128, Avg Loss : 1.1478 Validation Loss : 1.2128
+Epoch : 129, Avg Loss : 1.1494 Validation Loss : 1.2042
+Epoch : 130, Avg Loss : 1.1474 Validation Loss : 1.2046
+Epoch : 131, Avg Loss : 1.1496 Validation Loss : 1.1931
+Epoch : 132, Avg Loss : 1.1485 Validation Loss : 1.2034
+Epoch : 133, Avg Loss : 1.1469 Validation Loss : 1.1968
+Epoch : 134, Avg Loss : 1.1461 Validation Loss : 1.2031
+Epoch : 135, Avg Loss : 1.1455 Validation Loss : 1.1983
+Epoch : 136, Avg Loss : 1.1473 Validation Loss : 1.2185
+Epoch : 137, Avg Loss : 1.1453 Validation Loss : 1.2145
+Epoch : 138, Avg Loss : 1.1456 Validation Loss : 1.2010
+Epoch : 139, Avg Loss : 1.1463 Validation Loss : 1.1991
+Epoch : 140, Avg Loss : 1.1467 Validation Loss : 1.2033
+Epoch : 141, Avg Loss : 1.1502 Validation Loss : 1.1893
+Epoch : 142, Avg Loss : 1.1449 Validation Loss : 1.2022
+Epoch : 143, Avg Loss : 1.1449 Validation Loss : 1.1919
+Epoch : 144, Avg Loss : 1.1425 Validation Loss : 1.2195
+Epoch : 145, Avg Loss : 1.1453 Validation Loss : 1.2002
+Epoch : 146, Avg Loss : 1.1453 Validation Loss : 1.2058
+Epoch : 147, Avg Loss : 1.1427 Validation Loss : 1.2070
+Epoch : 148, Avg Loss : 1.1438 Validation Loss : 1.2064
+Epoch : 149, Avg Loss : 1.1425 Validation Loss : 1.2078
+Epoch : 150, Avg Loss : 1.1433 Validation Loss : 1.2055
+
+실제 test
+총 개수 : 10000
+top-1 맞춘 개수 : 5738 
+ 정확도: 57.38
+top-5 맞춘 개수 : 9527 
+ 정확도: 95.27

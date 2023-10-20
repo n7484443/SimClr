@@ -10,68 +10,6 @@ import torch_optimizer as optim
 from torchinfo import summary
 import numpy as np
 
-class SAM(torch.optim.Optimizer):
-    def __init__(self, params, base_optimizer, rho=0.1, **kwargs):
-        super(SAM, self).__init__(params, defaults=dict(rho=rho, **kwargs))
-        # 일반적으로 base_optimizer을 기반으로 Sharpness가 작은 부분으로 최적화
-        self.base_optimizer = base_optimizer(self.param_groups, **kwargs)
-        self.param_groups = self.base_optimizer.param_groups
-
-    def _grad_norm(self):
-        device_ = self.param_groups[0]["params"][
-            0].device
-        norm = torch.norm(
-            torch.stack([
-                p.grad.norm(p=2).to(device_)
-                for group in self.param_groups for p in group["params"]
-                if p.grad is not None
-            ]),
-            p=2
-        )
-        return norm
-
-    # loss 의 최적화
-    # epsilon hat 의 근사 계산, w + epsilon hat 으로 포인트 이동
-    @torch.no_grad()
-    def first_step(self, zero_grad=False):
-        grad_norm = self._grad_norm()
-        for group in self.param_groups:
-            scale = group["rho"] / (grad_norm + 1e-12)
-            for p in group["params"]:
-                if p.grad is None:
-                    continue
-                # p 텐서 꼴로 변환 후 gradient 곱하기
-                e_w = p.grad * scale.to(p)
-                p.add_(e_w)  # local maximum "w + e_hat"
-                self.state[p]["e_w"] = e_w
-
-        if zero_grad:
-            self.zero_grad()
-
-    # loss sharpness 의 최적화
-    # epsilon hat 을 빼서 기존 지점으로 원복후 파라미터 업데이트
-    @torch.no_grad()
-    def second_step(self, zero_grad=False):
-        for group in self.param_groups:
-            for p in group["params"]:
-                if p.grad is None:
-                    continue
-                p.sub_(self.state[p]["e_w"])  # get back to "w" from "w + e(w)"
-
-        self.base_optimizer.step()  # do the actual "sharpness-aware" update
-
-        if zero_grad:
-            self.zero_grad()
-
-    @torch.no_grad()
-    def step(self, closure=None):
-        closure = torch.enable_grad()(closure)  # the closure should do a full forward-backward pass
-
-        loss = closure()
-        self.first_step(zero_grad=True)
-        closure()
-        self.second_step(zero_grad=True)
-        return loss.item()
 
 # 참조 : https://github.com/p3i0t/SimCLR-CIFAR10/tree/master
 # 참조 : https://medium.com/the-owl/simclr-in-pytorch-5f290cb11dd7
@@ -179,11 +117,11 @@ if __name__ == '__main__':
     device = torch.device("cuda")
     hyper_batch_size = 512
     hyper_batch_size_predictor = 128
-    hyper_epoch = 2
-    hyper_epoch_predictor = 2
+    hyper_epoch = 100
+    hyper_epoch_predictor = 150
     lr = 0.075 * math.sqrt(hyper_batch_size)
     lr_predictor = 0.001
-    rho = 0.1
+    momentum = 0.9
     temperature = 0.1
     strength = 1
 
@@ -201,7 +139,7 @@ if __name__ == '__main__':
 
     summary(simclr, input_size=(hyper_batch_size, 3, 32, 32))
 
-    optimizer = SAM(simclr.parameters(), torch.optim.Adam, lr=lr, rho=rho)
+    optimizer = optim.LARS(simclr.parameters(), lr=lr, momentum=momentum)
     scheduler = torch.optim.lr_scheduler.CosineAnnealingLR(optimizer, T_max=len(trainLoader) - 10, eta_min=0,
                                                            last_epoch=-1)
 
@@ -214,30 +152,28 @@ if __name__ == '__main__':
         # batch_size * 2, rgb, x, y 의 데이터 형태
         loss_sum_train = 0
         for batch_data, _ in trainLoader:
-            with torch.no_grad():
-                batch_size = batch_data.shape[0]
-                batch_data_cuda = batch_data.to(device)
-                batch_data_distorted = distortion.forward(batch_data_cuda)
-                if first:
-                    first = False
-                    pil_img = transforms.ToPILImage()(batch_data_cuda[0])
-                    plt.imshow(pil_img)
-                    plt.show()
-                    pil_img2 = transforms.ToPILImage()(batch_data_distorted[0])
-                    plt.imshow(pil_img2)
-                    plt.show()
-                # [batch_size * 2, rgb, width, height] => [batch_size * 2, h_value_size]
+            batch_size = batch_data.shape[0]
+            batch_data_cuda = batch_data.to(device)
+            batch_data_distorted = distortion.forward(batch_data_cuda)
+            if first:
+                first = False
+                pil_img = transforms.ToPILImage()(batch_data_cuda[0])
+                plt.imshow(pil_img)
+                plt.show()
+                pil_img2 = transforms.ToPILImage()(batch_data_distorted[0])
+                plt.imshow(pil_img2)
+                plt.show()
+            # [batch_size * 2, rgb, width, height] => [batch_size * 2, h_value_size]
 
+            _, batch_data_after = simclr.forward(batch_data_cuda)
+            _, batch_distorted_after = simclr.forward(batch_data_distorted)
 
-            def closure():
-                optimizer.zero_grad()
-                _, batch_data_after = simclr.forward(batch_data_cuda)
-                _, batch_distorted_after = simclr.forward(batch_data_distorted)
-                loss = loss_function.forward(batch_data_after, batch_distorted_after, batch_size)
-                loss.backward()
-                return loss
+            loss = loss_function.forward(batch_data_after, batch_distorted_after, batch_size)
+            loss_sum_train += loss.item()
 
-            loss_sum_train += optimizer.step(closure)
+            optimizer.zero_grad()  # gradient 초기화
+            loss.backward()
+            optimizer.step()
 
         loss_sum_test = 0
         with torch.no_grad():
