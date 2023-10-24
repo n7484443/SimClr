@@ -83,7 +83,7 @@ class ResnetBlock(nn.Module):
         return x
 
 
-# conv output size = ceil((i + 2p - k) / s) + 1
+# conv output_resnet18 size = ceil((i + 2p - k) / s) + 1
 class Resnet(nn.Module):
     def __init__(self, size):
         super().__init__()
@@ -223,11 +223,11 @@ class SimCLR_Loss(nn.Module):
 #         # print(e_x)
 #         e_x = torch.sum(e_x, dim=1)
 #         # print(e_x)
-#         output = torch.div(masked_x, e_x)
-#         # print(output)
-#         output = -torch.log(output)
-#         # print(masked_x, e_x, torch.sum(output) / sample_size)
-#         return torch.sum(output) / sample_size
+#         output_resnet18 = torch.div(masked_x, e_x)
+#         # print(output_resnet18)
+#         output_resnet18 = -torch.log(output_resnet18)
+#         # print(masked_x, e_x, torch.sum(output_resnet18) / sample_size)
+#         return torch.sum(output_resnet18) / sample_size
 
 
 if __name__ == '__main__':
@@ -315,7 +315,7 @@ if __name__ == '__main__':
         predictor = torch.load('./fg_output.pt')
     predictor.to(device)
     if not os.path.exists('./fg_output.pt') or want_train:
-        # fg output 과 실제 dataset label의 연결
+        # fg output_resnet18 과 실제 dataset label의 연결
         simple_loss_function = nn.CrossEntropyLoss()
         simple_loss_function.to(device)
         predictor.train()

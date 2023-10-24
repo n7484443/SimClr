@@ -271,7 +271,7 @@ if __name__ == '__main__':
     trainLoader, testLoader = load_image(batch_size=hyper_batch_size_predictor)
     # predictor
     predictor = nn.Linear(simclr.feature_dim, class_size).to(device)
-    # fg output 과 실제 dataset label의 연결
+    # fg output_resnet18 과 실제 dataset label의 연결
     simple_loss_function = nn.CrossEntropyLoss().to(device)
 
     simclr.eval()

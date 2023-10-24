@@ -33,9 +33,9 @@ def forward(x, size, tmp):
     e_x = torch.sum(e_x, dim=1)
     # print(e_x)
     output = torch.div(masked_x, e_x)
-    # print(output)
+    # print(output_resnet18)
     output = -torch.log(output)
-    # print(output)
+    # print(output_resnet18)
     return torch.sum(output)
 
 if __name__ == '__main__':

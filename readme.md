@@ -94,7 +94,7 @@ class ResnetBlock(nn.Module):
 
 
 ```python
-# conv output size = ceil((i + 2p - k) / s) + 1
+# conv output_resnet18 size = ceil((i + 2p - k) / s) + 1
 class Resnet(nn.Module):
     def __init__(self, size):
         super().__init__()
@@ -194,9 +194,9 @@ class SimCLRLoss(nn.Module):
         e_x = torch.sum(e_x, dim=1)
         # print(e_x)
         output = torch.div(masked_x, e_x)
-        # print(output)
+        # print(output_resnet18)
         output = -torch.log(output)
-        # print(masked_x, e_x, torch.sum(output) / sample_size)
+        # print(masked_x, e_x, torch.sum(output_resnet18) / sample_size)
         return torch.sum(output) / sample_size
 ```
 위는 SimCLR의 Loss function을 구현한 것으로, 논문의 코드를 for문을 이용하여 구현하면 속도가 많이 느리다.
@@ -385,7 +385,7 @@ predictor 모델은 총 4개의 레이어로 구성되어 있다
         predictor = torch.load('./fg_output.pt')
     predictor.to(device)
     if not os.path.exists('./fg_output.pt') or want_train:
-        # fg output 과 실제 dataset label의 연결
+        # fg output_resnet18 과 실제 dataset label의 연결
         simple_loss_function = nn.CrossEntropyLoss()
         simple_loss_function.to(device)
         predictor.train()
