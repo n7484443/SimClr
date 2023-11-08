@@ -180,7 +180,6 @@ class SimCLR(nn.Module):
 
 
 if __name__ == '__main__':
-    want_train = True
     device = torch.device("cuda")
     hyper_batch_size = 512
     hyper_batch_size_predictor = 128
