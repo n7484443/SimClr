@@ -9,6 +9,9 @@ import matplotlib.pyplot as plt
 import torch_optimizer as optim
 from torchinfo import summary
 import numpy as np
+from tqdm import tqdm
+from time import sleep
+
 
 class SAM(torch.optim.Optimizer):
     def __init__(self, params, base_optimizer, rho=0.1, **kwargs):
@@ -73,6 +76,7 @@ class SAM(torch.optim.Optimizer):
         self.second_step(zero_grad=True)
         return loss.item()
 
+
 # 참조 : https://github.com/p3i0t/SimCLR-CIFAR10/tree/master
 # 참조 : https://medium.com/the-owl/simclr-in-pytorch-5f290cb11dd7
 
@@ -93,7 +97,8 @@ def load_image(batch_size) -> (tu_data.DataLoader, tu_data.DataLoader):
 class Distortion(nn.Module):
     def __init__(self, strength, image_size=32):
         super().__init__()
-        crop_transform = transforms.RandomResizedCrop((image_size, image_size), scale=(0.25, 1), ratio=(1.0/2.0, 2.0/1.0), antialias=True)
+        crop_transform = transforms.RandomResizedCrop((image_size, image_size), scale=(0.25, 1),
+                                                      ratio=(1.0 / 2.0, 2.0 / 1.0), antialias=True)
         flip_horizon = transforms.RandomHorizontalFlip(p=0.5)
         flip_vertical = transforms.RandomVerticalFlip(p=0.5)
         color_transform = transforms.ColorJitter(brightness=0.8 * strength, contrast=0.8 * strength,
@@ -179,11 +184,11 @@ if __name__ == '__main__':
     device = torch.device("cuda")
     hyper_batch_size = 512
     hyper_batch_size_predictor = 128
-    hyper_epoch = 2
-    hyper_epoch_predictor = 2
+    hyper_epoch = 100
+    hyper_epoch_predictor = hyper_epoch*2
     lr = 0.075 * math.sqrt(hyper_batch_size)
-    lr_predictor = 0.001
-    rho = 0.1
+    lr_predictor = 1e-3
+    weight_decay_predictor = 1e-6
     temperature = 0.1
     strength = 1
 
@@ -201,8 +206,8 @@ if __name__ == '__main__':
 
     summary(simclr, input_size=(hyper_batch_size, 3, 32, 32))
 
-    optimizer = SAM(simclr.parameters(), torch.optim.Adam, lr=lr, rho=rho)
-    scheduler = torch.optim.lr_scheduler.CosineAnnealingLR(optimizer, T_max=len(trainLoader) - 10, eta_min=0,
+    optimizer = SAM(simclr.parameters(), torch.optim.Adam, lr=lr)
+    scheduler = torch.optim.lr_scheduler.CosineAnnealingLR(optimizer, T_max=hyper_epoch - 10, eta_min=0,
                                                            last_epoch=-1)
 
     distortion = Distortion(strength=strength).to(device)
@@ -213,7 +218,9 @@ if __name__ == '__main__':
         first = False
         # batch_size * 2, rgb, x, y 의 데이터 형태
         loss_sum_train = 0
-        for batch_data, _ in trainLoader:
+        tqdm_epoch = tqdm(trainLoader, unit="batch")
+        for batch_data, _ in tqdm_epoch:
+            tqdm_epoch.set_description(f"Epoch {epoch}")
             with torch.no_grad():
                 batch_size = batch_data.shape[0]
                 batch_data_cuda = batch_data.to(device)
@@ -237,8 +244,9 @@ if __name__ == '__main__':
                 loss.backward()
                 return loss
 
-            loss_sum_train += optimizer.step(closure)
 
+            loss_sum_train += optimizer.step(closure)
+        tqdm_epoch.close()
         loss_sum_test = 0
         with torch.no_grad():
             for batch_data, _ in testLoader:
@@ -252,8 +260,9 @@ if __name__ == '__main__':
 
         loss_sum_train /= len(trainLoader)
         loss_sum_test /= len(testLoader)
-        print('Epoch : %d, Avg Loss : %.4f, Validation Loss : %.4f Leraning Late: %.4f' % (
-            epoch, loss_sum_train, loss_sum_test, scheduler.get_last_lr()[0]))
+        tqdm.write('Avg Loss : %.4f Validation Loss : %.4f Learning Late: %.4f' % (
+            loss_sum_train, loss_sum_test, scheduler.get_last_lr()[0]))
+        sleep(0.1)
         data_output.append((loss_sum_train, loss_sum_test))
         if epoch >= 10:
             scheduler.step()
@@ -276,14 +285,18 @@ if __name__ == '__main__':
 
     simclr.eval()
     predictor.train()
-    optimizer = torch.optim.Adam(predictor.parameters(), lr=lr_predictor)
+    optimizer = torch.optim.Adam(predictor.parameters(), lr=lr_predictor, weight_decay=weight_decay_predictor)
+    scheduler = torch.optim.lr_scheduler.CosineAnnealingLR(optimizer, T_max=hyper_epoch_predictor - 10, eta_min=0,
+                                                           last_epoch=-1)
     data_output = []
     for epoch in range(1, hyper_epoch_predictor + 1):
         # batch_size * 2, rgb, x, y 의 데이터 형태
         loss_sum_train = 0
         loss_sum_test = 0
         total_size = 0
-        for batch_data, batch_label in trainLoader:
+        tqdm_epoch = tqdm(trainLoader, unit="batch")
+        for batch_data, batch_label in tqdm_epoch:
+            tqdm_epoch.set_description(f"Epoch {epoch}")
             batch_size = batch_data.shape[0]
 
             with torch.no_grad():
@@ -295,6 +308,7 @@ if __name__ == '__main__':
             optimizer.zero_grad()  # gradient 초기화
             loss.backward()
             optimizer.step()
+        tqdm_epoch.close()
         correct = 0.0
         with torch.no_grad():
             for batch_data, batch_label in testLoader:
@@ -311,9 +325,12 @@ if __name__ == '__main__':
 
         loss_sum_train /= len(trainLoader)
         loss_sum_test /= len(testLoader)
-        print('Epoch : %d, Avg Loss : %.4f Validation Loss : %.4f' % (
-            epoch, loss_sum_train, loss_sum_test))
         data_output.append((loss_sum_train, loss_sum_test, 100.0 * correct / total_size))
+        tqdm.write('Avg Loss : %.4f Validation Loss : %.4f Learning Late: %.4f' % (
+            loss_sum_train, loss_sum_test, scheduler.get_last_lr()[0]))
+        sleep(0.1)
+        if epoch >= 10:
+            scheduler.step()
 
     range_x = np.arange(0, hyper_epoch_predictor, 1)
     ax[1].plot(range_x, [x[0] for x in data_output], label='Training loss', color='red')
@@ -334,7 +351,8 @@ if __name__ == '__main__':
     correct_5 = 0
     total_size = 0
     with torch.no_grad():
-        for batch_data, batch_label in testLoader:
+        tqdm_epoch = tqdm(testLoader, unit="batch")
+        for batch_data, batch_label in tqdm_epoch:
             feature, _ = simclr.forward(batch_data.to(device))
             output = predictor.forward(feature)
             # argmax = 가장 큰 값의 index를 가져옴
@@ -343,6 +361,7 @@ if __name__ == '__main__':
             correct_1 += torch.eq(predicted_1, batch_label.to(device).view([-1, 1])).any(dim=1).sum().item()
             correct_5 += torch.eq(predicted_5, batch_label.to(device).view([-1, 1])).any(dim=1).sum().item()
             total_size += batch_data.size(dim=0)
+        tqdm_epoch.close()
     print(f'총 개수 : {total_size}')
     print(f'top-1 맞춘 개수 : {correct_1} \n 정확도: {100.0 * correct_1 / total_size}')
     print(f'top-5 맞춘 개수 : {correct_5} \n 정확도: {100.0 * correct_5 / total_size}')

@@ -80,7 +80,7 @@ class SimclrLoss(nn.Module):
         positive_samples = torch.cat((sim_i_j, sim_j_i), dim=0).reshape(N, 1)
         negative_samples = sim[self.mask_correlated_samples(batch_size)].reshape(N, -1)
 
-        labels = torch.from_numpy(np.array([0] * N)).reshape(-1).to(positive_samples.device).long()
+        labels = torch.zeros(N).to(positive_samples.device)
 
         logits = torch.cat((positive_samples, negative_samples), dim=1)
         loss = self.criterion(logits, labels)
