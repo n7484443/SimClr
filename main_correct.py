@@ -18,9 +18,9 @@ def load_image(batch_size) -> (tu_data.DataLoader, tu_data.DataLoader):
     test_set = torchvision.datasets.CIFAR10(root='./data', train=False, download=True, transform=transforms.ToTensor())
 
     # pin_memory : GPU에 데이터를 미리 전송
-    train_loader = tu_data.DataLoader(train_set, batch_size=batch_size, shuffle=True, num_workers=2, pin_memory=True)
+    train_loader = tu_data.DataLoader(train_set, batch_size=batch_size, shuffle=True, num_workers=4, pin_memory=True)
     # validation set을 분리하는게 맞으나, 여러 모델을 테스트하고 제일 좋은걸 선별하는 게 아니므로 test set을 validation set으로 사용
-    test_loader = tu_data.DataLoader(test_set, batch_size=batch_size, shuffle=True, num_workers=2, pin_memory=True)
+    test_loader = tu_data.DataLoader(test_set, batch_size=batch_size, shuffle=True, num_workers=4, pin_memory=True)
 
     return train_loader, test_loader
 
@@ -79,7 +79,7 @@ class SimclrLoss(nn.Module):
         positive_samples = torch.cat((sim_i_j, sim_j_i), dim=0).reshape(N, 1)
         negative_samples = sim[self.mask_correlated_samples(batch_size)].reshape(N, -1)
 
-        labels = torch.from_numpy(np.array([0] * N)).reshape(-1).to(positive_samples.device).long()
+        labels = torch.zeros(N, device=positive_samples.device, dtype=torch.int64)
 
         logits = torch.cat((positive_samples, negative_samples), dim=1)
         loss = self.criterion(logits, labels)
@@ -115,7 +115,7 @@ if __name__ == '__main__':
     device = torch.device("cuda")
     hyper_batch_size = 512
     hyper_batch_size_predictor = 128
-    hyper_epoch = 100
+    hyper_epoch = 1
     hyper_epoch_predictor = hyper_epoch*2
     lr = 0.075 * math.sqrt(hyper_batch_size)
     lr_predictor = 1e-3
