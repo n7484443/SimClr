@@ -115,7 +115,7 @@ if __name__ == '__main__':
     device = torch.device("cuda")
     hyper_batch_size = 512
     hyper_batch_size_predictor = 128
-    hyper_epoch = 1
+    hyper_epoch = 100
     hyper_epoch_predictor = hyper_epoch*2
     lr = 0.075 * math.sqrt(hyper_batch_size)
     lr_predictor = 1e-3
@@ -173,7 +173,7 @@ if __name__ == '__main__':
                 _, batch_distorted_after = simclr.forward(batch_data_distorted)
                 loss = loss_function.forward(batch_data_after, batch_distorted_after, batch_size)
                 loss.backward()
-                return loss
+                return loss.item()
 
 
             loss_sum_train += optimizer.step(closure)

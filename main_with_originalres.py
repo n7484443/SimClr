@@ -241,7 +241,7 @@ if __name__ == '__main__':
                 _, batch_distorted_after = simclr.forward(batch_data_distorted)
                 loss = loss_function.forward(batch_data_after, batch_distorted_after, batch_size)
                 loss.backward()
-                return loss
+                return loss.item()
 
 
             loss_sum_train += optimizer.step(closure)
