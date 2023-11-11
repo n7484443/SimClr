@@ -1,0 +1,612 @@
+Files already downloaded and verified
+Files already downloaded and verified
+Epoch 1: 100%|██████████| 196/196 [00:36<00:00,  5.42batch/s]
+Avg Loss : 5.0842 Validation Loss : 4.6814 Learning Late: 1.2000
+Epoch 2: 100%|██████████| 196/196 [00:36<00:00,  5.44batch/s]
+Avg Loss : 4.6443 Validation Loss : 4.0781 Learning Late: 1.2000
+Epoch 3: 100%|██████████| 196/196 [00:36<00:00,  5.43batch/s]
+Avg Loss : 4.2078 Validation Loss : 4.1741 Learning Late: 1.2000
+Epoch 4: 100%|██████████| 196/196 [00:36<00:00,  5.42batch/s]
+Avg Loss : 3.8841 Validation Loss : 3.6966 Learning Late: 1.2000
+Epoch 5: 100%|██████████| 196/196 [00:36<00:00,  5.43batch/s]
+Avg Loss : 3.5975 Validation Loss : 3.3727 Learning Late: 1.2000
+Epoch 6: 100%|██████████| 196/196 [00:36<00:00,  5.43batch/s]
+Avg Loss : 3.1539 Validation Loss : 3.4756 Learning Late: 1.2000
+Epoch 7: 100%|██████████| 196/196 [00:36<00:00,  5.43batch/s]
+Avg Loss : 2.7836 Validation Loss : 2.7112 Learning Late: 1.2000
+Epoch 8: 100%|██████████| 196/196 [00:36<00:00,  5.43batch/s]
+Avg Loss : 2.4172 Validation Loss : 2.3001 Learning Late: 1.2000
+Epoch 9: 100%|██████████| 196/196 [00:36<00:00,  5.44batch/s]
+Avg Loss : 2.1305 Validation Loss : 1.9041 Learning Late: 1.2000
+Epoch 10: 100%|██████████| 196/196 [00:36<00:00,  5.44batch/s]
+Avg Loss : 1.8155 Validation Loss : 1.9349 Learning Late: 1.2000
+Epoch 11: 100%|██████████| 196/196 [00:36<00:00,  5.44batch/s]
+Avg Loss : 1.6488 Validation Loss : 1.4210 Learning Late: 1.1996
+Epoch 12: 100%|██████████| 196/196 [00:36<00:00,  5.44batch/s]
+Avg Loss : 1.6243 Validation Loss : 1.7400 Learning Late: 1.1985
+Epoch 13: 100%|██████████| 196/196 [00:36<00:00,  5.44batch/s]
+Avg Loss : 1.5366 Validation Loss : 1.4467 Learning Late: 1.1967
+Epoch 14: 100%|██████████| 196/196 [00:36<00:00,  5.43batch/s]
+Avg Loss : 1.4266 Validation Loss : 1.6446 Learning Late: 1.1942
+Epoch 15: 100%|██████████| 196/196 [00:36<00:00,  5.43batch/s]
+Avg Loss : 1.4018 Validation Loss : 1.1498 Learning Late: 1.1909
+Epoch 16: 100%|██████████| 196/196 [00:36<00:00,  5.43batch/s]
+Avg Loss : 1.1242 Validation Loss : 1.0130 Learning Late: 1.1869
+Epoch 17: 100%|██████████| 196/196 [00:36<00:00,  5.44batch/s]
+Avg Loss : 1.0954 Validation Loss : 1.0294 Learning Late: 1.1822
+Epoch 18: 100%|██████████| 196/196 [00:36<00:00,  5.44batch/s]
+Avg Loss : 0.8905 Validation Loss : 0.8737 Learning Late: 1.1768
+Epoch 19: 100%|██████████| 196/196 [00:36<00:00,  5.43batch/s]
+Avg Loss : 0.8745 Validation Loss : 0.7300 Learning Late: 1.1706
+Epoch 20: 100%|██████████| 196/196 [00:36<00:00,  5.43batch/s]
+Avg Loss : 0.8431 Validation Loss : 0.7262 Learning Late: 1.1638
+Epoch 21: 100%|██████████| 196/196 [00:36<00:00,  5.43batch/s]
+Avg Loss : 0.7125 Validation Loss : 0.7397 Learning Late: 1.1563
+Epoch 22: 100%|██████████| 196/196 [00:36<00:00,  5.44batch/s]
+Avg Loss : 0.6616 Validation Loss : 0.6939 Learning Late: 1.1481
+Epoch 23: 100%|██████████| 196/196 [00:36<00:00,  5.43batch/s]
+Avg Loss : 0.6606 Validation Loss : 0.6567 Learning Late: 1.1393
+Epoch 24: 100%|██████████| 196/196 [00:36<00:00,  5.43batch/s]
+Avg Loss : 0.6445 Validation Loss : 0.5247 Learning Late: 1.1298
+Epoch 25: 100%|██████████| 196/196 [00:36<00:00,  5.43batch/s]
+Avg Loss : 0.5659 Validation Loss : 0.4349 Learning Late: 1.1196
+Epoch 26: 100%|██████████| 196/196 [00:36<00:00,  5.44batch/s]
+Avg Loss : 0.5484 Validation Loss : 0.4595 Learning Late: 1.1088
+Epoch 27: 100%|██████████| 196/196 [00:36<00:00,  5.43batch/s]
+Avg Loss : 0.5264 Validation Loss : 0.6961 Learning Late: 1.0974
+Epoch 28: 100%|██████████| 196/196 [00:36<00:00,  5.43batch/s]
+Avg Loss : 0.4947 Validation Loss : 0.4553 Learning Late: 1.0854
+Epoch 29: 100%|██████████| 196/196 [00:36<00:00,  5.43batch/s]
+Avg Loss : 0.4847 Validation Loss : 0.4456 Learning Late: 1.0728
+Epoch 30: 100%|██████████| 196/196 [00:36<00:00,  5.43batch/s]
+Avg Loss : 0.4053 Validation Loss : 0.4159 Learning Late: 1.0596
+Epoch 31: 100%|██████████| 196/196 [00:36<00:00,  5.44batch/s]
+Avg Loss : 0.4341 Validation Loss : 0.6185 Learning Late: 1.0459
+Epoch 32: 100%|██████████| 196/196 [00:36<00:00,  5.43batch/s]
+Avg Loss : 0.4237 Validation Loss : 0.3234 Learning Late: 1.0316
+Epoch 33: 100%|██████████| 196/196 [00:36<00:00,  5.43batch/s]
+Avg Loss : 0.4179 Validation Loss : 0.3872 Learning Late: 1.0168
+Epoch 34: 100%|██████████| 196/196 [00:35<00:00,  5.44batch/s]
+Avg Loss : 0.4292 Validation Loss : 0.3738 Learning Late: 1.0015
+Epoch 35: 100%|██████████| 196/196 [00:36<00:00,  5.43batch/s]
+Avg Loss : 0.3630 Validation Loss : 0.4299 Learning Late: 0.9857
+Epoch 36: 100%|██████████| 196/196 [00:36<00:00,  5.43batch/s]
+Avg Loss : 0.3802 Validation Loss : 0.3886 Learning Late: 0.9694
+Epoch 37: 100%|██████████| 196/196 [00:36<00:00,  5.44batch/s]
+Avg Loss : 0.3312 Validation Loss : 0.3647 Learning Late: 0.9527
+Epoch 38: 100%|██████████| 196/196 [00:36<00:00,  5.43batch/s]
+Avg Loss : 0.3629 Validation Loss : 0.3472 Learning Late: 0.9355
+Epoch 39: 100%|██████████| 196/196 [00:36<00:00,  5.43batch/s]
+Avg Loss : 0.3395 Validation Loss : 0.3370 Learning Late: 0.9180
+Epoch 40: 100%|██████████| 196/196 [00:36<00:00,  5.44batch/s]
+Avg Loss : 0.3580 Validation Loss : 0.3738 Learning Late: 0.9000
+Epoch 41: 100%|██████████| 196/196 [00:36<00:00,  5.43batch/s]
+Avg Loss : 0.3376 Validation Loss : 0.2703 Learning Late: 0.8817
+Epoch 42: 100%|██████████| 196/196 [00:36<00:00,  5.44batch/s]
+Avg Loss : 0.3390 Validation Loss : 0.3415 Learning Late: 0.8630
+Epoch 43: 100%|██████████| 196/196 [00:36<00:00,  5.43batch/s]
+Avg Loss : 0.3181 Validation Loss : 0.3047 Learning Late: 0.8440
+Epoch 44: 100%|██████████| 196/196 [00:36<00:00,  5.44batch/s]
+Avg Loss : 0.3367 Validation Loss : 0.3381 Learning Late: 0.8248
+Epoch 45: 100%|██████████| 196/196 [00:36<00:00,  5.44batch/s]
+Avg Loss : 0.3076 Validation Loss : 0.2871 Learning Late: 0.8052
+Epoch 46: 100%|██████████| 196/196 [00:36<00:00,  5.44batch/s]
+Avg Loss : 0.3270 Validation Loss : 0.3804 Learning Late: 0.7854
+Epoch 47: 100%|██████████| 196/196 [00:36<00:00,  5.44batch/s]
+Avg Loss : 0.2916 Validation Loss : 0.2967 Learning Late: 0.7654
+Epoch 48: 100%|██████████| 196/196 [00:36<00:00,  5.44batch/s]
+Avg Loss : 0.2953 Validation Loss : 0.2748 Learning Late: 0.7452
+Epoch 49: 100%|██████████| 196/196 [00:36<00:00,  5.44batch/s]
+Avg Loss : 0.2949 Validation Loss : 0.2923 Learning Late: 0.7247
+Epoch 50: 100%|██████████| 196/196 [00:36<00:00,  5.44batch/s]
+Avg Loss : 0.3067 Validation Loss : 0.2730 Learning Late: 0.7042
+Epoch 51: 100%|██████████| 196/196 [00:36<00:00,  5.43batch/s]
+Avg Loss : 0.2778 Validation Loss : 0.2584 Learning Late: 0.6835
+Epoch 52: 100%|██████████| 196/196 [00:36<00:00,  5.44batch/s]
+Avg Loss : 0.2681 Validation Loss : 0.3414 Learning Late: 0.6627
+Epoch 53: 100%|██████████| 196/196 [00:36<00:00,  5.44batch/s]
+Avg Loss : 0.2846 Validation Loss : 0.2501 Learning Late: 0.6419
+Epoch 54: 100%|██████████| 196/196 [00:36<00:00,  5.44batch/s]
+Avg Loss : 0.2554 Validation Loss : 0.3213 Learning Late: 0.6209
+Epoch 55: 100%|██████████| 196/196 [00:36<00:00,  5.44batch/s]
+Avg Loss : 0.2624 Validation Loss : 0.2786 Learning Late: 0.6000
+Epoch 56: 100%|██████████| 196/196 [00:36<00:00,  5.43batch/s]
+Avg Loss : 0.2612 Validation Loss : 0.2438 Learning Late: 0.5791
+Epoch 57: 100%|██████████| 196/196 [00:36<00:00,  5.44batch/s]
+Avg Loss : 0.2572 Validation Loss : 0.2564 Learning Late: 0.5581
+Epoch 58: 100%|██████████| 196/196 [00:36<00:00,  5.44batch/s]
+Avg Loss : 0.2449 Validation Loss : 0.2520 Learning Late: 0.5373
+Epoch 59: 100%|██████████| 196/196 [00:36<00:00,  5.44batch/s]
+Avg Loss : 0.2261 Validation Loss : 0.2696 Learning Late: 0.5165
+Epoch 60: 100%|██████████| 196/196 [00:36<00:00,  5.43batch/s]
+Avg Loss : 0.2202 Validation Loss : 0.2855 Learning Late: 0.4958
+Epoch 61: 100%|██████████| 196/196 [00:36<00:00,  5.43batch/s]
+Avg Loss : 0.2452 Validation Loss : 0.2416 Learning Late: 0.4753
+Epoch 62: 100%|██████████| 196/196 [00:36<00:00,  5.42batch/s]
+Avg Loss : 0.2578 Validation Loss : 0.2610 Learning Late: 0.4548
+Epoch 63: 100%|██████████| 196/196 [00:36<00:00,  5.43batch/s]
+Avg Loss : 0.2415 Validation Loss : 0.2839 Learning Late: 0.4346
+Epoch 64: 100%|██████████| 196/196 [00:36<00:00,  5.43batch/s]
+Avg Loss : 0.2389 Validation Loss : 0.2638 Learning Late: 0.4146
+Epoch 65: 100%|██████████| 196/196 [00:36<00:00,  5.44batch/s]
+Avg Loss : 0.2344 Validation Loss : 0.2195 Learning Late: 0.3948
+Epoch 66: 100%|██████████| 196/196 [00:36<00:00,  5.43batch/s]
+Avg Loss : 0.2276 Validation Loss : 0.2122 Learning Late: 0.3752
+Epoch 67: 100%|██████████| 196/196 [00:36<00:00,  5.43batch/s]
+Avg Loss : 0.2248 Validation Loss : 0.2310 Learning Late: 0.3560
+Epoch 68: 100%|██████████| 196/196 [00:36<00:00,  5.44batch/s]
+Avg Loss : 0.2231 Validation Loss : 0.2168 Learning Late: 0.3370
+Epoch 69: 100%|██████████| 196/196 [00:36<00:00,  5.42batch/s]
+Avg Loss : 0.2485 Validation Loss : 0.1830 Learning Late: 0.3183
+Epoch 70: 100%|██████████| 196/196 [00:36<00:00,  5.43batch/s]
+Avg Loss : 0.2359 Validation Loss : 0.1864 Learning Late: 0.3000
+Epoch 71: 100%|██████████| 196/196 [00:36<00:00,  5.43batch/s]
+Avg Loss : 0.2198 Validation Loss : 0.2345 Learning Late: 0.2820
+Epoch 72: 100%|██████████| 196/196 [00:36<00:00,  5.43batch/s]
+Avg Loss : 0.2056 Validation Loss : 0.2326 Learning Late: 0.2645
+Epoch 73: 100%|██████████| 196/196 [00:36<00:00,  5.43batch/s]
+Avg Loss : 0.2257 Validation Loss : 0.2055 Learning Late: 0.2473
+Epoch 74: 100%|██████████| 196/196 [00:36<00:00,  5.43batch/s]
+Avg Loss : 0.2114 Validation Loss : 0.2340 Learning Late: 0.2306
+Epoch 75: 100%|██████████| 196/196 [00:36<00:00,  5.43batch/s]
+Avg Loss : 0.2225 Validation Loss : 0.2394 Learning Late: 0.2143
+Epoch 76: 100%|██████████| 196/196 [00:36<00:00,  5.43batch/s]
+Avg Loss : 0.2103 Validation Loss : 0.2049 Learning Late: 0.1985
+Epoch 77: 100%|██████████| 196/196 [00:36<00:00,  5.44batch/s]
+Avg Loss : 0.1917 Validation Loss : 0.1988 Learning Late: 0.1832
+Epoch 78: 100%|██████████| 196/196 [00:36<00:00,  5.44batch/s]
+Avg Loss : 0.1983 Validation Loss : 0.2321 Learning Late: 0.1684
+Epoch 79: 100%|██████████| 196/196 [00:36<00:00,  5.42batch/s]
+Avg Loss : 0.2180 Validation Loss : 0.1859 Learning Late: 0.1541
+Epoch 80: 100%|██████████| 196/196 [00:36<00:00,  5.43batch/s]
+Avg Loss : 0.2094 Validation Loss : 0.2061 Learning Late: 0.1404
+Epoch 81: 100%|██████████| 196/196 [00:36<00:00,  5.43batch/s]
+Avg Loss : 0.2268 Validation Loss : 0.2167 Learning Late: 0.1272
+Epoch 82: 100%|██████████| 196/196 [00:36<00:00,  5.43batch/s]
+Avg Loss : 0.1903 Validation Loss : 0.1941 Learning Late: 0.1146
+Epoch 83: 100%|██████████| 196/196 [00:36<00:00,  5.44batch/s]
+Avg Loss : 0.2166 Validation Loss : 0.2012 Learning Late: 0.1026
+Epoch 84: 100%|██████████| 196/196 [00:36<00:00,  5.43batch/s]
+Avg Loss : 0.1928 Validation Loss : 0.2065 Learning Late: 0.0912
+Epoch 85: 100%|██████████| 196/196 [00:36<00:00,  5.43batch/s]
+Avg Loss : 0.2014 Validation Loss : 0.2082 Learning Late: 0.0804
+Epoch 86: 100%|██████████| 196/196 [00:36<00:00,  5.44batch/s]
+Avg Loss : 0.2043 Validation Loss : 0.2475 Learning Late: 0.0702
+Epoch 87: 100%|██████████| 196/196 [00:36<00:00,  5.44batch/s]
+Avg Loss : 0.2093 Validation Loss : 0.2284 Learning Late: 0.0607
+Epoch 88: 100%|██████████| 196/196 [00:36<00:00,  5.43batch/s]
+Avg Loss : 0.2141 Validation Loss : 0.2128 Learning Late: 0.0519
+Epoch 89: 100%|██████████| 196/196 [00:36<00:00,  5.43batch/s]
+Avg Loss : 0.2028 Validation Loss : 0.2136 Learning Late: 0.0437
+Epoch 90: 100%|██████████| 196/196 [00:36<00:00,  5.43batch/s]
+Avg Loss : 0.2032 Validation Loss : 0.2187 Learning Late: 0.0362
+Epoch 91: 100%|██████████| 196/196 [00:36<00:00,  5.44batch/s]
+Avg Loss : 0.2112 Validation Loss : 0.1842 Learning Late: 0.0294
+Epoch 92: 100%|██████████| 196/196 [00:36<00:00,  5.43batch/s]
+Avg Loss : 0.2170 Validation Loss : 0.2109 Learning Late: 0.0232
+Epoch 93: 100%|██████████| 196/196 [00:36<00:00,  5.44batch/s]
+Avg Loss : 0.2265 Validation Loss : 0.1891 Learning Late: 0.0178
+Epoch 94: 100%|██████████| 196/196 [00:36<00:00,  5.44batch/s]
+Avg Loss : 0.2054 Validation Loss : 0.2454 Learning Late: 0.0131
+Epoch 95: 100%|██████████| 196/196 [00:36<00:00,  5.44batch/s]
+Avg Loss : 0.2196 Validation Loss : 0.2055 Learning Late: 0.0091
+Epoch 96: 100%|██████████| 196/196 [00:36<00:00,  5.43batch/s]
+Avg Loss : 0.2020 Validation Loss : 0.2469 Learning Late: 0.0058
+Epoch 97: 100%|██████████| 196/196 [00:36<00:00,  5.44batch/s]
+Avg Loss : 0.1924 Validation Loss : 0.2676 Learning Late: 0.0033
+Epoch 98: 100%|██████████| 196/196 [00:36<00:00,  5.44batch/s]
+Avg Loss : 0.2042 Validation Loss : 0.1639 Learning Late: 0.0015
+Epoch 99: 100%|██████████| 196/196 [00:36<00:00,  5.44batch/s]
+Avg Loss : 0.1995 Validation Loss : 0.1759 Learning Late: 0.0004
+Epoch 100: 100%|██████████| 196/196 [00:36<00:00,  5.43batch/s]
+Avg Loss : 0.1969 Validation Loss : 0.2261 Learning Late: 0.0000
+FG 학습 완료. 이제 F의 output을 실제 dataset의 label과 연결.
+Files already downloaded and verified
+Files already downloaded and verified
+Epoch 1: 100%|██████████| 391/391 [00:06<00:00, 60.86batch/s]
+Avg Loss : 1.4367 Validation Loss : 1.3373 Learning Late: 0.0010
+Epoch 2: 100%|██████████| 391/391 [00:06<00:00, 60.75batch/s]
+Avg Loss : 1.2975 Validation Loss : 1.2912 Learning Late: 0.0010
+Epoch 3: 100%|██████████| 391/391 [00:06<00:00, 60.91batch/s]
+Avg Loss : 1.2608 Validation Loss : 1.2688 Learning Late: 0.0010
+Epoch 4: 100%|██████████| 391/391 [00:06<00:00, 60.83batch/s]
+Avg Loss : 1.2357 Validation Loss : 1.2369 Learning Late: 0.0010
+Epoch 5: 100%|██████████| 391/391 [00:06<00:00, 61.06batch/s]
+Avg Loss : 1.2176 Validation Loss : 1.2461 Learning Late: 0.0010
+Epoch 6: 100%|██████████| 391/391 [00:06<00:00, 60.81batch/s]
+Avg Loss : 1.2040 Validation Loss : 1.2140 Learning Late: 0.0010
+Epoch 7: 100%|██████████| 391/391 [00:06<00:00, 62.64batch/s]
+Avg Loss : 1.1936 Validation Loss : 1.2104 Learning Late: 0.0010
+Epoch 8: 100%|██████████| 391/391 [00:06<00:00, 61.09batch/s]
+Avg Loss : 1.1842 Validation Loss : 1.2074 Learning Late: 0.0010
+Epoch 9: 100%|██████████| 391/391 [00:06<00:00, 60.87batch/s]
+Avg Loss : 1.1761 Validation Loss : 1.2052 Learning Late: 0.0010
+Epoch 10: 100%|██████████| 391/391 [00:06<00:00, 61.41batch/s]
+Avg Loss : 1.1703 Validation Loss : 1.2033 Learning Late: 0.0010
+Epoch 11: 100%|██████████| 391/391 [00:06<00:00, 60.33batch/s]
+Avg Loss : 1.1622 Validation Loss : 1.2017 Learning Late: 0.0010
+Epoch 12: 100%|██████████| 391/391 [00:06<00:00, 61.03batch/s]
+Avg Loss : 1.1580 Validation Loss : 1.1997 Learning Late: 0.0010
+Epoch 13: 100%|██████████| 391/391 [00:06<00:00, 60.71batch/s]
+Avg Loss : 1.1515 Validation Loss : 1.1860 Learning Late: 0.0010
+Epoch 14: 100%|██████████| 391/391 [00:06<00:00, 61.04batch/s]
+Avg Loss : 1.1465 Validation Loss : 1.1985 Learning Late: 0.0010
+Epoch 15: 100%|██████████| 391/391 [00:06<00:00, 61.22batch/s]
+Avg Loss : 1.1433 Validation Loss : 1.1819 Learning Late: 0.0010
+Epoch 16: 100%|██████████| 391/391 [00:06<00:00, 60.59batch/s]
+Avg Loss : 1.1398 Validation Loss : 1.1834 Learning Late: 0.0010
+Epoch 17: 100%|██████████| 391/391 [00:06<00:00, 60.45batch/s]
+Avg Loss : 1.1364 Validation Loss : 1.1924 Learning Late: 0.0010
+Epoch 18: 100%|██████████| 391/391 [00:06<00:00, 60.37batch/s]
+Avg Loss : 1.1312 Validation Loss : 1.1675 Learning Late: 0.0010
+Epoch 19: 100%|██████████| 391/391 [00:06<00:00, 60.83batch/s]
+Avg Loss : 1.1283 Validation Loss : 1.1665 Learning Late: 0.0010
+Epoch 20: 100%|██████████| 391/391 [00:06<00:00, 61.09batch/s]
+Avg Loss : 1.1268 Validation Loss : 1.1682 Learning Late: 0.0010
+Epoch 21: 100%|██████████| 391/391 [00:06<00:00, 60.47batch/s]
+Avg Loss : 1.1238 Validation Loss : 1.1673 Learning Late: 0.0010
+Epoch 22: 100%|██████████| 391/391 [00:06<00:00, 61.17batch/s]
+Avg Loss : 1.1203 Validation Loss : 1.1558 Learning Late: 0.0010
+Epoch 23: 100%|██████████| 391/391 [00:06<00:00, 62.73batch/s]
+Avg Loss : 1.1179 Validation Loss : 1.1700 Learning Late: 0.0010
+Epoch 24: 100%|██████████| 391/391 [00:06<00:00, 61.15batch/s]
+Avg Loss : 1.1167 Validation Loss : 1.1573 Learning Late: 0.0010
+Epoch 25: 100%|██████████| 391/391 [00:06<00:00, 61.06batch/s]
+Avg Loss : 1.1134 Validation Loss : 1.1831 Learning Late: 0.0010
+Epoch 26: 100%|██████████| 391/391 [00:06<00:00, 60.57batch/s]
+Avg Loss : 1.1115 Validation Loss : 1.1563 Learning Late: 0.0010
+Epoch 27: 100%|██████████| 391/391 [00:06<00:00, 61.10batch/s]
+Avg Loss : 1.1101 Validation Loss : 1.1620 Learning Late: 0.0010
+Epoch 28: 100%|██████████| 391/391 [00:06<00:00, 61.03batch/s]
+Avg Loss : 1.1079 Validation Loss : 1.1630 Learning Late: 0.0010
+Epoch 29: 100%|██████████| 391/391 [00:06<00:00, 60.84batch/s]
+Avg Loss : 1.1073 Validation Loss : 1.1633 Learning Late: 0.0010
+Epoch 30: 100%|██████████| 391/391 [00:06<00:00, 61.22batch/s]
+Avg Loss : 1.1042 Validation Loss : 1.1575 Learning Late: 0.0010
+Epoch 31: 100%|██████████| 391/391 [00:06<00:00, 60.87batch/s]
+Avg Loss : 1.1028 Validation Loss : 1.1699 Learning Late: 0.0010
+Epoch 32: 100%|██████████| 391/391 [00:06<00:00, 61.27batch/s]
+Avg Loss : 1.1000 Validation Loss : 1.1612 Learning Late: 0.0010
+Epoch 33: 100%|██████████| 391/391 [00:06<00:00, 61.01batch/s]
+Avg Loss : 1.0989 Validation Loss : 1.1577 Learning Late: 0.0010
+Epoch 34: 100%|██████████| 391/391 [00:06<00:00, 60.77batch/s]
+Avg Loss : 1.0980 Validation Loss : 1.1492 Learning Late: 0.0010
+Epoch 35: 100%|██████████| 391/391 [00:06<00:00, 61.20batch/s]
+Avg Loss : 1.0964 Validation Loss : 1.1582 Learning Late: 0.0010
+Epoch 36: 100%|██████████| 391/391 [00:06<00:00, 60.77batch/s]
+Avg Loss : 1.0963 Validation Loss : 1.1567 Learning Late: 0.0010
+Epoch 37: 100%|██████████| 391/391 [00:06<00:00, 61.45batch/s]
+Avg Loss : 1.0939 Validation Loss : 1.1495 Learning Late: 0.0010
+Epoch 38: 100%|██████████| 391/391 [00:06<00:00, 61.14batch/s]
+Avg Loss : 1.0924 Validation Loss : 1.1467 Learning Late: 0.0009
+Epoch 39: 100%|██████████| 391/391 [00:06<00:00, 62.77batch/s]
+Avg Loss : 1.0916 Validation Loss : 1.1468 Learning Late: 0.0009
+Epoch 40: 100%|██████████| 391/391 [00:06<00:00, 61.45batch/s]
+Avg Loss : 1.0902 Validation Loss : 1.1510 Learning Late: 0.0009
+Epoch 41: 100%|██████████| 391/391 [00:06<00:00, 60.99batch/s]
+Avg Loss : 1.0901 Validation Loss : 1.1536 Learning Late: 0.0009
+Epoch 42: 100%|██████████| 391/391 [00:06<00:00, 61.38batch/s]
+Avg Loss : 1.0898 Validation Loss : 1.1525 Learning Late: 0.0009
+Epoch 43: 100%|██████████| 391/391 [00:06<00:00, 61.20batch/s]
+Avg Loss : 1.0885 Validation Loss : 1.1498 Learning Late: 0.0009
+Epoch 44: 100%|██████████| 391/391 [00:06<00:00, 61.03batch/s]
+Avg Loss : 1.0864 Validation Loss : 1.1560 Learning Late: 0.0009
+Epoch 45: 100%|██████████| 391/391 [00:06<00:00, 60.82batch/s]
+Avg Loss : 1.0841 Validation Loss : 1.1595 Learning Late: 0.0009
+Epoch 46: 100%|██████████| 391/391 [00:06<00:00, 60.44batch/s]
+Avg Loss : 1.0854 Validation Loss : 1.1529 Learning Late: 0.0009
+Epoch 47: 100%|██████████| 391/391 [00:06<00:00, 61.43batch/s]
+Avg Loss : 1.0848 Validation Loss : 1.1410 Learning Late: 0.0009
+Epoch 48: 100%|██████████| 391/391 [00:06<00:00, 61.02batch/s]
+Avg Loss : 1.0814 Validation Loss : 1.1352 Learning Late: 0.0009
+Epoch 49: 100%|██████████| 391/391 [00:06<00:00, 60.62batch/s]
+Avg Loss : 1.0809 Validation Loss : 1.1469 Learning Late: 0.0009
+Epoch 50: 100%|██████████| 391/391 [00:06<00:00, 61.50batch/s]
+Avg Loss : 1.0808 Validation Loss : 1.1451 Learning Late: 0.0009
+Epoch 51: 100%|██████████| 391/391 [00:06<00:00, 61.00batch/s]
+Avg Loss : 1.0783 Validation Loss : 1.1449 Learning Late: 0.0009
+Epoch 52: 100%|██████████| 391/391 [00:06<00:00, 61.47batch/s]
+Avg Loss : 1.0788 Validation Loss : 1.1449 Learning Late: 0.0009
+Epoch 53: 100%|██████████| 391/391 [00:06<00:00, 61.33batch/s]
+Avg Loss : 1.0791 Validation Loss : 1.1531 Learning Late: 0.0009
+Epoch 54: 100%|██████████| 391/391 [00:06<00:00, 62.10batch/s]
+Avg Loss : 1.0773 Validation Loss : 1.1346 Learning Late: 0.0009
+Epoch 55: 100%|██████████| 391/391 [00:06<00:00, 62.27batch/s]
+Avg Loss : 1.0770 Validation Loss : 1.1413 Learning Late: 0.0009
+Epoch 56: 100%|██████████| 391/391 [00:06<00:00, 60.86batch/s]
+Avg Loss : 1.0761 Validation Loss : 1.1479 Learning Late: 0.0009
+Epoch 57: 100%|██████████| 391/391 [00:06<00:00, 60.85batch/s]
+Avg Loss : 1.0754 Validation Loss : 1.1501 Learning Late: 0.0009
+Epoch 58: 100%|██████████| 391/391 [00:06<00:00, 60.73batch/s]
+Avg Loss : 1.0738 Validation Loss : 1.1385 Learning Late: 0.0009
+Epoch 59: 100%|██████████| 391/391 [00:06<00:00, 61.05batch/s]
+Avg Loss : 1.0748 Validation Loss : 1.1349 Learning Late: 0.0008
+Epoch 60: 100%|██████████| 391/391 [00:06<00:00, 61.36batch/s]
+Avg Loss : 1.0759 Validation Loss : 1.1404 Learning Late: 0.0008
+Epoch 61: 100%|██████████| 391/391 [00:06<00:00, 60.79batch/s]
+Avg Loss : 1.0725 Validation Loss : 1.1523 Learning Late: 0.0008
+Epoch 62: 100%|██████████| 391/391 [00:06<00:00, 61.43batch/s]
+Avg Loss : 1.0726 Validation Loss : 1.1445 Learning Late: 0.0008
+Epoch 63: 100%|██████████| 391/391 [00:06<00:00, 61.23batch/s]
+Avg Loss : 1.0714 Validation Loss : 1.1429 Learning Late: 0.0008
+Epoch 64: 100%|██████████| 391/391 [00:06<00:00, 60.80batch/s]
+Avg Loss : 1.0722 Validation Loss : 1.1456 Learning Late: 0.0008
+Epoch 65: 100%|██████████| 391/391 [00:06<00:00, 61.19batch/s]
+Avg Loss : 1.0700 Validation Loss : 1.1368 Learning Late: 0.0008
+Epoch 66: 100%|██████████| 391/391 [00:06<00:00, 60.95batch/s]
+Avg Loss : 1.0691 Validation Loss : 1.1373 Learning Late: 0.0008
+Epoch 67: 100%|██████████| 391/391 [00:06<00:00, 61.19batch/s]
+Avg Loss : 1.0695 Validation Loss : 1.1373 Learning Late: 0.0008
+Epoch 68: 100%|██████████| 391/391 [00:06<00:00, 60.83batch/s]
+Avg Loss : 1.0682 Validation Loss : 1.1452 Learning Late: 0.0008
+Epoch 69: 100%|██████████| 391/391 [00:06<00:00, 61.24batch/s]
+Avg Loss : 1.0681 Validation Loss : 1.1326 Learning Late: 0.0008
+Epoch 70: 100%|██████████| 391/391 [00:06<00:00, 63.10batch/s]
+Avg Loss : 1.0671 Validation Loss : 1.1393 Learning Late: 0.0008
+Epoch 71: 100%|██████████| 391/391 [00:06<00:00, 61.20batch/s]
+Avg Loss : 1.0674 Validation Loss : 1.1323 Learning Late: 0.0008
+Epoch 72: 100%|██████████| 391/391 [00:06<00:00, 61.26batch/s]
+Avg Loss : 1.0652 Validation Loss : 1.1379 Learning Late: 0.0008
+Epoch 73: 100%|██████████| 391/391 [00:06<00:00, 61.17batch/s]
+Avg Loss : 1.0659 Validation Loss : 1.1398 Learning Late: 0.0008
+Epoch 74: 100%|██████████| 391/391 [00:06<00:00, 60.91batch/s]
+Avg Loss : 1.0646 Validation Loss : 1.1245 Learning Late: 0.0007
+Epoch 75: 100%|██████████| 391/391 [00:06<00:00, 61.60batch/s]
+Avg Loss : 1.0650 Validation Loss : 1.1341 Learning Late: 0.0007
+Epoch 76: 100%|██████████| 391/391 [00:06<00:00, 60.95batch/s]
+Avg Loss : 1.0640 Validation Loss : 1.1381 Learning Late: 0.0007
+Epoch 77: 100%|██████████| 391/391 [00:06<00:00, 61.21batch/s]
+Avg Loss : 1.0638 Validation Loss : 1.1441 Learning Late: 0.0007
+Epoch 78: 100%|██████████| 391/391 [00:06<00:00, 60.64batch/s]
+Avg Loss : 1.0632 Validation Loss : 1.1386 Learning Late: 0.0007
+Epoch 79: 100%|██████████| 391/391 [00:06<00:00, 60.70batch/s]
+Avg Loss : 1.0623 Validation Loss : 1.1404 Learning Late: 0.0007
+Epoch 80: 100%|██████████| 391/391 [00:06<00:00, 61.02batch/s]
+Avg Loss : 1.0625 Validation Loss : 1.1374 Learning Late: 0.0007
+Epoch 81: 100%|██████████| 391/391 [00:06<00:00, 61.01batch/s]
+Avg Loss : 1.0613 Validation Loss : 1.1340 Learning Late: 0.0007
+Epoch 82: 100%|██████████| 391/391 [00:06<00:00, 61.13batch/s]
+Avg Loss : 1.0613 Validation Loss : 1.1308 Learning Late: 0.0007
+Epoch 83: 100%|██████████| 391/391 [00:06<00:00, 61.20batch/s]
+Avg Loss : 1.0605 Validation Loss : 1.1302 Learning Late: 0.0007
+Epoch 84: 100%|██████████| 391/391 [00:06<00:00, 60.99batch/s]
+Avg Loss : 1.0607 Validation Loss : 1.1347 Learning Late: 0.0007
+Epoch 85: 100%|██████████| 391/391 [00:06<00:00, 62.34batch/s]
+Avg Loss : 1.0597 Validation Loss : 1.1426 Learning Late: 0.0007
+Epoch 86: 100%|██████████| 391/391 [00:06<00:00, 62.12batch/s]
+Avg Loss : 1.0590 Validation Loss : 1.1283 Learning Late: 0.0007
+Epoch 87: 100%|██████████| 391/391 [00:06<00:00, 61.41batch/s]
+Avg Loss : 1.0590 Validation Loss : 1.1386 Learning Late: 0.0006
+Epoch 88: 100%|██████████| 391/391 [00:06<00:00, 61.35batch/s]
+Avg Loss : 1.0598 Validation Loss : 1.1312 Learning Late: 0.0006
+Epoch 89: 100%|██████████| 391/391 [00:06<00:00, 60.86batch/s]
+Avg Loss : 1.0581 Validation Loss : 1.1401 Learning Late: 0.0006
+Epoch 90: 100%|██████████| 391/391 [00:06<00:00, 61.50batch/s]
+Avg Loss : 1.0576 Validation Loss : 1.1439 Learning Late: 0.0006
+Epoch 91: 100%|██████████| 391/391 [00:06<00:00, 60.83batch/s]
+Avg Loss : 1.0578 Validation Loss : 1.1300 Learning Late: 0.0006
+Epoch 92: 100%|██████████| 391/391 [00:06<00:00, 61.12batch/s]
+Avg Loss : 1.0574 Validation Loss : 1.1325 Learning Late: 0.0006
+Epoch 93: 100%|██████████| 391/391 [00:06<00:00, 61.18batch/s]
+Avg Loss : 1.0571 Validation Loss : 1.1331 Learning Late: 0.0006
+Epoch 94: 100%|██████████| 391/391 [00:06<00:00, 60.89batch/s]
+Avg Loss : 1.0568 Validation Loss : 1.1280 Learning Late: 0.0006
+Epoch 95: 100%|██████████| 391/391 [00:06<00:00, 61.66batch/s]
+Avg Loss : 1.0572 Validation Loss : 1.1345 Learning Late: 0.0006
+Epoch 96: 100%|██████████| 391/391 [00:06<00:00, 60.74batch/s]
+Avg Loss : 1.0550 Validation Loss : 1.1407 Learning Late: 0.0006
+Epoch 97: 100%|██████████| 391/391 [00:06<00:00, 60.99batch/s]
+Avg Loss : 1.0550 Validation Loss : 1.1338 Learning Late: 0.0006
+Epoch 98: 100%|██████████| 391/391 [00:06<00:00, 61.22batch/s]
+Avg Loss : 1.0540 Validation Loss : 1.1422 Learning Late: 0.0006
+Epoch 99: 100%|██████████| 391/391 [00:06<00:00, 60.88batch/s]
+Avg Loss : 1.0540 Validation Loss : 1.1304 Learning Late: 0.0005
+Epoch 100: 100%|██████████| 391/391 [00:06<00:00, 61.67batch/s]
+Avg Loss : 1.0539 Validation Loss : 1.1313 Learning Late: 0.0005
+Epoch 101: 100%|██████████| 391/391 [00:06<00:00, 62.79batch/s]
+Avg Loss : 1.0543 Validation Loss : 1.1262 Learning Late: 0.0005
+Epoch 102: 100%|██████████| 391/391 [00:06<00:00, 61.22batch/s]
+Avg Loss : 1.0532 Validation Loss : 1.1279 Learning Late: 0.0005
+Epoch 103: 100%|██████████| 391/391 [00:06<00:00, 61.21batch/s]
+Avg Loss : 1.0525 Validation Loss : 1.1257 Learning Late: 0.0005
+Epoch 104: 100%|██████████| 391/391 [00:06<00:00, 60.97batch/s]
+Avg Loss : 1.0532 Validation Loss : 1.1321 Learning Late: 0.0005
+Epoch 105: 100%|██████████| 391/391 [00:06<00:00, 61.27batch/s]
+Avg Loss : 1.0519 Validation Loss : 1.1314 Learning Late: 0.0005
+Epoch 106: 100%|██████████| 391/391 [00:06<00:00, 61.26batch/s]
+Avg Loss : 1.0514 Validation Loss : 1.1260 Learning Late: 0.0005
+Epoch 107: 100%|██████████| 391/391 [00:06<00:00, 61.03batch/s]
+Avg Loss : 1.0496 Validation Loss : 1.1268 Learning Late: 0.0005
+Epoch 108: 100%|██████████| 391/391 [00:06<00:00, 61.14batch/s]
+Avg Loss : 1.0507 Validation Loss : 1.1331 Learning Late: 0.0005
+Epoch 109: 100%|██████████| 391/391 [00:06<00:00, 61.06batch/s]
+Avg Loss : 1.0505 Validation Loss : 1.1312 Learning Late: 0.0005
+Epoch 110: 100%|██████████| 391/391 [00:06<00:00, 61.37batch/s]
+Avg Loss : 1.0506 Validation Loss : 1.1307 Learning Late: 0.0005
+Epoch 111: 100%|██████████| 391/391 [00:06<00:00, 60.97batch/s]
+Avg Loss : 1.0510 Validation Loss : 1.1232 Learning Late: 0.0005
+Epoch 112: 100%|██████████| 391/391 [00:06<00:00, 61.02batch/s]
+Avg Loss : 1.0492 Validation Loss : 1.1243 Learning Late: 0.0004
+Epoch 113: 100%|██████████| 391/391 [00:06<00:00, 60.95batch/s]
+Avg Loss : 1.0493 Validation Loss : 1.1260 Learning Late: 0.0004
+Epoch 114: 100%|██████████| 391/391 [00:06<00:00, 60.73batch/s]
+Avg Loss : 1.0487 Validation Loss : 1.1252 Learning Late: 0.0004
+Epoch 115: 100%|██████████| 391/391 [00:06<00:00, 61.82batch/s]
+Avg Loss : 1.0479 Validation Loss : 1.1325 Learning Late: 0.0004
+Epoch 116: 100%|██████████| 391/391 [00:06<00:00, 61.73batch/s]
+Avg Loss : 1.0484 Validation Loss : 1.1315 Learning Late: 0.0004
+Epoch 117: 100%|██████████| 391/391 [00:06<00:00, 62.69batch/s]
+Avg Loss : 1.0479 Validation Loss : 1.1322 Learning Late: 0.0004
+Epoch 118: 100%|██████████| 391/391 [00:06<00:00, 61.24batch/s]
+Avg Loss : 1.0473 Validation Loss : 1.1315 Learning Late: 0.0004
+Epoch 119: 100%|██████████| 391/391 [00:06<00:00, 60.97batch/s]
+Avg Loss : 1.0469 Validation Loss : 1.1313 Learning Late: 0.0004
+Epoch 120: 100%|██████████| 391/391 [00:06<00:00, 61.40batch/s]
+Avg Loss : 1.0466 Validation Loss : 1.1222 Learning Late: 0.0004
+Epoch 121: 100%|██████████| 391/391 [00:06<00:00, 61.08batch/s]
+Avg Loss : 1.0461 Validation Loss : 1.1188 Learning Late: 0.0004
+Epoch 122: 100%|██████████| 391/391 [00:06<00:00, 61.47batch/s]
+Avg Loss : 1.0466 Validation Loss : 1.1255 Learning Late: 0.0004
+Epoch 123: 100%|██████████| 391/391 [00:06<00:00, 61.35batch/s]
+Avg Loss : 1.0463 Validation Loss : 1.1271 Learning Late: 0.0004
+Epoch 124: 100%|██████████| 391/391 [00:06<00:00, 60.98batch/s]
+Avg Loss : 1.0458 Validation Loss : 1.1271 Learning Late: 0.0003
+Epoch 125: 100%|██████████| 391/391 [00:06<00:00, 61.34batch/s]
+Avg Loss : 1.0460 Validation Loss : 1.1249 Learning Late: 0.0003
+Epoch 126: 100%|██████████| 391/391 [00:06<00:00, 60.98batch/s]
+Avg Loss : 1.0444 Validation Loss : 1.1266 Learning Late: 0.0003
+Epoch 127: 100%|██████████| 391/391 [00:06<00:00, 61.32batch/s]
+Avg Loss : 1.0451 Validation Loss : 1.1308 Learning Late: 0.0003
+Epoch 128: 100%|██████████| 391/391 [00:06<00:00, 61.11batch/s]
+Avg Loss : 1.0443 Validation Loss : 1.1281 Learning Late: 0.0003
+Epoch 129: 100%|██████████| 391/391 [00:06<00:00, 60.98batch/s]
+Avg Loss : 1.0439 Validation Loss : 1.1251 Learning Late: 0.0003
+Epoch 130: 100%|██████████| 391/391 [00:06<00:00, 61.37batch/s]
+Avg Loss : 1.0435 Validation Loss : 1.1332 Learning Late: 0.0003
+Epoch 131: 100%|██████████| 391/391 [00:06<00:00, 60.88batch/s]
+Avg Loss : 1.0435 Validation Loss : 1.1318 Learning Late: 0.0003
+Epoch 132: 100%|██████████| 391/391 [00:06<00:00, 62.70batch/s]
+Avg Loss : 1.0429 Validation Loss : 1.1273 Learning Late: 0.0003
+Epoch 133: 100%|██████████| 391/391 [00:06<00:00, 61.54batch/s]
+Avg Loss : 1.0429 Validation Loss : 1.1270 Learning Late: 0.0003
+Epoch 134: 100%|██████████| 391/391 [00:06<00:00, 60.99batch/s]
+Avg Loss : 1.0428 Validation Loss : 1.1238 Learning Late: 0.0003
+Epoch 135: 100%|██████████| 391/391 [00:06<00:00, 61.08batch/s]
+Avg Loss : 1.0423 Validation Loss : 1.1223 Learning Late: 0.0003
+Epoch 136: 100%|██████████| 391/391 [00:06<00:00, 60.86batch/s]
+Avg Loss : 1.0417 Validation Loss : 1.1297 Learning Late: 0.0003
+Epoch 137: 100%|██████████| 391/391 [00:06<00:00, 61.04batch/s]
+Avg Loss : 1.0413 Validation Loss : 1.1248 Learning Late: 0.0002
+Epoch 138: 100%|██████████| 391/391 [00:06<00:00, 61.02batch/s]
+Avg Loss : 1.0418 Validation Loss : 1.1216 Learning Late: 0.0002
+Epoch 139: 100%|██████████| 391/391 [00:06<00:00, 60.73batch/s]
+Avg Loss : 1.0413 Validation Loss : 1.1247 Learning Late: 0.0002
+Epoch 140: 100%|██████████| 391/391 [00:06<00:00, 61.25batch/s]
+Avg Loss : 1.0407 Validation Loss : 1.1252 Learning Late: 0.0002
+Epoch 141: 100%|██████████| 391/391 [00:06<00:00, 61.15batch/s]
+Avg Loss : 1.0407 Validation Loss : 1.1217 Learning Late: 0.0002
+Epoch 142: 100%|██████████| 391/391 [00:06<00:00, 61.12batch/s]
+Avg Loss : 1.0412 Validation Loss : 1.1249 Learning Late: 0.0002
+Epoch 143: 100%|██████████| 391/391 [00:06<00:00, 61.41batch/s]
+Avg Loss : 1.0403 Validation Loss : 1.1188 Learning Late: 0.0002
+Epoch 144: 100%|██████████| 391/391 [00:06<00:00, 61.14batch/s]
+Avg Loss : 1.0402 Validation Loss : 1.1200 Learning Late: 0.0002
+Epoch 145: 100%|██████████| 391/391 [00:06<00:00, 61.38batch/s]
+Avg Loss : 1.0397 Validation Loss : 1.1266 Learning Late: 0.0002
+Epoch 146: 100%|██████████| 391/391 [00:06<00:00, 61.34batch/s]
+Avg Loss : 1.0402 Validation Loss : 1.1208 Learning Late: 0.0002
+Epoch 147: 100%|██████████| 391/391 [00:06<00:00, 62.33batch/s]
+Avg Loss : 1.0396 Validation Loss : 1.1216 Learning Late: 0.0002
+Epoch 148: 100%|██████████| 391/391 [00:06<00:00, 62.33batch/s]
+Avg Loss : 1.0392 Validation Loss : 1.1221 Learning Late: 0.0002
+Epoch 149: 100%|██████████| 391/391 [00:06<00:00, 60.66batch/s]
+Avg Loss : 1.0390 Validation Loss : 1.1173 Learning Late: 0.0002
+Epoch 150: 100%|██████████| 391/391 [00:06<00:00, 60.81batch/s]
+Avg Loss : 1.0386 Validation Loss : 1.1196 Learning Late: 0.0002
+Epoch 151: 100%|██████████| 391/391 [00:06<00:00, 60.79batch/s]
+Avg Loss : 1.0389 Validation Loss : 1.1279 Learning Late: 0.0002
+Epoch 152: 100%|██████████| 391/391 [00:06<00:00, 61.25batch/s]
+Avg Loss : 1.0385 Validation Loss : 1.1215 Learning Late: 0.0001
+Epoch 153: 100%|██████████| 391/391 [00:06<00:00, 61.12batch/s]
+Avg Loss : 1.0384 Validation Loss : 1.1225 Learning Late: 0.0001
+Epoch 154: 100%|██████████| 391/391 [00:06<00:00, 58.74batch/s]
+Avg Loss : 1.0375 Validation Loss : 1.1206 Learning Late: 0.0001
+Epoch 155: 100%|██████████| 391/391 [00:06<00:00, 61.01batch/s]
+Avg Loss : 1.0379 Validation Loss : 1.1235 Learning Late: 0.0001
+Epoch 156: 100%|██████████| 391/391 [00:06<00:00, 61.05batch/s]
+Avg Loss : 1.0375 Validation Loss : 1.1270 Learning Late: 0.0001
+Epoch 157: 100%|██████████| 391/391 [00:06<00:00, 60.71batch/s]
+Avg Loss : 1.0368 Validation Loss : 1.1174 Learning Late: 0.0001
+Epoch 158: 100%|██████████| 391/391 [00:06<00:00, 61.16batch/s]
+Avg Loss : 1.0372 Validation Loss : 1.1256 Learning Late: 0.0001
+Epoch 159: 100%|██████████| 391/391 [00:06<00:00, 60.58batch/s]
+Avg Loss : 1.0372 Validation Loss : 1.1177 Learning Late: 0.0001
+Epoch 160: 100%|██████████| 391/391 [00:06<00:00, 60.92batch/s]
+Avg Loss : 1.0369 Validation Loss : 1.1237 Learning Late: 0.0001
+Epoch 161: 100%|██████████| 391/391 [00:06<00:00, 60.88batch/s]
+Avg Loss : 1.0364 Validation Loss : 1.1230 Learning Late: 0.0001
+Epoch 162: 100%|██████████| 391/391 [00:06<00:00, 60.74batch/s]
+Avg Loss : 1.0365 Validation Loss : 1.1277 Learning Late: 0.0001
+Epoch 163: 100%|██████████| 391/391 [00:06<00:00, 62.49batch/s]
+Avg Loss : 1.0363 Validation Loss : 1.1227 Learning Late: 0.0001
+Epoch 164: 100%|██████████| 391/391 [00:06<00:00, 61.19batch/s]
+Avg Loss : 1.0361 Validation Loss : 1.1212 Learning Late: 0.0001
+Epoch 165: 100%|██████████| 391/391 [00:06<00:00, 61.43batch/s]
+Avg Loss : 1.0358 Validation Loss : 1.1183 Learning Late: 0.0001
+Epoch 166: 100%|██████████| 391/391 [00:06<00:00, 60.48batch/s]
+Avg Loss : 1.0354 Validation Loss : 1.1333 Learning Late: 0.0001
+Epoch 167: 100%|██████████| 391/391 [00:06<00:00, 60.82batch/s]
+Avg Loss : 1.0356 Validation Loss : 1.1224 Learning Late: 0.0001
+Epoch 168: 100%|██████████| 391/391 [00:06<00:00, 61.04batch/s]
+Avg Loss : 1.0353 Validation Loss : 1.1162 Learning Late: 0.0001
+Epoch 169: 100%|██████████| 391/391 [00:06<00:00, 60.54batch/s]
+Avg Loss : 1.0353 Validation Loss : 1.1195 Learning Late: 0.0001
+Epoch 170: 100%|██████████| 391/391 [00:06<00:00, 61.28batch/s]
+Avg Loss : 1.0351 Validation Loss : 1.1193 Learning Late: 0.0001
+Epoch 171: 100%|██████████| 391/391 [00:06<00:00, 60.51batch/s]
+Avg Loss : 1.0347 Validation Loss : 1.1191 Learning Late: 0.0001
+Epoch 172: 100%|██████████| 391/391 [00:06<00:00, 60.93batch/s]
+Avg Loss : 1.0346 Validation Loss : 1.1202 Learning Late: 0.0001
+Epoch 173: 100%|██████████| 391/391 [00:06<00:00, 61.31batch/s]
+Avg Loss : 1.0349 Validation Loss : 1.1183 Learning Late: 0.0000
+Epoch 174: 100%|██████████| 391/391 [00:06<00:00, 60.61batch/s]
+Avg Loss : 1.0345 Validation Loss : 1.1181 Learning Late: 0.0000
+Epoch 175: 100%|██████████| 391/391 [00:06<00:00, 61.00batch/s]
+Avg Loss : 1.0341 Validation Loss : 1.1202 Learning Late: 0.0000
+Epoch 176: 100%|██████████| 391/391 [00:06<00:00, 60.91batch/s]
+Avg Loss : 1.0340 Validation Loss : 1.1250 Learning Late: 0.0000
+Epoch 177: 100%|██████████| 391/391 [00:06<00:00, 60.92batch/s]
+Avg Loss : 1.0340 Validation Loss : 1.1233 Learning Late: 0.0000
+Epoch 178: 100%|██████████| 391/391 [00:06<00:00, 60.96batch/s]
+Avg Loss : 1.0341 Validation Loss : 1.1221 Learning Late: 0.0000
+Epoch 179: 100%|██████████| 391/391 [00:06<00:00, 61.86batch/s]
+Avg Loss : 1.0340 Validation Loss : 1.1181 Learning Late: 0.0000
+Epoch 180: 100%|██████████| 391/391 [00:06<00:00, 60.59batch/s]
+Avg Loss : 1.0339 Validation Loss : 1.1238 Learning Late: 0.0000
+Epoch 181: 100%|██████████| 391/391 [00:06<00:00, 60.60batch/s]
+Avg Loss : 1.0338 Validation Loss : 1.1162 Learning Late: 0.0000
+Epoch 182: 100%|██████████| 391/391 [00:06<00:00, 60.55batch/s]
+Avg Loss : 1.0336 Validation Loss : 1.1237 Learning Late: 0.0000
+Epoch 183: 100%|██████████| 391/391 [00:06<00:00, 60.86batch/s]
+Avg Loss : 1.0335 Validation Loss : 1.1189 Learning Late: 0.0000
+Epoch 184: 100%|██████████| 391/391 [00:06<00:00, 60.39batch/s]
+Avg Loss : 1.0335 Validation Loss : 1.1140 Learning Late: 0.0000
+Epoch 185: 100%|██████████| 391/391 [00:06<00:00, 61.18batch/s]
+Avg Loss : 1.0334 Validation Loss : 1.1165 Learning Late: 0.0000
+Epoch 186: 100%|██████████| 391/391 [00:06<00:00, 59.50batch/s]
+Avg Loss : 1.0332 Validation Loss : 1.1204 Learning Late: 0.0000
+Epoch 187: 100%|██████████| 391/391 [00:06<00:00, 59.90batch/s]
+Avg Loss : 1.0331 Validation Loss : 1.1246 Learning Late: 0.0000
+Epoch 188: 100%|██████████| 391/391 [00:06<00:00, 61.16batch/s]
+Avg Loss : 1.0330 Validation Loss : 1.1153 Learning Late: 0.0000
+Epoch 189: 100%|██████████| 391/391 [00:06<00:00, 60.78batch/s]
+Avg Loss : 1.0332 Validation Loss : 1.1255 Learning Late: 0.0000
+Epoch 190: 100%|██████████| 391/391 [00:06<00:00, 61.32batch/s]
+Avg Loss : 1.0330 Validation Loss : 1.1252 Learning Late: 0.0000
+Epoch 191: 100%|██████████| 391/391 [00:06<00:00, 60.73batch/s]
+Avg Loss : 1.0330 Validation Loss : 1.1199 Learning Late: 0.0000
+Epoch 192: 100%|██████████| 391/391 [00:06<00:00, 60.75batch/s]
+Avg Loss : 1.0330 Validation Loss : 1.1202 Learning Late: 0.0000
+Epoch 193: 100%|██████████| 391/391 [00:06<00:00, 61.26batch/s]
+Avg Loss : 1.0327 Validation Loss : 1.1217 Learning Late: 0.0000
+Epoch 194: 100%|██████████| 391/391 [00:06<00:00, 61.65batch/s]
+Avg Loss : 1.0328 Validation Loss : 1.1262 Learning Late: 0.0000
+Epoch 195: 100%|██████████| 391/391 [00:06<00:00, 62.42batch/s]
+Avg Loss : 1.0327 Validation Loss : 1.1168 Learning Late: 0.0000
+Epoch 196: 100%|██████████| 391/391 [00:06<00:00, 60.49batch/s]
+Avg Loss : 1.0328 Validation Loss : 1.1172 Learning Late: 0.0000
+Epoch 197: 100%|██████████| 391/391 [00:06<00:00, 60.82batch/s]
+Avg Loss : 1.0326 Validation Loss : 1.1179 Learning Late: 0.0000
+Epoch 198: 100%|██████████| 391/391 [00:06<00:00, 60.90batch/s]
+Avg Loss : 1.0326 Validation Loss : 1.1224 Learning Late: 0.0000
+Epoch 199: 100%|██████████| 391/391 [00:06<00:00, 60.62batch/s]
+Avg Loss : 1.0327 Validation Loss : 1.1136 Learning Late: 0.0000
+Epoch 200: 100%|██████████| 391/391 [00:06<00:00, 61.20batch/s]
+Avg Loss : 1.0328 Validation Loss : 1.1205 Learning Late: 0.0000
+
+실제 test
+100%|██████████| 79/79 [00:01<00:00, 64.93batch/s]총 개수 : 10000
+top-1 맞춘 개수 : 6023
+ 정확도: 60.23
+top-5 맞춘 개수 : 9601
+ 정확도: 96.01

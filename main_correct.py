@@ -137,7 +137,7 @@ if __name__ == '__main__':
 
     summary(simclr, input_size=(hyper_batch_size, 3, 32, 32))
 
-    optimizer = optim.LARS(simclr.parameters(), lr=lr)
+    optimizer = torch.optim.SGD(simclr.parameters(), lr=lr)
     scheduler = torch.optim.lr_scheduler.CosineAnnealingLR(optimizer, T_max=hyper_epoch - 10, eta_min=0,
                                                            last_epoch=-1)
 
