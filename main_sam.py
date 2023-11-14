@@ -181,10 +181,10 @@ class SimCLR(nn.Module):
 
 if __name__ == '__main__':
     device = torch.device("cuda")
-    hyper_batch_size = 512
+    hyper_batch_size = 128
     hyper_batch_size_predictor = 128
     hyper_epoch = 100
-    hyper_epoch_predictor = hyper_epoch*2
+    hyper_epoch_predictor = hyper_epoch * 2
     lr = 0.075 * math.sqrt(hyper_batch_size)
     lr_predictor = 1e-3
     weight_decay_predictor = 1e-6
@@ -214,7 +214,6 @@ if __name__ == '__main__':
     # train
     data_output = []
     for epoch in range(1, hyper_epoch + 1):
-        first = False
         # batch_size * 2, rgb, x, y 의 데이터 형태
         loss_sum_train = 0
         tqdm_epoch = tqdm(trainLoader, unit="batch")
@@ -224,27 +223,24 @@ if __name__ == '__main__':
                 batch_size = batch_data.shape[0]
                 batch_data_cuda = batch_data.to(device)
                 batch_data_distorted = distortion.forward(batch_data_cuda)
-                if first:
-                    first = False
-                    pil_img = transforms.ToPILImage()(batch_data_cuda[0])
-                    plt.imshow(pil_img)
-                    plt.show()
-                    pil_img2 = transforms.ToPILImage()(batch_data_distorted[0])
-                    plt.imshow(pil_img2)
-                    plt.show()
-                # [batch_size * 2, rgb, width, height] => [batch_size * 2, h_value_size]
+
+            optimizer.zero_grad()
 
 
             def closure():
-                optimizer.zero_grad()
                 _, batch_data_after = simclr.forward(batch_data_cuda)
                 _, batch_distorted_after = simclr.forward(batch_data_distorted)
                 loss = loss_function.forward(batch_data_after, batch_distorted_after, batch_size)
                 loss.backward()
-                return loss.item()
+                return loss
 
 
-            loss_sum_train += optimizer.step(closure)
+            _, batch_data_after = simclr.forward(batch_data_cuda)
+            _, batch_distorted_after = simclr.forward(batch_data_distorted)
+            loss = loss_function.forward(batch_data_after, batch_distorted_after, batch_size)
+            loss.backward()
+            optimizer.step(closure)
+            loss_sum_train += loss.item()
         tqdm_epoch.close()
         loss_sum_test = 0
         with torch.no_grad():
