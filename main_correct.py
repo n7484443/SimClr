@@ -113,7 +113,7 @@ class SimCLR(nn.Module):
 
 if __name__ == '__main__':
     device = torch.device("cuda")
-    hyper_batch_size = 512
+    hyper_batch_size = 128
     hyper_batch_size_predictor = 128
     hyper_epoch = 100
     hyper_epoch_predictor = hyper_epoch*2
