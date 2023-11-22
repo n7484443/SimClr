@@ -1,4 +1,5 @@
 import math
+import os
 
 import torch.utils.data as tu_data
 import torch
@@ -11,6 +12,7 @@ from torchinfo import summary
 import numpy as np
 from tqdm import tqdm
 from time import sleep
+from sklearn.manifold import TSNE
 
 
 class SAM(torch.optim.Optimizer):
@@ -75,6 +77,21 @@ class SAM(torch.optim.Optimizer):
         closure()
         self.second_step(zero_grad=True)
         return loss.item()
+
+
+def disable_running_stats(model):
+    def _disable(module):
+        if isinstance(module, torch.nn.modules.batchnorm._BatchNorm):
+            module.backup_momentum = module.momentum
+            module.momentum = 0
+
+    model.apply(_disable)
+
+
+def enable_running_stats(model):
+    def _enable(module):
+        if isinstance(module, torch.nn.modules.batchnorm._BatchNorm) and hasattr(module, "backup_momentum"):
+            module.momentum = module.backup_momentum
 
 
 # 참조 : https://github.com/p3i0t/SimCLR-CIFAR10/tree/master
@@ -179,124 +196,128 @@ class SimCLR(nn.Module):
         return feature, projection
 
 
-if __name__ == '__main__':
-    device = torch.device("cuda")
-    hyper_batch_size = 128
-    hyper_batch_size_predictor = 128
-    hyper_epoch = 100
-    hyper_epoch_predictor = hyper_epoch * 2
-    lr = 0.075 * math.sqrt(hyper_batch_size)
-    lr_predictor = 1e-3
-    weight_decay_predictor = 1e-6
-    temperature = 0.1
-    strength = 1
-
-    testLoader: tu_data.DataLoader
-    trainLoader: tu_data.DataLoader
-    trainLoader, testLoader = load_image(batch_size=hyper_batch_size)
-
-    # rgb 3개,
-    projection_dim = 128
-    class_size = 10
-    simclr = SimCLR(base_encoder=torchvision.models.resnet18, projection_dim=projection_dim).to(device)
-    simclr.train()
-
+def learning_resnet(model, hyper_epoch, device, lr, temperature, strength, trainLoader, testLoader, hyper_batch_size):
     loss_function = SimclrLoss(temperature=temperature).to(device)
-
-    summary(simclr, input_size=(hyper_batch_size, 3, 32, 32))
-
-    optimizer = SAM(simclr.parameters(), torch.optim.Adam, lr=lr)
-    scheduler = torch.optim.lr_scheduler.CosineAnnealingLR(optimizer, T_max=hyper_epoch - 10, eta_min=0,
-                                                           last_epoch=-1)
 
     distortion = Distortion(strength=strength).to(device)
     distortion.eval()
     # train
+    optimizer = SAM(model.parameters(), torch.optim.Adam, lr=lr)
+    scheduler = torch.optim.lr_scheduler.CosineAnnealingLR(optimizer, T_max=hyper_epoch - 10, eta_min=0,
+                                                           last_epoch=-1)
+
+    model.eval()
+    actual = []
+    deep_features = []
+
+    with torch.no_grad():
+        for batch_data, batch_label in testLoader:
+            batch_data_cuda = batch_data.to(device)
+            feature, _ = model(batch_data_cuda)
+
+            deep_features += feature.cpu().numpy().tolist()
+            actual += batch_label.cpu().numpy().tolist()
+    tsne = TSNE(n_components=2, random_state=0)
+    cluster = np.array(tsne.fit_transform(np.array(deep_features)))
+    actual = np.array(actual)
+
+    plt.figure(figsize=(10, 10))
+    cifar = ['plane', 'car', 'bird', 'cat', 'deer', 'dog', 'frog', 'horse', 'ship', 'truck']
+    for i, label in zip(range(10), cifar):
+        idx = np.where(actual == i)
+        plt.scatter(cluster[idx, 0], cluster[idx, 1], marker='.', label=label)
+    plt.legend()
+    plt.show()
+
     data_output = []
     for epoch in range(1, hyper_epoch + 1):
         # batch_size * 2, rgb, x, y 의 데이터 형태
         loss_sum_train = 0
         tqdm_epoch = tqdm(trainLoader, unit="batch")
+        model.train()
         for batch_data, _ in tqdm_epoch:
             tqdm_epoch.set_description(f"Epoch {epoch}")
             with torch.no_grad():
                 batch_size = batch_data.shape[0]
                 batch_data_cuda = batch_data.to(device)
-                batch_data_distorted = distortion.forward(batch_data_cuda)
+                batch_data_distorted = distortion(batch_data_cuda)
+                batch_input = torch.cat((batch_data_cuda, batch_data_distorted), dim=0)
 
             optimizer.zero_grad()
 
-
             def closure():
-                _, batch_data_after = simclr.forward(batch_data_cuda)
-                _, batch_distorted_after = simclr.forward(batch_data_distorted)
-                loss = loss_function.forward(batch_data_after, batch_distorted_after, batch_size)
+                disable_running_stats(model)
+                _, batch_input_after = model(batch_input)
+                batch_data_after, batch_distorted_after = torch.chunk(batch_input_after, 2, dim=0)
+                loss = loss_function(batch_data_after, batch_distorted_after, batch_size)
                 loss.backward()
                 return loss
 
-
-            _, batch_data_after = simclr.forward(batch_data_cuda)
-            _, batch_distorted_after = simclr.forward(batch_data_distorted)
-            loss = loss_function.forward(batch_data_after, batch_distorted_after, batch_size)
+            enable_running_stats(model)
+            _, batch_input_after = model(batch_input)
+            batch_data_after, batch_distorted_after = torch.chunk(batch_input_after, 2, dim=0)
+            loss = loss_function(batch_data_after, batch_distorted_after, batch_size)
             loss.backward()
             optimizer.step(closure)
             loss_sum_train += loss.item()
+        enable_running_stats(model)
         tqdm_epoch.close()
-        loss_sum_test = 0
-        with torch.no_grad():
-            for batch_data, _ in testLoader:
-                batch_size = batch_data.shape[0]
-                batch_data_cuda = batch_data.to(device)
-                batch_data_distorted = distortion.forward(batch_data_cuda)
-                _, batch_data_after = simclr.forward(batch_data_cuda)
-                _, batch_distorted_after = simclr.forward(batch_data_distorted)
-                loss = loss_function.forward(batch_data_after, batch_distorted_after, batch_size)
-                loss_sum_test += loss.item()
 
         loss_sum_train /= len(trainLoader)
-        loss_sum_test /= len(testLoader)
-        tqdm.write('Avg Loss : %.4f Validation Loss : %.4f Learning Late: %.4f' % (
-            loss_sum_train, loss_sum_test, scheduler.get_last_lr()[0]))
+        tqdm.write('Avg Loss : %.4f Learning Late: %.4f' % (
+            loss_sum_train, scheduler.get_last_lr()[0]))
         sleep(0.1)
-        data_output.append((loss_sum_train, loss_sum_test))
+        data_output.append(loss_sum_train)
         if epoch >= 10:
             scheduler.step()
+        if epoch % 10 == 0:
+            actual = []
+            deep_features = []
 
-    fig, ax = plt.subplots(2, 1)
-    range_x = np.arange(0, hyper_epoch, 1)
-    ax[0].plot(range_x, [x[0] for x in data_output], label='Training loss', color='red')
-    ax[0].plot(range_x, [x[1] for x in data_output], label='Validation loss', color='blue')
-    ax[0].set_yscale('log')
-    ax[0].legend()
-    ax[0].set_title(f'lr: {lr} batch:{hyper_batch_size} epoch: {hyper_epoch} temp:{temperature}')
+            model.eval()
+            with torch.no_grad():
+                for batch_data, batch_label in testLoader:
+                    batch_data_cuda = batch_data.to(device)
+                    feature, _ = model(batch_data_cuda)
 
-    print("FG 학습 완료. 이제 F의 output을 실제 dataset의 label과 연결.")
+                    deep_features += feature.cpu().numpy().tolist()
+                    actual += batch_label.cpu().numpy().tolist()
+            tsne = TSNE(n_components=2, random_state=0)
+            cluster = np.array(tsne.fit_transform(np.array(deep_features)))
+            actual = np.array(actual)
 
-    trainLoader, testLoader = load_image(batch_size=hyper_batch_size_predictor)
-    # predictor
-    predictor = nn.Linear(simclr.feature_dim, class_size).to(device)
-    # fg output_resnet18 과 실제 dataset label의 연결
+            plt.figure(figsize=(10, 10))
+            cifar = ['plane', 'car', 'bird', 'cat', 'deer', 'dog', 'frog', 'horse', 'ship', 'truck']
+            for i, label in zip(range(10), cifar):
+                idx = np.where(actual == i)
+                plt.scatter(cluster[idx, 0], cluster[idx, 1], marker='.', label=label)
+            plt.legend()
+            plt.show()
+    torch.save(model.state_dict(), f"./model_sam_{hyper_batch_size}_{lr}_100.pt")
+
+    return data_output
+
+
+def learning_predictor(model, model_predictor, hyper_epoch, device, lr, weight_decay, trainLoader, testLoader):
     simple_loss_function = nn.CrossEntropyLoss().to(device)
-
-    simclr.eval()
-    predictor.train()
-    optimizer = torch.optim.Adam(predictor.parameters(), lr=lr_predictor, weight_decay=weight_decay_predictor)
-    scheduler = torch.optim.lr_scheduler.CosineAnnealingLR(optimizer, T_max=hyper_epoch_predictor - 10, eta_min=0,
+    optimizer = torch.optim.Adam(predictor.parameters(), lr=lr, weight_decay=weight_decay)
+    scheduler = torch.optim.lr_scheduler.CosineAnnealingLR(optimizer, T_max=hyper_epoch - 10, eta_min=0,
                                                            last_epoch=-1)
     data_output = []
-    for epoch in range(1, hyper_epoch_predictor + 1):
+    model.eval()
+    for epoch in range(1, hyper_epoch + 1):
         # batch_size * 2, rgb, x, y 의 데이터 형태
         loss_sum_train = 0
         loss_sum_test = 0
         total_size = 0
         tqdm_epoch = tqdm(trainLoader, unit="batch")
+        model_predictor.train()
         for batch_data, batch_label in tqdm_epoch:
             tqdm_epoch.set_description(f"Epoch {epoch}")
-            batch_size = batch_data.shape[0]
 
             with torch.no_grad():
-                feature, _ = simclr.forward(batch_data.to(device))
-            expect = predictor.forward(feature)
+                feature, _ = model(batch_data.to(device))
+            expect = model_predictor(feature)
             loss = simple_loss_function(expect, batch_label.to(device))
             loss_sum_train += loss.item()
 
@@ -305,13 +326,14 @@ if __name__ == '__main__':
             optimizer.step()
         tqdm_epoch.close()
         correct = 0.0
+        model_predictor.eval()
         with torch.no_grad():
             for batch_data, batch_label in testLoader:
                 batch_label_cuda = batch_label.to(device)
                 batch_size = batch_data.size(dim=0)
                 batch_data_cuda = batch_data.to(device)
-                feature, _ = simclr.forward(batch_data_cuda)
-                expect = predictor.forward(feature)
+                feature, _ = model(batch_data_cuda)
+                expect = model_predictor(feature)
                 _, predicted_1 = torch.topk(expect, k=1, dim=1)
                 correct += torch.eq(predicted_1, batch_label_cuda.view([-1, 1])).any(dim=1).sum().item()
                 loss = simple_loss_function(expect, batch_label_cuda)
@@ -320,12 +342,52 @@ if __name__ == '__main__':
 
         loss_sum_train /= len(trainLoader)
         loss_sum_test /= len(testLoader)
-        data_output.append((loss_sum_train, loss_sum_test, 100.0 * correct / total_size))
-        tqdm.write('Avg Loss : %.4f Validation Loss : %.4f Learning Late: %.4f' % (
-            loss_sum_train, loss_sum_test, scheduler.get_last_lr()[0]))
+        accuracy = 100.0 * correct / total_size
+        data_output.append((loss_sum_train, loss_sum_test, accuracy))
+        tqdm.write('Avg Loss : %.4f Validation Loss : %.4f Learning Late: %.4f Accuracy: %.4f' % (
+            loss_sum_train, loss_sum_test, scheduler.get_last_lr()[0], accuracy))
         sleep(0.1)
         if epoch >= 10:
             scheduler.step()
+
+    return data_output
+
+
+if __name__ == '__main__':
+    device = torch.device("cuda")
+    hyper_batch_size = 128
+    hyper_epoch = 100
+    hyper_epoch_predictor = hyper_epoch
+    lr = round(0.075 * math.sqrt(hyper_batch_size), 6)
+    lr_predictor = 1e-3
+    weight_decay_predictor = 1e-6
+    temperature = 0.1
+    strength = 1
+    trainLoader, testLoader = load_image(batch_size=hyper_batch_size)
+
+    # rgb 3개,
+    projection_dim = 128
+    class_size = 10
+    simclr = SimCLR(base_encoder=torchvision.models.resnet34, projection_dim=projection_dim).to(device)
+    predictor = nn.Linear(simclr.feature_dim, class_size).to(device)
+    if os.path.isfile(f"./model_sam_{hyper_batch_size}_{lr}_100.pt"):
+        simclr.load_state_dict(torch.load(f"./model_sam_{hyper_batch_size}_{lr}_100.pt"))
+    else:
+        summary(simclr, input_size=(hyper_batch_size, 3, 32, 32))
+
+        data_output = learning_resnet(simclr, hyper_epoch, device=device, lr=lr, temperature=temperature,
+                                      strength=strength, trainLoader=trainLoader, testLoader=testLoader,
+                                      hyper_batch_size=hyper_batch_size)
+        fig, ax = plt.subplots(2, 1)
+        range_x = np.arange(0, hyper_epoch, 1)
+        ax[0].plot(range_x, data_output, label='Training loss', color='red')
+        ax[0].set_yscale('log')
+        ax[0].legend()
+        ax[0].set_title(f'lr: {lr} batch:{hyper_batch_size} epoch: {hyper_epoch} temp:{temperature}')
+
+    data_output = learning_predictor(simclr, predictor, hyper_epoch_predictor, device=device, lr=lr_predictor,
+                                     weight_decay=weight_decay_predictor, trainLoader=trainLoader,
+                                     testLoader=testLoader)
 
     range_x = np.arange(0, hyper_epoch_predictor, 1)
     ax[1].plot(range_x, [x[0] for x in data_output], label='Training loss', color='red')
@@ -334,7 +396,7 @@ if __name__ == '__main__':
     ax2.plot(range_x, [x[2] for x in data_output], label='Accuracy', color='green')
     ax[1].set_yscale('log')
     ax[1].legend()
-    ax[1].set_title(f'predictor \nlr: {lr_predictor} batch:{hyper_batch_size_predictor} epoch: {hyper_epoch_predictor}')
+    ax[1].set_title(f'predictor \nlr: {lr_predictor} batch:{hyper_batch_size} epoch: {hyper_epoch_predictor}')
 
     plt.tight_layout()
     plt.show()
@@ -345,11 +407,14 @@ if __name__ == '__main__':
     correct_1 = 0
     correct_5 = 0
     total_size = 0
+
+    simclr.eval()
+    predictor.eval()
     with torch.no_grad():
         tqdm_epoch = tqdm(testLoader, unit="batch")
         for batch_data, batch_label in tqdm_epoch:
-            feature, _ = simclr.forward(batch_data.to(device))
-            output = predictor.forward(feature)
+            feature, _ = simclr(batch_data.to(device))
+            output = predictor(feature)
             # argmax = 가장 큰 값의 index를 가져옴
             _, predicted_1 = torch.topk(output, k=1, dim=1)
             _, predicted_5 = torch.topk(output, k=5, dim=1)
