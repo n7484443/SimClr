@@ -1,9 +1,0 @@
-hyper_batch_size = 512
-hyper_batch_size_predictor = 128
-hyper_epoch = 100
-hyper_epoch_predictor = hyper_epoch*2
-lr = 0.075 * math.sqrt(hyper_batch_size)
-lr_predictor = 1e-3
-weight_decay_predictor = 1e-6
-temperature = 0.1
-strength = 1

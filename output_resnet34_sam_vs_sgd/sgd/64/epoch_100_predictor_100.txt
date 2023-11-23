@@ -1,0 +1,428 @@
+Files already downloaded and verified
+Files already downloaded and verified
+
+  0%|          | 0/782 [00:00<?, ?batch/s]/usr/local/lib/python3.10/dist-packages/torch/utils/data/dataloader.py:557: UserWarning: This DataLoader will create 4 worker processes in total. Our suggested max number of worker in current system is 2, which is smaller than what this DataLoader is going to create. Please be aware that excessive worker creation might get DataLoader running slow or even freeze, lower the worker number to avoid potential slowness/freeze if necessary.
+  warnings.warn(_create_warning_msg(
+Epoch 1: 100%|██████████| 782/782 [01:11<00:00, 10.96batch/s]
+Avg Loss : 4.5478 Learning Late: 0.6000
+Epoch 2: 100%|██████████| 782/782 [01:14<00:00, 10.56batch/s]
+Avg Loss : 4.2948 Learning Late: 0.6000
+Epoch 3: 100%|██████████| 782/782 [01:11<00:00, 10.92batch/s]
+Avg Loss : 4.2447 Learning Late: 0.6000
+Epoch 4: 100%|██████████| 782/782 [01:12<00:00, 10.80batch/s]
+Avg Loss : 4.1631 Learning Late: 0.6000
+Epoch 5: 100%|██████████| 782/782 [01:13<00:00, 10.71batch/s]
+Avg Loss : 4.0040 Learning Late: 0.6000
+Epoch 6: 100%|██████████| 782/782 [01:12<00:00, 10.79batch/s]
+Avg Loss : 3.8802 Learning Late: 0.6000
+Epoch 7: 100%|██████████| 782/782 [01:12<00:00, 10.74batch/s]
+Avg Loss : 3.8194 Learning Late: 0.6000
+Epoch 8: 100%|██████████| 782/782 [01:12<00:00, 10.85batch/s]
+Avg Loss : 3.7741 Learning Late: 0.6000
+Epoch 9: 100%|██████████| 782/782 [01:12<00:00, 10.76batch/s]
+Avg Loss : 3.6188 Learning Late: 0.6000
+Epoch 10: 100%|██████████| 782/782 [01:12<00:00, 10.79batch/s]
+Avg Loss : 3.3863 Learning Late: 0.6000
+Epoch 11: 100%|██████████| 782/782 [01:11<00:00, 10.87batch/s]
+Avg Loss : 3.2001 Learning Late: 0.5998
+Epoch 12: 100%|██████████| 782/782 [01:12<00:00, 10.75batch/s]
+Avg Loss : 3.0891 Learning Late: 0.5993
+Epoch 13: 100%|██████████| 782/782 [01:12<00:00, 10.81batch/s]
+Avg Loss : 2.9929 Learning Late: 0.5984
+Epoch 14: 100%|██████████| 782/782 [01:13<00:00, 10.65batch/s]
+Avg Loss : 2.6379 Learning Late: 0.5971
+Epoch 15: 100%|██████████| 782/782 [01:12<00:00, 10.79batch/s]
+Avg Loss : 2.4938 Learning Late: 0.5954
+Epoch 16: 100%|██████████| 782/782 [01:12<00:00, 10.85batch/s]
+Avg Loss : 2.2491 Learning Late: 0.5934
+Epoch 17: 100%|██████████| 782/782 [01:12<00:00, 10.83batch/s]
+Avg Loss : 2.1397 Learning Late: 0.5911
+Epoch 18: 100%|██████████| 782/782 [01:11<00:00, 10.88batch/s]
+Avg Loss : 1.9998 Learning Late: 0.5884
+Epoch 19: 100%|██████████| 782/782 [01:12<00:00, 10.74batch/s]
+Avg Loss : 1.8699 Learning Late: 0.5853
+Epoch 20: 100%|██████████| 782/782 [01:11<00:00, 10.87batch/s]
+Avg Loss : 1.8136 Learning Late: 0.5819
+
+  0%|          | 0/782 [00:00<?, ?batch/s]/usr/local/lib/python3.10/dist-packages/torch/utils/data/dataloader.py:557: UserWarning: This DataLoader will create 4 worker processes in total. Our suggested max number of worker in current system is 2, which is smaller than what this DataLoader is going to create. Please be aware that excessive worker creation might get DataLoader running slow or even freeze, lower the worker number to avoid potential slowness/freeze if necessary.
+  warnings.warn(_create_warning_msg(
+Epoch 21: 100%|██████████| 782/782 [01:14<00:00, 10.46batch/s]
+Avg Loss : 1.7320 Learning Late: 0.5782
+Epoch 22: 100%|██████████| 782/782 [01:15<00:00, 10.36batch/s]
+Avg Loss : 1.6454 Learning Late: 0.5741
+Epoch 23: 100%|██████████| 782/782 [01:15<00:00, 10.36batch/s]
+Avg Loss : 1.6280 Learning Late: 0.5696
+Epoch 24: 100%|██████████| 782/782 [01:15<00:00, 10.34batch/s]
+Avg Loss : 1.3956 Learning Late: 0.5649
+Epoch 25: 100%|██████████| 782/782 [01:15<00:00, 10.33batch/s]
+Avg Loss : 1.2640 Learning Late: 0.5598
+Epoch 26: 100%|██████████| 782/782 [01:16<00:00, 10.27batch/s]
+Avg Loss : 1.2772 Learning Late: 0.5544
+Epoch 27: 100%|██████████| 782/782 [01:15<00:00, 10.42batch/s]
+Avg Loss : 1.2240 Learning Late: 0.5487
+Epoch 28: 100%|██████████| 782/782 [01:14<00:00, 10.50batch/s]
+Avg Loss : 1.0779 Learning Late: 0.5427
+Epoch 29: 100%|██████████| 782/782 [01:15<00:00, 10.35batch/s]
+Avg Loss : 1.0024 Learning Late: 0.5364
+Epoch 30: 100%|██████████| 782/782 [01:14<00:00, 10.47batch/s]
+Avg Loss : 0.8949 Learning Late: 0.5298
+Epoch 31: 100%|██████████| 782/782 [01:15<00:00, 10.34batch/s]
+Avg Loss : 0.8063 Learning Late: 0.5229
+Epoch 32: 100%|██████████| 782/782 [01:14<00:00, 10.47batch/s]
+Avg Loss : 0.7499 Learning Late: 0.5158
+Epoch 33: 100%|██████████| 782/782 [01:14<00:00, 10.43batch/s]
+Avg Loss : 0.7220 Learning Late: 0.5084
+Epoch 34: 100%|██████████| 782/782 [01:14<00:00, 10.48batch/s]
+Avg Loss : 0.6613 Learning Late: 0.5007
+Epoch 35: 100%|██████████| 782/782 [01:14<00:00, 10.45batch/s]
+Avg Loss : 0.6513 Learning Late: 0.4928
+Epoch 36: 100%|██████████| 782/782 [01:14<00:00, 10.55batch/s]
+Avg Loss : 0.5807 Learning Late: 0.4847
+Epoch 37: 100%|██████████| 782/782 [01:14<00:00, 10.44batch/s]
+Avg Loss : 0.5730 Learning Late: 0.4763
+Epoch 38: 100%|██████████| 782/782 [01:14<00:00, 10.51batch/s]
+Avg Loss : 0.5580 Learning Late: 0.4678
+Epoch 39: 100%|██████████| 782/782 [01:15<00:00, 10.35batch/s]
+Avg Loss : 0.5602 Learning Late: 0.4590
+Epoch 40: 100%|██████████| 782/782 [01:14<00:00, 10.54batch/s]
+Avg Loss : 0.5289 Learning Late: 0.4500
+
+  0%|          | 0/782 [00:00<?, ?batch/s]/usr/local/lib/python3.10/dist-packages/torch/utils/data/dataloader.py:557: UserWarning: This DataLoader will create 4 worker processes in total. Our suggested max number of worker in current system is 2, which is smaller than what this DataLoader is going to create. Please be aware that excessive worker creation might get DataLoader running slow or even freeze, lower the worker number to avoid potential slowness/freeze if necessary.
+  warnings.warn(_create_warning_msg(
+Epoch 41: 100%|██████████| 782/782 [01:15<00:00, 10.38batch/s]
+Avg Loss : 0.4644 Learning Late: 0.4408
+Epoch 42: 100%|██████████| 782/782 [01:16<00:00, 10.22batch/s]
+Avg Loss : 0.4449 Learning Late: 0.4315
+Epoch 43: 100%|██████████| 782/782 [01:15<00:00, 10.40batch/s]
+Avg Loss : 0.4156 Learning Late: 0.4220
+Epoch 44: 100%|██████████| 782/782 [01:16<00:00, 10.28batch/s]
+Avg Loss : 0.3978 Learning Late: 0.4124
+Epoch 45: 100%|██████████| 782/782 [01:15<00:00, 10.30batch/s]
+Avg Loss : 0.3712 Learning Late: 0.4026
+Epoch 46: 100%|██████████| 782/782 [01:15<00:00, 10.36batch/s]
+Avg Loss : 0.3628 Learning Late: 0.3927
+Epoch 47: 100%|██████████| 782/782 [01:17<00:00, 10.14batch/s]
+Avg Loss : 0.3367 Learning Late: 0.3827
+Epoch 48: 100%|██████████| 782/782 [01:15<00:00, 10.37batch/s]
+Avg Loss : 0.3275 Learning Late: 0.3726
+Epoch 49: 100%|██████████| 782/782 [01:16<00:00, 10.29batch/s]
+Avg Loss : 0.3151 Learning Late: 0.3624
+Epoch 50: 100%|██████████| 782/782 [01:15<00:00, 10.36batch/s]
+Avg Loss : 0.2901 Learning Late: 0.3521
+Epoch 51: 100%|██████████| 782/782 [01:15<00:00, 10.36batch/s]
+Avg Loss : 0.2739 Learning Late: 0.3418
+Epoch 52: 100%|██████████| 782/782 [01:15<00:00, 10.30batch/s]
+Avg Loss : 0.2885 Learning Late: 0.3314
+Epoch 53: 100%|██████████| 782/782 [01:15<00:00, 10.34batch/s]
+Avg Loss : 0.2573 Learning Late: 0.3209
+Epoch 54: 100%|██████████| 782/782 [01:16<00:00, 10.25batch/s]
+Avg Loss : 0.2575 Learning Late: 0.3105
+Epoch 55: 100%|██████████| 782/782 [01:16<00:00, 10.25batch/s]
+Avg Loss : 0.2401 Learning Late: 0.3000
+Epoch 56: 100%|██████████| 782/782 [01:15<00:00, 10.30batch/s]
+Avg Loss : 0.2319 Learning Late: 0.2895
+Epoch 57: 100%|██████████| 782/782 [01:16<00:00, 10.24batch/s]
+Avg Loss : 0.2270 Learning Late: 0.2791
+Epoch 58: 100%|██████████| 782/782 [01:15<00:00, 10.33batch/s]
+Avg Loss : 0.2230 Learning Late: 0.2686
+Epoch 59: 100%|██████████| 782/782 [01:16<00:00, 10.27batch/s]
+Avg Loss : 0.2174 Learning Late: 0.2582
+Epoch 60: 100%|██████████| 782/782 [01:15<00:00, 10.29batch/s]
+Avg Loss : 0.1968 Learning Late: 0.2479
+
+  0%|          | 0/782 [00:00<?, ?batch/s]/usr/local/lib/python3.10/dist-packages/torch/utils/data/dataloader.py:557: UserWarning: This DataLoader will create 4 worker processes in total. Our suggested max number of worker in current system is 2, which is smaller than what this DataLoader is going to create. Please be aware that excessive worker creation might get DataLoader running slow or even freeze, lower the worker number to avoid potential slowness/freeze if necessary.
+  warnings.warn(_create_warning_msg(
+Epoch 61: 100%|██████████| 782/782 [01:17<00:00, 10.13batch/s]
+Avg Loss : 0.2045 Learning Late: 0.2376
+Epoch 62: 100%|██████████| 782/782 [01:16<00:00, 10.19batch/s]
+Avg Loss : 0.1974 Learning Late: 0.2274
+Epoch 63: 100%|██████████| 782/782 [01:16<00:00, 10.18batch/s]
+Avg Loss : 0.1936 Learning Late: 0.2173
+Epoch 64: 100%|██████████| 782/782 [01:17<00:00, 10.08batch/s]
+Avg Loss : 0.1913 Learning Late: 0.2073
+Epoch 65: 100%|██████████| 782/782 [01:16<00:00, 10.18batch/s]
+Avg Loss : 0.1928 Learning Late: 0.1974
+Epoch 66: 100%|██████████| 782/782 [01:16<00:00, 10.17batch/s]
+Avg Loss : 0.1883 Learning Late: 0.1876
+Epoch 67: 100%|██████████| 782/782 [01:17<00:00, 10.15batch/s]
+Avg Loss : 0.1778 Learning Late: 0.1780
+Epoch 68: 100%|██████████| 782/782 [01:18<00:00,  9.94batch/s]
+Avg Loss : 0.1751 Learning Late: 0.1685
+Epoch 69: 100%|██████████| 782/782 [01:18<00:00,  9.93batch/s]
+Avg Loss : 0.1745 Learning Late: 0.1592
+Epoch 70: 100%|██████████| 782/782 [01:18<00:00,  9.98batch/s]
+Avg Loss : 0.1671 Learning Late: 0.1500
+Epoch 71: 100%|██████████| 782/782 [01:19<00:00,  9.85batch/s]
+Avg Loss : 0.1702 Learning Late: 0.1410
+Epoch 72: 100%|██████████| 782/782 [01:19<00:00,  9.83batch/s]
+Avg Loss : 0.1646 Learning Late: 0.1322
+Epoch 73: 100%|██████████| 782/782 [01:18<00:00, 10.00batch/s]
+Avg Loss : 0.1614 Learning Late: 0.1237
+Epoch 74: 100%|██████████| 782/782 [01:18<00:00, 10.02batch/s]
+Avg Loss : 0.1629 Learning Late: 0.1153
+Epoch 75: 100%|██████████| 782/782 [01:18<00:00,  9.96batch/s]
+Avg Loss : 0.1533 Learning Late: 0.1072
+Epoch 76: 100%|██████████| 782/782 [01:18<00:00,  9.95batch/s]
+Avg Loss : 0.1534 Learning Late: 0.0993
+Epoch 77: 100%|██████████| 782/782 [01:18<00:00,  9.95batch/s]
+Avg Loss : 0.1535 Learning Late: 0.0916
+Epoch 78: 100%|██████████| 782/782 [01:18<00:00,  9.95batch/s]
+Avg Loss : 0.1496 Learning Late: 0.0842
+Epoch 79: 100%|██████████| 782/782 [01:19<00:00,  9.90batch/s]
+Avg Loss : 0.1521 Learning Late: 0.0771
+Epoch 80: 100%|██████████| 782/782 [01:19<00:00,  9.86batch/s]
+Avg Loss : 0.1475 Learning Late: 0.0702
+
+  0%|          | 0/782 [00:00<?, ?batch/s]/usr/local/lib/python3.10/dist-packages/torch/utils/data/dataloader.py:557: UserWarning: This DataLoader will create 4 worker processes in total. Our suggested max number of worker in current system is 2, which is smaller than what this DataLoader is going to create. Please be aware that excessive worker creation might get DataLoader running slow or even freeze, lower the worker number to avoid potential slowness/freeze if necessary.
+  warnings.warn(_create_warning_msg(
+Epoch 81: 100%|██████████| 782/782 [01:17<00:00, 10.05batch/s]
+Avg Loss : 0.1519 Learning Late: 0.0636
+Epoch 82: 100%|██████████| 782/782 [01:17<00:00, 10.08batch/s]
+Avg Loss : 0.1459 Learning Late: 0.0573
+Epoch 83: 100%|██████████| 782/782 [01:18<00:00, 10.02batch/s]
+Avg Loss : 0.1452 Learning Late: 0.0513
+Epoch 84: 100%|██████████| 782/782 [01:18<00:00, 10.02batch/s]
+Avg Loss : 0.1393 Learning Late: 0.0456
+Epoch 85: 100%|██████████| 782/782 [01:17<00:00, 10.09batch/s]
+Avg Loss : 0.1486 Learning Late: 0.0402
+Epoch 86: 100%|██████████| 782/782 [01:18<00:00,  9.93batch/s]
+Avg Loss : 0.1440 Learning Late: 0.0351
+Epoch 87: 100%|██████████| 782/782 [01:19<00:00,  9.84batch/s]
+Avg Loss : 0.1360 Learning Late: 0.0304
+Epoch 88: 100%|██████████| 782/782 [01:18<00:00,  9.91batch/s]
+Avg Loss : 0.1373 Learning Late: 0.0259
+Epoch 89: 100%|██████████| 782/782 [01:18<00:00,  9.98batch/s]
+Avg Loss : 0.1441 Learning Late: 0.0218
+Epoch 90: 100%|██████████| 782/782 [01:18<00:00,  9.95batch/s]
+Avg Loss : 0.1404 Learning Late: 0.0181
+Epoch 91: 100%|██████████| 782/782 [01:17<00:00, 10.10batch/s]
+Avg Loss : 0.1343 Learning Late: 0.0147
+Epoch 92: 100%|██████████| 782/782 [01:17<00:00, 10.11batch/s]
+Avg Loss : 0.1416 Learning Late: 0.0116
+Epoch 93: 100%|██████████| 782/782 [01:19<00:00,  9.85batch/s]
+Avg Loss : 0.1341 Learning Late: 0.0089
+Epoch 94: 100%|██████████| 782/782 [01:18<00:00,  9.93batch/s]
+Avg Loss : 0.1430 Learning Late: 0.0066
+Epoch 95: 100%|██████████| 782/782 [01:18<00:00,  9.96batch/s]
+Avg Loss : 0.1385 Learning Late: 0.0046
+Epoch 96: 100%|██████████| 782/782 [01:18<00:00,  9.90batch/s]
+Avg Loss : 0.1383 Learning Late: 0.0029
+Epoch 97: 100%|██████████| 782/782 [01:18<00:00,  9.92batch/s]
+Avg Loss : 0.1348 Learning Late: 0.0016
+Epoch 98: 100%|██████████| 782/782 [01:19<00:00,  9.87batch/s]
+Avg Loss : 0.1356 Learning Late: 0.0007
+Epoch 99: 100%|██████████| 782/782 [01:19<00:00,  9.88batch/s]
+Avg Loss : 0.1401 Learning Late: 0.0002
+Epoch 100: 100%|██████████| 782/782 [01:19<00:00,  9.87batch/s]
+Avg Loss : 0.1377 Learning Late: 0.0000
+
+FG 학습 완료. 이제 F의 output을 실제 dataset의 label과 연결.
+  0%|          | 0/782 [00:00<?, ?batch/s]/usr/local/lib/python3.10/dist-packages/torch/utils/data/dataloader.py:557: UserWarning: This DataLoader will create 4 worker processes in total. Our suggested max number of worker in current system is 2, which is smaller than what this DataLoader is going to create. Please be aware that excessive worker creation might get DataLoader running slow or even freeze, lower the worker number to avoid potential slowness/freeze if necessary.
+  warnings.warn(_create_warning_msg(
+Epoch 1: 100%|██████████| 782/782 [00:28<00:00, 27.09batch/s]
+Avg Loss : 1.4620 Validation Loss : 1.3829 Learning Late: 0.0010 Accuracy: 50.4300
+Epoch 2: 100%|██████████| 782/782 [00:27<00:00, 28.11batch/s]
+Avg Loss : 1.3416 Validation Loss : 1.3219 Learning Late: 0.0010 Accuracy: 52.7800
+Epoch 3: 100%|██████████| 782/782 [00:27<00:00, 28.64batch/s]
+Avg Loss : 1.2932 Validation Loss : 1.2788 Learning Late: 0.0010 Accuracy: 54.1900
+Epoch 4: 100%|██████████| 782/782 [00:27<00:00, 27.93batch/s]
+Avg Loss : 1.2654 Validation Loss : 1.2821 Learning Late: 0.0010 Accuracy: 54.5400
+Epoch 5: 100%|██████████| 782/782 [00:28<00:00, 27.50batch/s]
+Avg Loss : 1.2402 Validation Loss : 1.2365 Learning Late: 0.0010 Accuracy: 55.7100
+Epoch 6: 100%|██████████| 782/782 [00:29<00:00, 26.74batch/s]
+Avg Loss : 1.2228 Validation Loss : 1.2308 Learning Late: 0.0010 Accuracy: 56.0400
+Epoch 7: 100%|██████████| 782/782 [00:29<00:00, 26.63batch/s]
+Avg Loss : 1.2082 Validation Loss : 1.2087 Learning Late: 0.0010 Accuracy: 56.7700
+Epoch 8: 100%|██████████| 782/782 [00:28<00:00, 27.75batch/s]
+Avg Loss : 1.1932 Validation Loss : 1.2077 Learning Late: 0.0010 Accuracy: 56.8300
+Epoch 9: 100%|██████████| 782/782 [00:27<00:00, 28.06batch/s]
+Avg Loss : 1.1856 Validation Loss : 1.1925 Learning Late: 0.0010 Accuracy: 57.7200
+Epoch 10: 100%|██████████| 782/782 [00:27<00:00, 28.04batch/s]
+Avg Loss : 1.1746 Validation Loss : 1.1844 Learning Late: 0.0010 Accuracy: 57.6700
+Epoch 11: 100%|██████████| 782/782 [00:28<00:00, 27.54batch/s]
+Avg Loss : 1.1661 Validation Loss : 1.1772 Learning Late: 0.0010 Accuracy: 57.8100
+Epoch 12: 100%|██████████| 782/782 [00:28<00:00, 26.97batch/s]
+Avg Loss : 1.1589 Validation Loss : 1.1643 Learning Late: 0.0010 Accuracy: 58.5500
+Epoch 13: 100%|██████████| 782/782 [00:28<00:00, 27.41batch/s]
+Avg Loss : 1.1505 Validation Loss : 1.1611 Learning Late: 0.0010 Accuracy: 58.5000
+Epoch 14: 100%|██████████| 782/782 [00:27<00:00, 28.19batch/s]
+Avg Loss : 1.1456 Validation Loss : 1.1713 Learning Late: 0.0010 Accuracy: 58.5100
+Epoch 15: 100%|██████████| 782/782 [00:27<00:00, 28.22batch/s]
+Avg Loss : 1.1387 Validation Loss : 1.1783 Learning Late: 0.0010 Accuracy: 58.0300
+Epoch 16: 100%|██████████| 782/782 [00:28<00:00, 27.72batch/s]
+Avg Loss : 1.1345 Validation Loss : 1.1506 Learning Late: 0.0010 Accuracy: 58.8000
+Epoch 17: 100%|██████████| 782/782 [00:29<00:00, 26.96batch/s]
+Avg Loss : 1.1292 Validation Loss : 1.1386 Learning Late: 0.0010 Accuracy: 59.3100
+Epoch 18: 100%|██████████| 782/782 [00:29<00:00, 26.86batch/s]
+Avg Loss : 1.1263 Validation Loss : 1.1392 Learning Late: 0.0010 Accuracy: 59.6400
+Epoch 19: 100%|██████████| 782/782 [00:28<00:00, 27.07batch/s]
+Avg Loss : 1.1210 Validation Loss : 1.1698 Learning Late: 0.0010 Accuracy: 58.4400
+Epoch 20: 100%|██████████| 782/782 [00:27<00:00, 28.38batch/s]
+Avg Loss : 1.1177 Validation Loss : 1.1479 Learning Late: 0.0010 Accuracy: 59.0200
+Epoch 21: 100%|██████████| 782/782 [00:27<00:00, 28.27batch/s]
+Avg Loss : 1.1129 Validation Loss : 1.1426 Learning Late: 0.0010 Accuracy: 59.0100
+Epoch 22: 100%|██████████| 782/782 [00:28<00:00, 27.54batch/s]
+Avg Loss : 1.1105 Validation Loss : 1.1450 Learning Late: 0.0010 Accuracy: 59.1300
+Epoch 23: 100%|██████████| 782/782 [00:28<00:00, 27.15batch/s]
+Avg Loss : 1.1066 Validation Loss : 1.1320 Learning Late: 0.0009 Accuracy: 59.9700
+Epoch 24: 100%|██████████| 782/782 [00:29<00:00, 26.59batch/s]
+Avg Loss : 1.1009 Validation Loss : 1.1237 Learning Late: 0.0009 Accuracy: 59.7900
+Epoch 25: 100%|██████████| 782/782 [00:29<00:00, 26.57batch/s]
+Avg Loss : 1.0977 Validation Loss : 1.1232 Learning Late: 0.0009 Accuracy: 60.1100
+Epoch 26: 100%|██████████| 782/782 [00:28<00:00, 27.82batch/s]
+Avg Loss : 1.0992 Validation Loss : 1.1381 Learning Late: 0.0009 Accuracy: 59.4600
+Epoch 27: 100%|██████████| 782/782 [00:28<00:00, 27.64batch/s]
+Avg Loss : 1.0926 Validation Loss : 1.1144 Learning Late: 0.0009 Accuracy: 60.5900
+Epoch 28: 100%|██████████| 782/782 [00:28<00:00, 27.08batch/s]
+Avg Loss : 1.0904 Validation Loss : 1.1321 Learning Late: 0.0009 Accuracy: 59.9400
+Epoch 29: 100%|██████████| 782/782 [00:29<00:00, 26.88batch/s]
+Avg Loss : 1.0895 Validation Loss : 1.1205 Learning Late: 0.0009 Accuracy: 59.3700
+Epoch 30: 100%|██████████| 782/782 [00:29<00:00, 26.58batch/s]
+Avg Loss : 1.0852 Validation Loss : 1.1152 Learning Late: 0.0009 Accuracy: 60.7400
+Epoch 31: 100%|██████████| 782/782 [00:29<00:00, 26.88batch/s]
+Avg Loss : 1.0863 Validation Loss : 1.1103 Learning Late: 0.0009 Accuracy: 60.7300
+Epoch 32: 100%|██████████| 782/782 [00:27<00:00, 28.06batch/s]
+Avg Loss : 1.0816 Validation Loss : 1.1160 Learning Late: 0.0009 Accuracy: 60.2700
+Epoch 33: 100%|██████████| 782/782 [00:28<00:00, 27.61batch/s]
+Avg Loss : 1.0781 Validation Loss : 1.1318 Learning Late: 0.0008 Accuracy: 58.8500
+Epoch 34: 100%|██████████| 782/782 [00:28<00:00, 27.18batch/s]
+Avg Loss : 1.0782 Validation Loss : 1.1269 Learning Late: 0.0008 Accuracy: 59.7000
+Epoch 35: 100%|██████████| 782/782 [00:29<00:00, 26.83batch/s]
+Avg Loss : 1.0736 Validation Loss : 1.1066 Learning Late: 0.0008 Accuracy: 60.6100
+Epoch 36: 100%|██████████| 782/782 [00:29<00:00, 26.57batch/s]
+Avg Loss : 1.0710 Validation Loss : 1.1008 Learning Late: 0.0008 Accuracy: 60.6000
+Epoch 37: 100%|██████████| 782/782 [00:28<00:00, 27.32batch/s]
+Avg Loss : 1.0726 Validation Loss : 1.1058 Learning Late: 0.0008 Accuracy: 60.8300
+Epoch 38: 100%|██████████| 782/782 [00:28<00:00, 27.75batch/s]
+Avg Loss : 1.0691 Validation Loss : 1.1011 Learning Late: 0.0008 Accuracy: 60.5500
+Epoch 39: 100%|██████████| 782/782 [00:28<00:00, 27.60batch/s]
+Avg Loss : 1.0671 Validation Loss : 1.1135 Learning Late: 0.0008 Accuracy: 60.2300
+Epoch 40: 100%|██████████| 782/782 [00:29<00:00, 26.55batch/s]
+Avg Loss : 1.0664 Validation Loss : 1.0974 Learning Late: 0.0007 Accuracy: 60.7800
+Epoch 41: 100%|██████████| 782/782 [00:29<00:00, 26.72batch/s]
+Avg Loss : 1.0644 Validation Loss : 1.1000 Learning Late: 0.0007 Accuracy: 60.8200
+Epoch 42: 100%|██████████| 782/782 [00:29<00:00, 26.33batch/s]
+Avg Loss : 1.0612 Validation Loss : 1.0964 Learning Late: 0.0007 Accuracy: 61.0000
+Epoch 43: 100%|██████████| 782/782 [00:30<00:00, 25.72batch/s]
+Avg Loss : 1.0614 Validation Loss : 1.0886 Learning Late: 0.0007 Accuracy: 61.3700
+Epoch 44: 100%|██████████| 782/782 [00:28<00:00, 27.04batch/s]
+Avg Loss : 1.0574 Validation Loss : 1.1130 Learning Late: 0.0007 Accuracy: 60.0100
+Epoch 45: 100%|██████████| 782/782 [00:28<00:00, 27.74batch/s]
+Avg Loss : 1.0584 Validation Loss : 1.1044 Learning Late: 0.0007 Accuracy: 60.5900
+Epoch 46: 100%|██████████| 782/782 [00:28<00:00, 27.48batch/s]
+Avg Loss : 1.0556 Validation Loss : 1.1057 Learning Late: 0.0007 Accuracy: 60.3700
+Epoch 47: 100%|██████████| 782/782 [00:28<00:00, 27.23batch/s]
+Avg Loss : 1.0550 Validation Loss : 1.0932 Learning Late: 0.0006 Accuracy: 61.6700
+Epoch 48: 100%|██████████| 782/782 [00:29<00:00, 26.39batch/s]
+Avg Loss : 1.0520 Validation Loss : 1.0985 Learning Late: 0.0006 Accuracy: 60.7600
+Epoch 49: 100%|██████████| 782/782 [00:29<00:00, 26.44batch/s]
+Avg Loss : 1.0506 Validation Loss : 1.0981 Learning Late: 0.0006 Accuracy: 60.7600
+Epoch 50: 100%|██████████| 782/782 [00:28<00:00, 26.98batch/s]
+Avg Loss : 1.0503 Validation Loss : 1.0951 Learning Late: 0.0006 Accuracy: 61.0200
+Epoch 51: 100%|██████████| 782/782 [00:28<00:00, 27.66batch/s]
+Avg Loss : 1.0474 Validation Loss : 1.0892 Learning Late: 0.0006 Accuracy: 61.6300
+Epoch 52: 100%|██████████| 782/782 [00:28<00:00, 27.69batch/s]
+Avg Loss : 1.0475 Validation Loss : 1.0863 Learning Late: 0.0006 Accuracy: 60.9800
+Epoch 53: 100%|██████████| 782/782 [00:29<00:00, 26.65batch/s]
+Avg Loss : 1.0461 Validation Loss : 1.0899 Learning Late: 0.0005 Accuracy: 61.3600
+Epoch 54: 100%|██████████| 782/782 [00:29<00:00, 26.09batch/s]
+Avg Loss : 1.0449 Validation Loss : 1.0882 Learning Late: 0.0005 Accuracy: 61.3500
+Epoch 55: 100%|██████████| 782/782 [00:29<00:00, 26.68batch/s]
+Avg Loss : 1.0446 Validation Loss : 1.0829 Learning Late: 0.0005 Accuracy: 61.3500
+Epoch 56: 100%|██████████| 782/782 [00:28<00:00, 27.37batch/s]
+Avg Loss : 1.0413 Validation Loss : 1.0804 Learning Late: 0.0005 Accuracy: 61.5900
+Epoch 57: 100%|██████████| 782/782 [00:28<00:00, 27.40batch/s]
+Avg Loss : 1.0416 Validation Loss : 1.0843 Learning Late: 0.0005 Accuracy: 61.5100
+Epoch 58: 100%|██████████| 782/782 [00:28<00:00, 27.09batch/s]
+Avg Loss : 1.0392 Validation Loss : 1.0884 Learning Late: 0.0004 Accuracy: 61.4800
+Epoch 59: 100%|██████████| 782/782 [00:29<00:00, 26.49batch/s]
+Avg Loss : 1.0384 Validation Loss : 1.0812 Learning Late: 0.0004 Accuracy: 61.5400
+Epoch 60: 100%|██████████| 782/782 [00:30<00:00, 25.32batch/s]
+Avg Loss : 1.0366 Validation Loss : 1.0832 Learning Late: 0.0004 Accuracy: 61.7800
+Epoch 61: 100%|██████████| 782/782 [00:29<00:00, 26.45batch/s]
+Avg Loss : 1.0358 Validation Loss : 1.0765 Learning Late: 0.0004 Accuracy: 61.4100
+Epoch 62: 100%|██████████| 782/782 [00:29<00:00, 26.86batch/s]
+Avg Loss : 1.0357 Validation Loss : 1.0767 Learning Late: 0.0004 Accuracy: 61.8300
+Epoch 63: 100%|██████████| 782/782 [00:28<00:00, 27.36batch/s]
+Avg Loss : 1.0339 Validation Loss : 1.0796 Learning Late: 0.0004 Accuracy: 61.8200
+Epoch 64: 100%|██████████| 782/782 [00:28<00:00, 27.52batch/s]
+Avg Loss : 1.0327 Validation Loss : 1.0805 Learning Late: 0.0003 Accuracy: 61.6800
+Epoch 65: 100%|██████████| 782/782 [00:28<00:00, 27.39batch/s]
+Avg Loss : 1.0311 Validation Loss : 1.0743 Learning Late: 0.0003 Accuracy: 61.5500
+Epoch 66: 100%|██████████| 782/782 [00:29<00:00, 26.54batch/s]
+Avg Loss : 1.0305 Validation Loss : 1.0753 Learning Late: 0.0003 Accuracy: 61.6000
+Epoch 67: 100%|██████████| 782/782 [00:29<00:00, 26.94batch/s]
+Avg Loss : 1.0293 Validation Loss : 1.0734 Learning Late: 0.0003 Accuracy: 61.9400
+Epoch 68: 100%|██████████| 782/782 [00:28<00:00, 27.23batch/s]
+Avg Loss : 1.0296 Validation Loss : 1.0710 Learning Late: 0.0003 Accuracy: 61.8200
+Epoch 69: 100%|██████████| 782/782 [00:28<00:00, 27.35batch/s]
+Avg Loss : 1.0282 Validation Loss : 1.0765 Learning Late: 0.0003 Accuracy: 61.8700
+Epoch 70: 100%|██████████| 782/782 [00:28<00:00, 27.64batch/s]
+Avg Loss : 1.0271 Validation Loss : 1.0701 Learning Late: 0.0002 Accuracy: 61.8900
+Epoch 71: 100%|██████████| 782/782 [00:28<00:00, 27.32batch/s]
+Avg Loss : 1.0266 Validation Loss : 1.0781 Learning Late: 0.0002 Accuracy: 61.5100
+Epoch 72: 100%|██████████| 782/782 [00:29<00:00, 26.44batch/s]
+Avg Loss : 1.0263 Validation Loss : 1.0714 Learning Late: 0.0002 Accuracy: 61.7500
+Epoch 73: 100%|██████████| 782/782 [00:29<00:00, 26.31batch/s]
+Avg Loss : 1.0250 Validation Loss : 1.0720 Learning Late: 0.0002 Accuracy: 61.9800
+Epoch 74: 100%|██████████| 782/782 [00:29<00:00, 26.58batch/s]
+Avg Loss : 1.0247 Validation Loss : 1.0718 Learning Late: 0.0002 Accuracy: 62.1100
+Epoch 75: 100%|██████████| 782/782 [00:28<00:00, 27.50batch/s]
+Avg Loss : 1.0232 Validation Loss : 1.0660 Learning Late: 0.0002 Accuracy: 62.2000
+Epoch 76: 100%|██████████| 782/782 [00:28<00:00, 27.41batch/s]
+Avg Loss : 1.0222 Validation Loss : 1.0697 Learning Late: 0.0002 Accuracy: 62.2100
+Epoch 77: 100%|██████████| 782/782 [00:29<00:00, 26.60batch/s]
+Avg Loss : 1.0227 Validation Loss : 1.0661 Learning Late: 0.0002 Accuracy: 62.0500
+Epoch 78: 100%|██████████| 782/782 [00:30<00:00, 25.94batch/s]
+Avg Loss : 1.0215 Validation Loss : 1.0667 Learning Late: 0.0001 Accuracy: 61.9100
+Epoch 79: 100%|██████████| 782/782 [00:29<00:00, 26.30batch/s]
+Avg Loss : 1.0208 Validation Loss : 1.0688 Learning Late: 0.0001 Accuracy: 61.9500
+Epoch 80: 100%|██████████| 782/782 [00:28<00:00, 27.07batch/s]
+Avg Loss : 1.0205 Validation Loss : 1.0678 Learning Late: 0.0001 Accuracy: 61.8800
+Epoch 81: 100%|██████████| 782/782 [00:28<00:00, 27.32batch/s]
+Avg Loss : 1.0206 Validation Loss : 1.0657 Learning Late: 0.0001 Accuracy: 62.1600
+Epoch 82: 100%|██████████| 782/782 [00:28<00:00, 27.61batch/s]
+Avg Loss : 1.0186 Validation Loss : 1.0674 Learning Late: 0.0001 Accuracy: 62.2000
+Epoch 83: 100%|██████████| 782/782 [00:28<00:00, 27.41batch/s]
+Avg Loss : 1.0185 Validation Loss : 1.0684 Learning Late: 0.0001 Accuracy: 62.0400
+Epoch 84: 100%|██████████| 782/782 [00:28<00:00, 27.02batch/s]
+Avg Loss : 1.0187 Validation Loss : 1.0676 Learning Late: 0.0001 Accuracy: 62.0400
+Epoch 85: 100%|██████████| 782/782 [00:29<00:00, 26.48batch/s]
+Avg Loss : 1.0175 Validation Loss : 1.0687 Learning Late: 0.0001 Accuracy: 62.3000
+Epoch 86: 100%|██████████| 782/782 [00:29<00:00, 26.60batch/s]
+Avg Loss : 1.0179 Validation Loss : 1.0650 Learning Late: 0.0001 Accuracy: 62.1900
+Epoch 87: 100%|██████████| 782/782 [00:28<00:00, 27.47batch/s]
+Avg Loss : 1.0175 Validation Loss : 1.0648 Learning Late: 0.0001 Accuracy: 61.9500
+Epoch 88: 100%|██████████| 782/782 [00:28<00:00, 27.39batch/s]
+Avg Loss : 1.0168 Validation Loss : 1.0643 Learning Late: 0.0000 Accuracy: 62.3000
+Epoch 89: 100%|██████████| 782/782 [00:29<00:00, 26.78batch/s]
+Avg Loss : 1.0165 Validation Loss : 1.0645 Learning Late: 0.0000 Accuracy: 62.2900
+Epoch 90: 100%|██████████| 782/782 [00:29<00:00, 26.66batch/s]
+Avg Loss : 1.0157 Validation Loss : 1.0633 Learning Late: 0.0000 Accuracy: 62.2600
+Epoch 91: 100%|██████████| 782/782 [00:29<00:00, 26.30batch/s]
+Avg Loss : 1.0156 Validation Loss : 1.0665 Learning Late: 0.0000 Accuracy: 62.0800
+Epoch 92: 100%|██████████| 782/782 [00:28<00:00, 27.02batch/s]
+Avg Loss : 1.0152 Validation Loss : 1.0640 Learning Late: 0.0000 Accuracy: 62.2100
+Epoch 93: 100%|██████████| 782/782 [00:28<00:00, 27.46batch/s]
+Avg Loss : 1.0150 Validation Loss : 1.0643 Learning Late: 0.0000 Accuracy: 62.1300
+Epoch 94: 100%|██████████| 782/782 [00:28<00:00, 27.08batch/s]
+Avg Loss : 1.0152 Validation Loss : 1.0654 Learning Late: 0.0000 Accuracy: 62.2400
+Epoch 95: 100%|██████████| 782/782 [00:29<00:00, 26.37batch/s]
+Avg Loss : 1.0150 Validation Loss : 1.0631 Learning Late: 0.0000 Accuracy: 62.2500
+Epoch 96: 100%|██████████| 782/782 [00:29<00:00, 26.62batch/s]
+Avg Loss : 1.0145 Validation Loss : 1.0636 Learning Late: 0.0000 Accuracy: 62.2700
+Epoch 97: 100%|██████████| 782/782 [00:29<00:00, 26.70batch/s]
+Avg Loss : 1.0148 Validation Loss : 1.0640 Learning Late: 0.0000 Accuracy: 62.2700
+Epoch 98: 100%|██████████| 782/782 [00:29<00:00, 26.90batch/s]
+Avg Loss : 1.0147 Validation Loss : 1.0658 Learning Late: 0.0000 Accuracy: 62.2700
+Epoch 99: 100%|██████████| 782/782 [00:28<00:00, 27.00batch/s]
+Avg Loss : 1.0144 Validation Loss : 1.0626 Learning Late: 0.0000 Accuracy: 62.2800
+Epoch 100: 100%|██████████| 782/782 [00:28<00:00, 27.45batch/s]
+Avg Loss : 1.0146 Validation Loss : 1.0636 Learning Late: 0.0000 Accuracy: 62.2800
+
+실제 test
+100%|██████████| 157/157 [00:05<00:00, 29.37batch/s]총 개수 : 10000
+top-1 맞춘 개수 : 6228
+ 정확도: 62.28
+top-5 맞춘 개수 : 9624
+ 정확도: 96.24

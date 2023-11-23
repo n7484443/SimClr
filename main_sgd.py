@@ -12,7 +12,7 @@ from torchinfo import summary
 import numpy as np
 from tqdm import tqdm
 from time import sleep
-from sklearn.manifold import TSNE
+from umap import UMAP
 
 
 # 참조 : https://github.com/p3i0t/SimCLR-CIFAR10/tree/master
@@ -138,8 +138,8 @@ def learning_resnet(model, hyper_epoch, device, lr, temperature, strength, train
 
             deep_features += feature.cpu().numpy().tolist()
             actual += batch_label.cpu().numpy().tolist()
-    tsne = TSNE(n_components=2, random_state=0)
-    cluster = np.array(tsne.fit_transform(np.array(deep_features)))
+    umap = UMAP(n_components=2)
+    cluster = np.array(umap.fit_transform(np.array(deep_features)))
     actual = np.array(actual)
 
     plt.figure(figsize=(10, 10))
@@ -182,7 +182,7 @@ def learning_resnet(model, hyper_epoch, device, lr, temperature, strength, train
         data_output.append(loss_sum_train)
         if epoch >= 10:
             scheduler.step()
-        if epoch % 10 == 0:
+        if epoch % 20 == 0:
             model.eval()
             actual = []
             deep_features = []
@@ -194,8 +194,7 @@ def learning_resnet(model, hyper_epoch, device, lr, temperature, strength, train
 
                     deep_features += feature.cpu().numpy().tolist()
                     actual += batch_label.cpu().numpy().tolist()
-            tsne = TSNE(n_components=2, random_state=0)
-            cluster = np.array(tsne.fit_transform(np.array(deep_features)))
+            cluster = np.array(umap.fit_transform(np.array(deep_features)))
             actual = np.array(actual)
 
             plt.figure(figsize=(10, 10))
@@ -266,11 +265,11 @@ def learning_predictor(model, model_predictor, hyper_epoch, device, lr, weight_d
 
 if __name__ == '__main__':
     device = torch.device("cuda")
-    hyper_batch_size = 256
+    hyper_batch_size = 128
     hyper_epoch = 100
     hyper_epoch_predictor = hyper_epoch
     lr = round(0.075 * math.sqrt(hyper_batch_size), 6)
-    lr_predictor = 1e-3
+    lr_predictor = 1e-3 * hyper_batch_size/64
     weight_decay = 1e-6
     temperature = 0.1
     strength = 1
@@ -280,7 +279,7 @@ if __name__ == '__main__':
     projection_dim = 128
     class_size = 10
     continue_learning = True
-    simclr = SimCLR(base_encoder=torchvision.models.resnet18, projection_dim=projection_dim).to(device)
+    simclr = SimCLR(base_encoder=torchvision.models.resnet34, projection_dim=projection_dim).to(device)
     predictor = nn.Linear(simclr.feature_dim, class_size).to(device)
     if os.path.isfile(f"./model_sgd_{hyper_batch_size}_{lr}_100.pt"):
         simclr.load_state_dict(torch.load(f"./model_sgd_{hyper_batch_size}_{lr}_100.pt"))

@@ -12,7 +12,7 @@ from torchinfo import summary
 import numpy as np
 from tqdm import tqdm
 from time import sleep
-from sklearn.manifold import TSNE
+from umap import UMAP
 
 
 class SAM(torch.optim.Optimizer):
@@ -72,11 +72,9 @@ class SAM(torch.optim.Optimizer):
     def step(self, closure=None):
         closure = torch.enable_grad()(closure)  # the closure should do a full forward-backward pass
 
-        loss = closure()
         self.first_step(zero_grad=True)
         closure()
         self.second_step(zero_grad=True)
-        return loss.item()
 
 
 def disable_running_stats(model):
@@ -92,6 +90,8 @@ def enable_running_stats(model):
     def _enable(module):
         if isinstance(module, torch.nn.modules.batchnorm._BatchNorm) and hasattr(module, "backup_momentum"):
             module.momentum = module.backup_momentum
+
+    model.apply(_enable)
 
 
 # 참조 : https://github.com/p3i0t/SimCLR-CIFAR10/tree/master
@@ -217,8 +217,8 @@ def learning_resnet(model, hyper_epoch, device, lr, temperature, strength, train
 
             deep_features += feature.cpu().numpy().tolist()
             actual += batch_label.cpu().numpy().tolist()
-    tsne = TSNE(n_components=2, random_state=0)
-    cluster = np.array(tsne.fit_transform(np.array(deep_features)))
+    umap = UMAP(n_components=2)
+    cluster = np.array(umap.fit_transform(np.array(deep_features)))
     actual = np.array(actual)
 
     plt.figure(figsize=(10, 10))
@@ -270,11 +270,11 @@ def learning_resnet(model, hyper_epoch, device, lr, temperature, strength, train
         data_output.append(loss_sum_train)
         if epoch >= 10:
             scheduler.step()
-        if epoch % 10 == 0:
+        if epoch % 20 == 0:
+            model.eval()
             actual = []
             deep_features = []
 
-            model.eval()
             with torch.no_grad():
                 for batch_data, batch_label in testLoader:
                     batch_data_cuda = batch_data.to(device)
@@ -282,12 +282,10 @@ def learning_resnet(model, hyper_epoch, device, lr, temperature, strength, train
 
                     deep_features += feature.cpu().numpy().tolist()
                     actual += batch_label.cpu().numpy().tolist()
-            tsne = TSNE(n_components=2, random_state=0)
-            cluster = np.array(tsne.fit_transform(np.array(deep_features)))
+            cluster = np.array(umap.fit_transform(np.array(deep_features)))
             actual = np.array(actual)
 
             plt.figure(figsize=(10, 10))
-            cifar = ['plane', 'car', 'bird', 'cat', 'deer', 'dog', 'frog', 'horse', 'ship', 'truck']
             for i, label in zip(range(10), cifar):
                 idx = np.where(actual == i)
                 plt.scatter(cluster[idx, 0], cluster[idx, 1], marker='.', label=label)
@@ -355,11 +353,11 @@ def learning_predictor(model, model_predictor, hyper_epoch, device, lr, weight_d
 
 if __name__ == '__main__':
     device = torch.device("cuda")
-    hyper_batch_size = 128
+    hyper_batch_size = 64
     hyper_epoch = 100
     hyper_epoch_predictor = hyper_epoch
     lr = round(0.075 * math.sqrt(hyper_batch_size), 6)
-    lr_predictor = 1e-3
+    lr_predictor = 1e-3 * hyper_batch_size/64
     weight_decay_predictor = 1e-6
     temperature = 0.1
     strength = 1
@@ -368,7 +366,7 @@ if __name__ == '__main__':
     # rgb 3개,
     projection_dim = 128
     class_size = 10
-    simclr = SimCLR(base_encoder=torchvision.models.resnet34, projection_dim=projection_dim).to(device)
+    simclr = SimCLR(base_encoder=torchvision.models.resnet18, projection_dim=projection_dim).to(device)
     predictor = nn.Linear(simclr.feature_dim, class_size).to(device)
     if os.path.isfile(f"./model_sam_{hyper_batch_size}_{lr}_100.pt"):
         simclr.load_state_dict(torch.load(f"./model_sam_{hyper_batch_size}_{lr}_100.pt"))
