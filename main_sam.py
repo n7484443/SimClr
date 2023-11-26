@@ -353,7 +353,7 @@ def learning_predictor(model, model_predictor, hyper_epoch, device, lr, weight_d
 
 if __name__ == '__main__':
     device = torch.device("cuda")
-    hyper_batch_size = 64
+    hyper_batch_size = 32
     hyper_epoch = 100
     hyper_epoch_predictor = hyper_epoch
     lr = round(0.075 * math.sqrt(hyper_batch_size), 6)
@@ -366,7 +366,7 @@ if __name__ == '__main__':
     # rgb 3개,
     projection_dim = 128
     class_size = 10
-    simclr = SimCLR(base_encoder=torchvision.models.resnet18, projection_dim=projection_dim).to(device)
+    simclr = SimCLR(base_encoder=torchvision.models.resnet34, projection_dim=projection_dim).to(device)
     predictor = nn.Linear(simclr.feature_dim, class_size).to(device)
     if os.path.isfile(f"./model_sam_{hyper_batch_size}_{lr}_100.pt"):
         simclr.load_state_dict(torch.load(f"./model_sam_{hyper_batch_size}_{lr}_100.pt"))
