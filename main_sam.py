@@ -203,7 +203,7 @@ def learning_resnet(model, hyper_epoch, device, lr, temperature, strength, train
     distortion.eval()
     # train
     optimizer = SAM(model.parameters(), torch.optim.Adam, lr=lr)
-    scheduler = torch.optim.lr_scheduler.CosineAnnealingLR(optimizer, T_max=hyper_epoch - 10, eta_min=0,
+    scheduler = torch.optim.lr_scheduler.CosineAnnealingLR(optimizer, T_max=1000-10, eta_min=0,
                                                            last_epoch=-1)
 
     model.eval()
@@ -353,7 +353,7 @@ def learning_predictor(model, model_predictor, hyper_epoch, device, lr, weight_d
 
 if __name__ == '__main__':
     device = torch.device("cuda")
-    hyper_batch_size = 32
+    hyper_batch_size = 128
     hyper_epoch = 100
     hyper_epoch_predictor = hyper_epoch
     lr = round(0.075 * math.sqrt(hyper_batch_size), 6)

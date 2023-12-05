@@ -124,7 +124,7 @@ def learning_resnet(model, hyper_epoch, device, lr, temperature, strength, train
     distortion.eval()
     # train
     optimizer = torch.optim.SGD(model.parameters(), lr=lr, weight_decay=weight_decay)
-    scheduler = torch.optim.lr_scheduler.CosineAnnealingLR(optimizer, T_max=hyper_epoch - 10, eta_min=0,
+    scheduler = torch.optim.lr_scheduler.CosineAnnealingLR(optimizer, T_max=1000 - 10, eta_min=0,
                                                            last_epoch=-1)
 
     model.eval()
