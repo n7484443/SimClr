@@ -1,4 +1,3 @@
-import math
 import os
 
 import torch.utils.data as tu_data
@@ -20,8 +19,8 @@ from umap import UMAP
 
 def load_image(batch_size) -> (tu_data.DataLoader, tu_data.DataLoader):
     # test data와 train data는 분리되어야 함. 미 분리시 test data가 train data에 영향을 줄 수 있음
-    train_set = torchvision.datasets.CIFAR10(root='./data', train=True, download=True, transform=transforms.ToTensor())
-    test_set = torchvision.datasets.CIFAR10(root='./data', train=False, download=True, transform=transforms.ToTensor())
+    train_set = CIFAR10Pair(root='./data', train=True)
+    test_set = CIFAR10Pair(root='./data', train=False)
 
     # pin_memory : GPU에 데이터를 미리 전송
     train_loader = tu_data.DataLoader(train_set, batch_size=batch_size, shuffle=True, num_workers=4, pin_memory=True)
@@ -31,25 +30,33 @@ def load_image(batch_size) -> (tu_data.DataLoader, tu_data.DataLoader):
     return train_loader, test_loader
 
 
-# 이미지 텐서를 색상 변환, 크롭
-class Distortion(nn.Module):
-    def __init__(self, strength, image_size=32):
-        super().__init__()
-        crop_transform = transforms.RandomResizedCrop((image_size, image_size), scale=(0.25, 1),
-                                                      ratio=(1.0 / 2.0, 2.0 / 1.0), antialias=True)
-        flip_horizon = transforms.RandomHorizontalFlip(p=0.5)
-        flip_vertical = transforms.RandomVerticalFlip(p=0.5)
-        color_transform = transforms.ColorJitter(brightness=0.8 * strength, contrast=0.8 * strength,
-                                                 saturation=0.8 * strength, hue=0.2 * strength)
-        self.transform_several = torch.nn.Sequential(
-            crop_transform,
-            flip_vertical,
-            flip_horizon,
-            color_transform,
-        ).to(device)
+class CIFAR10Pair(torchvision.datasets.CIFAR10):
+    def __init__(self, root, train=True):
+        super().__init__(root, train, None, None, download=True)
+        if train:
+            crop_transform = transforms.RandomResizedCrop((32, 32), scale=(0.08, 1.0),
+                                                          ratio=(3.0 / 4.0, 4.0 / 3.0), antialias=True)
+            flip_horizon = transforms.RandomHorizontalFlip(p=0.5)
+            color_transform = transforms.RandomApply(
+                torch.nn.ModuleList([transforms.ColorJitter(brightness=0.8 * strength, contrast=0.8 * strength,
+                                                            saturation=0.8 * strength, hue=0.2 * strength)]), p=0.8)
+            color_drop = transforms.RandomGrayscale(p=0.2)
+            compose_transform = transforms.Compose(
+                [crop_transform, flip_horizon, color_transform, color_drop, transforms.ToTensor()])
+            self.transform = compose_transform
+        else:
+            self.transform = transforms.ToTensor()
 
-    def forward(self, x):
-        return self.transform_several(x)
+    def __getitem__(self, index):
+        img, target = self.data[index], self.targets[index]
+        img = transforms.ToPILImage()(img)
+
+        img1 = self.transform(img)
+        if self.train:
+            img2 = self.transform(img)
+            return img1, img2, target
+        else:
+            return img1, target
 
 
 class SimclrLoss(nn.Module):
@@ -117,11 +124,10 @@ class SimCLR(nn.Module):
         return feature, projection
 
 
-def learning_resnet(model, hyper_epoch, device, lr, temperature, strength, trainLoader, testLoader, hyper_batch_size, weight_decay):
+def learning_resnet(model, hyper_epoch, device, lr, temperature, strength, trainLoader, testLoader, hyper_batch_size,
+                    weight_decay):
     loss_function = SimclrLoss(temperature=temperature).to(device)
 
-    distortion = Distortion(strength=strength).to(device)
-    distortion.eval()
     # train
     optimizer = torch.optim.SGD(model.parameters(), lr=lr, weight_decay=weight_decay)
     scheduler = torch.optim.lr_scheduler.CosineAnnealingLR(optimizer, T_max=1000 - 10, eta_min=0,
@@ -148,8 +154,7 @@ def learning_resnet(model, hyper_epoch, device, lr, temperature, strength, train
         idx = np.where(actual == i)
         plt.scatter(cluster[idx, 0], cluster[idx, 1], marker='.', label=label)
     plt.legend()
-    plt.show()
-
+    plt.savefig(f'0.png')
 
     data_output = []
     for epoch in range(1, hyper_epoch + 1):
@@ -157,13 +162,13 @@ def learning_resnet(model, hyper_epoch, device, lr, temperature, strength, train
         loss_sum_train = 0
         tqdm_epoch = tqdm(trainLoader, unit="batch")
         model.train()
-        for batch_data, _ in tqdm_epoch:
+        for batch_data, batch_distorted, _ in tqdm_epoch:
             tqdm_epoch.set_description(f"Epoch {epoch}")
             with torch.no_grad():
                 batch_size = batch_data.shape[0]
                 batch_data_cuda = batch_data.to(device)
-                batch_data_distorted = distortion(batch_data_cuda)
-                batch_input = torch.cat((batch_data_cuda, batch_data_distorted), dim=0)
+                batch_distorted_cuda = batch_distorted.to(device)
+                batch_input = torch.cat((batch_data_cuda, batch_distorted_cuda), dim=0)
 
             optimizer.zero_grad()
 
@@ -202,7 +207,7 @@ def learning_resnet(model, hyper_epoch, device, lr, temperature, strength, train
                 idx = np.where(actual == i)
                 plt.scatter(cluster[idx, 0], cluster[idx, 1], marker='.', label=label)
             plt.legend()
-            plt.show()
+            plt.savefig(f'{epoch}.png')
     torch.save(model.state_dict(), f"./model_sgd_{hyper_batch_size}_{lr}_100.pt")
 
     return data_output
@@ -222,7 +227,7 @@ def learning_predictor(model, model_predictor, hyper_epoch, device, lr, weight_d
         total_size = 0
         tqdm_epoch = tqdm(trainLoader, unit="batch")
         model_predictor.train()
-        for batch_data, batch_label in tqdm_epoch:
+        for batch_data, _, batch_label in tqdm_epoch:
             tqdm_epoch.set_description(f"Epoch {epoch}")
 
             with torch.no_grad():
@@ -265,21 +270,21 @@ def learning_predictor(model, model_predictor, hyper_epoch, device, lr, weight_d
 
 if __name__ == '__main__':
     device = torch.device("cuda")
-    hyper_batch_size = 128
-    hyper_epoch = 100
+    hyper_batch_size = 64
+    hyper_epoch = 200
     hyper_epoch_predictor = hyper_epoch
-    lr = round(0.075 * math.sqrt(hyper_batch_size), 6)
-    lr_predictor = 1e-3 * hyper_batch_size/64
+    lr = 1.0
+    lr_predictor = 1e-3 * hyper_batch_size / 64
     weight_decay = 1e-6
-    temperature = 0.1
-    strength = 1
+    temperature = 0.5
+    strength = 0.5
     trainLoader, testLoader = load_image(batch_size=hyper_batch_size)
 
     # rgb 3개,
     projection_dim = 128
     class_size = 10
     continue_learning = True
-    simclr = SimCLR(base_encoder=torchvision.models.resnet34, projection_dim=projection_dim).to(device)
+    simclr = SimCLR(base_encoder=torchvision.models.resnet18, projection_dim=projection_dim).to(device)
     predictor = nn.Linear(simclr.feature_dim, class_size).to(device)
     if os.path.isfile(f"./model_sgd_{hyper_batch_size}_{lr}_100.pt"):
         simclr.load_state_dict(torch.load(f"./model_sgd_{hyper_batch_size}_{lr}_100.pt"))
